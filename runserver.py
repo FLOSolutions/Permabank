@@ -1,3 +1,3 @@
 # runs development server
-from marcel import app
+from permabank import app
 app.run(debug=True)

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-    Mapping of Python objects to Redis datatypes for Marcel
+    Mapping of Python objects to Redis datatypes for Permabank
 
     :copyright: (c) 2011 By Ori Livneh
     :license: GPLv3, see LICENSE for more details.
@@ -11,11 +11,11 @@ from uuid import uuid5, NAMESPACE_URL
 import dateutil.parser
 from flask import session
 
-from marcel import redis
+from permabank import redis
 
 
 class User(object):
-    """ Represents a Marcel user / author """
+    """ Represents a Permabank user / author """
     def __init__(self, uuid=None, openid=None):
         """ Creates a User instance; one of `uuid` or `openid` is required """
         if uuid:
@@ -24,7 +24,7 @@ class User(object):
             self.uuid = uuid5(NAMESPACE_URL, openid)
         else:
             raise TypeError("Either a uuid or an openid is required")
-        self.key = "marcel:user:%s" % self.uuid
+        self.key = "permabank:user:%s" % self.uuid
 
     def from_session(self):
         """ Gets the current user based on the value of `openid` in the session
@@ -54,14 +54,14 @@ class EntryManager(object):
 
     def get(self, uid):
         """ Retrieves record `uid` from Redis """
-        item = redis.hgetall("marcel:%s:%s" % (self.type, uid))
+        item = redis.hgetall("permabank:%s:%s" % (self.type, uid))
         item['type'] = self.type
         item['pubdate'] = dateutil.parser.parse(item['pubdate'])
         return item
 
     def all(self):
         """ Gets all records of type self.type """
-        keys = redis.lrange(name="marcel:%s" % self.type, start=0, end=-1)
+        keys = redis.lrange(name="permabank:%s" % self.type, start=0, end=-1)
         items = [self.get(uid) for uid in keys]
         return items
 
@@ -70,9 +70,9 @@ class EntryManager(object):
         if pubdate is None:
             pubdate = datetime.now().isoformat()
         # TODO(Ori): Should we batch these into a single transaction?
-        uid = redis.incr("marcel:%s:next_uid" % self.type)
-        redis.rpush("marcel:%s" % self.type, uid)
-        redis.hmset("marcel:%s:%s" % (self.type, uid), {
+        uid = redis.incr("permabank:%s:next_uid" % self.type)
+        redis.rpush("permabank:%s" % self.type, uid)
+        redis.hmset("permabank:%s:%s" % (self.type, uid), {
             'user': user.uuid,
             'summary': summary,
             'details': details,

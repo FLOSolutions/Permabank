@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-    Marcel views
+    Permabank views
 
     :copyright: (c) 2011 By Ori Livneh
     :license: GPLv3, see LICENSE for more details.
@@ -19,9 +19,9 @@ from flask import (
 
 from flask.views import MethodView
 
-from marcel import app, oid
-from marcel.forms import EntryForm
-from marcel.models import User, offers, requests, EntryManager
+from permabank import app, oid
+from permabank.forms import EntryForm
+from permabank.models import User, offers, requests, EntryManager
 
 
 #
