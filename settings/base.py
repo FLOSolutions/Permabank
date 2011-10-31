@@ -32,6 +32,8 @@ STATICFILES_DIRS = (
 ADMIN_MEDIA_PREFIX = STATIC_URL + 'grappelli/'
 # ADMIN_MEDIA_PREFIX = STATIC_URL + 'admin/'
 
+AUTH_PROFILE_MODULE = 'profiles.Profile'
+
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',

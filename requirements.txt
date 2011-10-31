@@ -4,5 +4,5 @@ Unipath
 django-redis-cache
 fabric
 django-grappelli
-jinja2
-django-profiles
+http://launchpad.net/django-openid-auth/trunk/0.4/+download/django-openid-auth_0.4.tar.gz
+python-openid
