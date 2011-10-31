@@ -46,6 +46,20 @@ TEMPLATE_LOADERS = (
     'django.template.loaders.app_directories.Loader',
 )
 
+# OpenID Authentication
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'django_openid_auth.auth.OpenIDBackend',
+)
+
+OPENID_CREATE_USERS = True
+OPENID_UPDATE_DETAILS_FROM_SREG = True
+OPENID_SSO_SERVER_URL = 'https://www.google.com/accounts/o8/id'
+LOGIN_URL = '/openid/login/'
+LOGIN_REDIRECT_URL = '/'
+OPENID_USE_AS_ADMIN_LOGIN = False
+
+
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -60,6 +74,8 @@ TEMPLATE_DIRS = (
     PROJECT_DIR.child('templates'),
 )
 
+
+
 INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -70,6 +86,7 @@ INSTALLED_APPS = (
     'grappelli',
     'profiles',
     'epio_commands',
+    'django_openid_auth',
     'django.contrib.admin',
     'django.contrib.admindocs',
 )
@@ -91,3 +108,13 @@ LOGGING = {
         },
     }
 }
+
+if DEBUG:
+    try:
+        import devserver
+    except:
+        pass
+    else:
+        INSTALLED_APPS += ('devserver',)
+
+GRAPPELLI_ADMIN_TITLE = 'permabank'
