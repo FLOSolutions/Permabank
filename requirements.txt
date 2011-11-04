@@ -4,5 +4,7 @@ Unipath
 django-redis-cache
 fabric
 django-grappelli
-http://launchpad.net/django-openid-auth/trunk/0.4/+download/django-openid-auth_0.4.tar.gz
-python-openid
+-e svn+http://django-openid-consumer.googlecode.com/svn/trunk/#egg=django-openid-consumer
+-e git+https://github.com/openid/python-openid.git#egg=python-openid
+-e git+git://github.com/FLOSolutions/django-openid-auth.git#egg=django_openid_auth
+-e svn+http://django-gravatar.googlecode.com/svn/trunk/#egg=django-gravatar

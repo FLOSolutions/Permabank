@@ -1,0 +1,23 @@
+{% load gravatar %}
+<!doctype html>
+<html>
+  <head>
+    <meta charset=utf-8>
+    <title>user profile</title>
+  </head>
+  <body>
+      {% gravatar profile.user %}
+      <dl>
+          <dt>e-mail:
+          <dd><a href="mailto:{{ profile.user.email }}">{{ profile.user.email }}</a>
+          <dt>first name:
+          <dd>{{ profile.user.first_name }}
+          <dt>last name:
+          <dd>{{ profile.user.last_name }}
+          <dt>joined:
+          <dd>{{ profile.user.date_joined }}
+          <dt>last seen:
+          <dd>{{ profile.user.last_login }}
+      </dl>
+  </body>
+</html>

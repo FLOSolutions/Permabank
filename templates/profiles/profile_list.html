@@ -1,0 +1,15 @@
+{% load gravatar %}
+<!doctype html>
+<html>
+  <head>
+    <meta charset=utf-8>
+    <title>profiles!</title>
+  </head>
+  <body>
+      {% for profile in object_list %}
+        {% gravatar profile.user %}
+        <a href="/profiles/{{ profile.pk }}">{{ profile.user.get_full_name }}</a>
+        </p>
+      {% endfor %}
+  </body>
+</html>

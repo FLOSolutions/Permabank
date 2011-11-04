@@ -26,3 +26,5 @@ CACHES = {
 }
 MEDIA_ROOT = config['core']['data_directory']
 
+DEBUG = True
+TEMPLATE_DEBUG = True

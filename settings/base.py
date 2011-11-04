@@ -29,8 +29,8 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     str(PROJECT_DIR.child('static')),
 )
-ADMIN_MEDIA_PREFIX = STATIC_URL + 'grappelli/'
-# ADMIN_MEDIA_PREFIX = STATIC_URL + 'admin/'
+
+ADMIN_MEDIA_PREFIX = STATIC_URL + 'admin/'
 
 AUTH_PROFILE_MODULE = 'profiles.Profile'
 
@@ -48,12 +48,17 @@ TEMPLATE_LOADERS = (
 
 # OpenID Authentication
 AUTHENTICATION_BACKENDS = (
-    'django.contrib.auth.backends.ModelBackend',
     'django_openid_auth.auth.OpenIDBackend',
+    'django.contrib.auth.backends.ModelBackend',
 )
 
 OPENID_CREATE_USERS = True
+
+# Update user details automatically when they log in
 OPENID_UPDATE_DETAILS_FROM_SREG = True
+OPENID_UPDATE_DETAILS_FROM_AX = True
+
+# Use nycga.net as endpoint provider
 OPENID_SSO_SERVER_URL = 'https://www.google.com/accounts/o8/id'
 LOGIN_URL = '/openid/login/'
 LOGIN_REDIRECT_URL = '/'
@@ -65,6 +70,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django_openid_consumer.middleware.OpenIDMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
 )
 
@@ -74,9 +80,11 @@ TEMPLATE_DIRS = (
     PROJECT_DIR.child('templates'),
 )
 
+PROJECT_APPS = (
+    'profiles',
+)
 
-
-INSTALLED_APPS = (
+EXTERNAL_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -84,12 +92,14 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'grappelli',
-    'profiles',
+    'gravatar',
     'epio_commands',
     'django_openid_auth',
     'django.contrib.admin',
     'django.contrib.admindocs',
 )
+
+INSTALLED_APPS = EXTERNAL_APPS + PROJECT_APPS
 
 LOGGING = {
     'version': 1,
@@ -109,12 +119,6 @@ LOGGING = {
     }
 }
 
-if DEBUG:
-    try:
-        import devserver
-    except:
-        pass
-    else:
-        INSTALLED_APPS += ('devserver',)
-
-GRAPPELLI_ADMIN_TITLE = 'permabank'
+if 'grappelli' in INSTALLED_APPS:
+    GRAPPELLI_ADMIN_TITLE = 'permabank'
+    ADMIN_MEDIA_PREFIX = STATIC_URL + 'grappelli/'

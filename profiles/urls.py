@@ -1,24 +1,9 @@
 from django.conf.urls.defaults import *
-from profiles.views import TestView
+from profiles.views import (TestView, UserUpdateView, ProfileDetailView,
+    ProfileListView)
 
 urlpatterns = patterns('profiles.views',
-    (r'^$', TestView.as_view()),
+    (r'^$', ProfileListView.as_view()),
+    (r'^(?P<pk>[0-9]+)', ProfileDetailView.as_view()),
+    (r'^edit/$', UserUpdateView.as_view()),
 )
-
-
-"""
-urlpatterns = patterns('',
-                       url(r'^create/$',
-                           views.create_profile,
-                           name='profiles_create_profile'),
-                       url(r'^edit/$',
-                           views.edit_profile,
-                           name='profiles_edit_profile'),
-                       url(r'^(?P<username>\w+)/$',
-                           views.profile_detail,
-                           name='profiles_profile_detail'),
-                       url(r'^$',
-                           views.profile_list,
-                           name='profiles_profile_list'),
-                       )
-"""

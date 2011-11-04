@@ -24,3 +24,10 @@ CACHES = {
         'LOCATION': 'localhost:6379',
     },
 }
+
+# optional debugging apps
+INSTALLED_APPS += (
+    #'django_extensions',
+    #'devserver',
+)
+
