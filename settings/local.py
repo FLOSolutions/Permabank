@@ -27,7 +27,7 @@ CACHES = {
 
 # optional debugging apps
 INSTALLED_APPS += (
-    #'django_extensions',
+    'django_extensions',
     #'devserver',
 )
 

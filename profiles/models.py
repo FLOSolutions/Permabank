@@ -5,9 +5,29 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 
 
+class ProfileManager(models.Manager):
+    """ Custom Manager for Profile model """
+    use_for_related_fields = True
+
+    def get_query_set(self):
+        # optimization: auto select-related the related User object
+        query_set = super(ProfileManager, self).get_query_set()
+        return query_set.select_related('user')
+
+
 class Profile(models.Model):
     """ Represents a user's profile """
     user = models.OneToOneField(User, primary_key=True)
+    objects = ProfileManager()
+
+    def __unicode__(self):
+        """ Unicode representation of user profiles """
+        full_name = self.user.get_full_name()
+        email = self.user.email
+        if not full_name:
+            return email
+        else:
+            return u"%s (%s)" % (email, full_name)
 
 class UserForm(forms.ModelForm):
     class Meta:

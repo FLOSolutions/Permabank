@@ -82,6 +82,7 @@ TEMPLATE_DIRS = (
 
 PROJECT_APPS = (
     'profiles',
+    'records',
 )
 
 EXTERNAL_APPS = (
