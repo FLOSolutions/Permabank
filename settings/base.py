@@ -1,5 +1,8 @@
 from unipath import FSPath as Path
 
+# monkey-patch python-openid to work with nycga.net
+#from utils import monkey_patch_openid; monkey_patch_openid()
+
 PROJECT_DIR = Path(__file__).absolute().ancestor(2)
 
 DEBUG = False
@@ -59,7 +62,9 @@ OPENID_UPDATE_DETAILS_FROM_SREG = True
 OPENID_UPDATE_DETAILS_FROM_AX = True
 
 # Use nycga.net as endpoint provider
-OPENID_SSO_SERVER_URL = 'https://www.google.com/accounts/o8/id'
+#OPENID_SSO_SERVER_URL = 'https://www.google.com/accounts/o8/id'
+OPENID_SSO_SERVER_URL = 'https://nycga.net/'
+#OPENID_SSO_SERVER_URL = 'https://www.nycga.net/wp-login.php'
 LOGIN_URL = '/openid/login/'
 LOGIN_REDIRECT_URL = '/'
 OPENID_USE_AS_ADMIN_LOGIN = False

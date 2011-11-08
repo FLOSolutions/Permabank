@@ -59,7 +59,14 @@ class Wish(Record):
     """ Model for user wishes """
     record = models.OneToOneField(Record, parent_link=True)
 
+    def __unicode__(self):
+        # truncate to 20 characters
+        wish = self.title
+        if len(wish) > 20:
+            wish = wish[:17] + '...'
+        return "{user}: {wish}".format(user=self.user, wish=wish)
 
-class Request(Record):
-    """ Model for user requests """
+
+class Gift(Record):
+    """ Model for user gifts """
     record = models.OneToOneField(Record, parent_link=True)

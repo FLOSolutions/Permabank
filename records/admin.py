@@ -1,5 +1,5 @@
 from django.contrib import admin
-from records.models import Category, Record, Request, Wish
+from records.models import Category, Record, Gift, Wish
 
 
 class CategoryAdmin(admin.ModelAdmin):
@@ -9,5 +9,5 @@ class CategoryAdmin(admin.ModelAdmin):
 
 admin.site.register(Category, CategoryAdmin)
 
-for model in (Record, Request, Wish):
+for model in (Record, Gift, Wish):
     admin.site.register(model)

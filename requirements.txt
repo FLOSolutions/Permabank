@@ -5,6 +5,6 @@ django-redis-cache
 fabric
 django-grappelli
 -e svn+http://django-openid-consumer.googlecode.com/svn/trunk/#egg=django-openid-consumer
--e git+https://github.com/openid/python-openid.git#egg=python-openid
+-e git+https://github.com/FLOSolutions/python-openid.git#egg=python-openid
 -e git+git://github.com/FLOSolutions/django-openid-auth.git#egg=django_openid_auth
 -e svn+http://django-gravatar.googlecode.com/svn/trunk/#egg=django-gravatar
