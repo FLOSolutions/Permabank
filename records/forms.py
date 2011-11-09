@@ -21,6 +21,10 @@ class UserCreatedModelForm(forms.ModelForm):
 
 class WishForm(UserCreatedModelForm):
     class Meta:
-        #fields = ['title', 'description', 'location', 'category', 'picture']
-        fields = ['title', 'description', 'location', 'category']
+        fields = ['title', 'description', 'location', 'category', 'picture']
         model = Wish
+
+class GiftForm(UserCreatedModelForm):
+    class Meta:
+        fields = ['title', 'description', 'location', 'category', 'picture']
+        model = Gift
