@@ -59,6 +59,9 @@ class Wish(Record):
     """ Model for user wishes """
     record = models.OneToOneField(Record, parent_link=True)
 
+    class Meta:
+        verbose_name_plural = 'wishes'
+
     def __unicode__(self):
         # truncate to 20 characters
         wish = self.title

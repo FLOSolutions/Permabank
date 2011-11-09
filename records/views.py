@@ -1,6 +1,8 @@
-from django.views.generic import CreateView
+from django.views.generic import CreateView, ListView, DetailView
 
-from records.models import Wish, Gift
+from django.http import Http404
+
+from records.models import Wish, Gift, Category
 from records.forms import WishForm, GiftForm
 
 from utils import requires_login
@@ -28,10 +30,24 @@ class CreateWishView(UserCreateView):
     template_name = 'add_wish.html'
     success_url = '/wishes/%(id)s'
 
+class RecordListView(ListView):
+    def get_queryset(self):
+        slug = self.kwargs.get('slug')
+        if slug == 'all':
+            return self.model.objects.order_by('-created')
+        else:
+            try:
+                category = Category.objects.only('id').get(slug=slug)
+            except Category.DoesNotExist:
+                raise Http404
+            return self.model.objects.filter(category=category).order_by(
+                    '-created')
+
 class WishListView(ListView):
     model = Wish
-    context_object_name = "wish"
+    context_object_name = "wishes"
     template_name = "wish_list.html"
+
 
 class WishDetailView(DetailView):
     model = Wish
