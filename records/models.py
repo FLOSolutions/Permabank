@@ -35,7 +35,8 @@ class Record(models.Model):
     updated = models.DateTimeField(auto_now=True, verbose_name="Last updated")
 
     # metadata
-    picture = models.ImageField(upload_to='pictures/%Y/%m/%d', blank=True)
+    picture = models.ImageField(upload_to='pictures/%Y/%m/%d', blank=True,
+            default='/static/placeholder.jpg')
     title = models.CharField(max_length=140)
     description = models.TextField()
     location = models.CharField(max_length=256)

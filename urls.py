@@ -1,5 +1,8 @@
+from django.conf import settings
 from django.conf.urls.defaults import patterns, include, url
 from django.contrib import admin
+import django_messages
+
 
 import admin_site
 
@@ -14,6 +17,9 @@ urlpatterns = patterns('',
     url(r'^logout/$', 'django.contrib.auth.views.logout'),
     url(r'^profiles/', include('profiles.urls')),
 
+    # messaging
+    (r'^messages/', include('django_messages.urls')),
+
     # admin
     url(r'^grappelli/', include('grappelli.urls')),
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
@@ -22,3 +28,9 @@ urlpatterns = patterns('',
     url(r'', include('records.urls')),
 )
 
+if settings.DEBUG:
+    urlpatterns += patterns('',
+        url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {
+            'document_root': settings.MEDIA_ROOT,
+        }),
+    )

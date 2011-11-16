@@ -43,11 +43,10 @@ class RecordListView(ListView):
             return self.model.objects.filter(category=category).order_by(
                     '-created')
 
-class WishListView(ListView):
+class WishListView(RecordListView):
     model = Wish
     context_object_name = "wishes"
     template_name = "wish_list.html"
-
 
 class WishDetailView(DetailView):
     model = Wish

@@ -1,4 +1,6 @@
 from django import forms
+from django_messages.forms import ComposeForm
+
 from records.models import Wish, Gift
 
 class UserCreatedModelForm(forms.ModelForm):

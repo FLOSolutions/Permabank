@@ -1,10 +1,13 @@
+{% load inbox %}
 <!doctype html>
 <html>
   <head>
     <meta charset=utf-8>
-    <title>permabank</title>
+    <title>{% block title %}permabank{% endblock %}</title>
   </head>
   <body>
+    <em>You have {% inbox_count %} messages</em>
+    <h1>#permabank</h1>
     {% block content %}{% endblock %}
   </body>
 </html>
