@@ -1,4 +1,5 @@
 @import url("reset.css");
+@import url("960_16_col.css");
 @import url("headings.css");
 @import url("modules.css");
 @import url("alignment.css");
@@ -36,10 +37,6 @@ h1 a {
   color: #000;
 }
 
-header.main {
-  height: 200px;
-}
-
 .logo {
   background-image: url("../images/icon-hash-large.png");
   background-position: top left;
@@ -60,7 +57,7 @@ nav .wish {
   height: 45px;
 }
 
-nav .wish.active {
+nav .wish.active, nav .wish:hover {
   background-image: url("../images/nav-wish-icon-active.png");
 }
 
@@ -70,7 +67,7 @@ nav .gift {
   height: 45px;
 }
 
-nav .gift.active {
+nav .gift.active, nav .gift:hover {
   background-image: url("../images/nav-gift-icon-active.png");
 }
 
@@ -80,8 +77,8 @@ nav .exchange {
   height: 45px;
 }
 
-nav .exchange.active {
-  background-image: url("../images/nav-wish-exchange-active.png");
+nav .exchange.active, nav .exchange:hover {
+  background-image: url("../images/nav-exchange-icon-active.png");
 }
 
 /* drop downs */
@@ -89,7 +86,9 @@ nav .exchange.active {
 .dd-large {
   background-image: url("../images/nav-dropdown-large.png");
   background-position: right center;
+  color: #ffd300;
 }
+a.dd-large:hover {color:#ffd300;}
 
 .dd-small-white {
   background-image: url("../images/nav-dropdown-small-white.png");

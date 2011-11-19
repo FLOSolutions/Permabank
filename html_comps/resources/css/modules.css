@@ -1,5 +1,5 @@
 /* module container */
-.mod{margin:10px;}
+.mod{}
 
 /* module header and footer */
 .hd, .ft {height:19px; overflow:hidden; *overflow:visible; zoom:1;}

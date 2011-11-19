@@ -1,9 +1,8 @@
-.stretch{width:950px}
 .inline{display:inline}
 .block{display:block}
 .left{float:left}
 .right{float:right}
-.center{margin:10px auto;text-align: center}
+.center{margin:10px auto;text-align:center}
 .relative{position:relative}
 .clear{min-height:1px;clear:both;display:block}
 .horiz li{display:inline}
