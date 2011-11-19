@@ -1,0 +1,45 @@
+/* module container */
+.mod{margin:10px;}
+
+/* module header and footer */
+.hd, .ft {height:19px; overflow:hidden; *overflow:visible; zoom:1;}
+
+/* gray extended mod */
+.gray {
+  border: 2px solid #ddd;
+}
+
+/* rounded extends mod */
+.mod.rounded {
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+}
+
+/* gift extends mod */
+.mod.gift {
+  background: #fff url("../images/bg-gift-top.png") scroll repeat-x top left;
+}
+
+.mod.gift h1 {
+  text-transform: lowercase;
+}
+
+.mod.gift .hd {
+  background: transparent url("../images/icon-gift.png") scroll no-repeat bottom right;
+  height: 50px;
+}
+
+/* wish extends mod */
+.mod.wish {
+  background: #fff url("../images/bg-wish-top.png") scroll repeat-x top left;
+}
+
+.mod.wish h1 {
+  text-transform: lowercase;
+}
+
+.mod.wish .hd {
+  background: transparent url("../images/icon-wish.png") scroll no-repeat bottom right;
+  height: 50px;
+}

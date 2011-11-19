@@ -1,0 +1,103 @@
+@import url("reset.css");
+@import url("headings.css");
+@import url("modules.css");
+@import url("alignment.css");
+@import url("spacing.css");
+@import url("grids.css");
+@import url("typography.css");
+@import url("forms.css");
+
+html {
+  background: #fff url("../images/bg-page-top.jpg") scroll repeat-x top left;
+}
+
+body {
+  margin: 0 auto;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  color: #000;
+  text-decoration: underline;
+}
+
+.bg {
+  background: transparent url() no-repeat scroll top left;
+  text-indent: -9999px;
+  border: none;
+}
+
+/* main header */
+
+h1 a {
+  color: #000;
+}
+
+header.main {
+  height: 200px;
+}
+
+.logo {
+  background-image: url("../images/icon-hash-large.png");
+  background-position: top left;
+  padding: 6px 0 0 30px;
+}
+
+/* nav */
+
+#icon-nav {
+  position: absolute;
+  left: 390px;
+  top: -2px;
+}
+
+nav .wish {
+  background-image: url("../images/nav-wish-icon.png");
+  width: 18px;
+  height: 45px;
+}
+
+nav .wish.active {
+  background-image: url("../images/nav-wish-icon-active.png");
+}
+
+nav .gift {
+  background-image: url("../images/nav-gift-icon.png");
+  width: 23px;
+  height: 45px;
+}
+
+nav .gift.active {
+  background-image: url("../images/nav-gift-icon-active.png");
+}
+
+nav .exchange {
+  background-image: url("../images/nav-exchange-icon.png");
+  width: 25px;
+  height: 45px;
+}
+
+nav .exchange.active {
+  background-image: url("../images/nav-wish-exchange-active.png");
+}
+
+/* drop downs */
+
+.dd-large {
+  background-image: url("../images/nav-dropdown-large.png");
+  background-position: right center;
+}
+
+.dd-small-white {
+  background-image: url("../images/nav-dropdown-small-white.png");
+  background-position: right center;
+}
+
+/* misc */
+
+.hilite {
+  background-color: #ffd300;
+}

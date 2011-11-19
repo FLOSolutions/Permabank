@@ -1,0 +1,47 @@
+input {
+  -moz-box-shadow: inset 2px 2px 3px #ccc;
+  -webkit-box-shadow: inset 2px 2px 3px #ccc;
+  box-shadow: inner 2px 2px 3px #ccc;
+}
+
+button, input {
+  outline: none;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  border: 1px solid #717171;
+  margin: 0;
+  padding: 5px;
+  font-size: 1.2em;
+}
+
+/* search form in header */
+
+.search button, .search input {
+  height: 18px;
+}
+
+.search button {
+  background-image: url("../images/form-submit.png");
+  background-position: 0 2px;
+  width: 30px;
+  height: 32px;
+}
+
+/* give and wish forms */
+
+.give input, .wish input {
+  width: 250px;
+}
+
+.give button, .wish button {
+  background-color: #fca25e;
+  width: 120px;
+  font-weight: bold;
+  font-size: 1.3em;
+  border: none;
+}
+
+.wish button {
+  background-color: #7fd1d0;
+}
