@@ -9,17 +9,13 @@
 @import url("forms.css");
 
 html {
-  background: #fff url("../images/bg-page-top.jpg") scroll repeat-x top left;
+  background-image: url("../images/bg-page-top.jpg"), url("../images/bg-page-bottom.jpg");
+  background-position: top left, bottom left;
+  background-repeat: repeat-x;
 }
 
 body {
   margin: 0 auto;
-}
-
-.bg {
-  background: transparent url() no-repeat scroll top left;
-  text-indent: -9999px;
-  border: none;
 }
 
 /* links */
@@ -33,12 +29,30 @@ a:hover {
   text-decoration: underline;
 }
 
-a.give {
+.give a {
   color: #fca25e;
 }
 
-a.wish {
+.wish a {
   color: #7fd1d0;
+}
+
+/* background images */
+
+.bg {
+  background: transparent url() no-repeat scroll top left;
+  text-indent: -9999px;
+  border: none;
+}
+
+.stripes {
+  background: transparent url("../images/bg-stripes-light.png") repeat-x scroll top left;
+  height: 43px;
+}
+
+.stripes-arrow {
+  background: transparent url("../images/bg-stripes-arrow-down.png") repeat-x scroll top left;
+  height: 43px;
 }
 
 /* main header */

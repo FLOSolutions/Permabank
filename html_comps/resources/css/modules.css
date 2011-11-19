@@ -2,7 +2,7 @@
 .mod{}
 
 /* module header and footer */
-.hd, .ft {height:19px; overflow:hidden; *overflow:visible; zoom:1;}
+.mod header, .mod footer {}
 
 /* gray extended mod */
 .gray {
@@ -17,17 +17,30 @@
 }
 
 /* gift extends mod */
-.mod.gift {
+.mod.give {
   background: #fff url("../images/bg-gift-top.png") scroll repeat-x top left;
 }
 
-.mod.gift h1 {
+.mod.give h1 {
   text-transform: lowercase;
 }
 
-.mod.gift .hd {
-  background: transparent url("../images/icon-gift.png") scroll no-repeat bottom right;
+.mod.give header {
+  background: transparent url("../images/icon-gift.png") scroll no-repeat 395px 10px;
   height: 50px;
+}
+
+.mod.give footer {
+  border-top: 1px dashed #ccc;
+}
+
+.mod.give footer a {
+  background-color: #eee;
+  border: none;
+}
+
+.mod.give footer a:hover {
+  text-decoration: none;
 }
 
 /* wish extends mod */
@@ -39,7 +52,53 @@
   text-transform: lowercase;
 }
 
-.mod.wish .hd {
-  background: transparent url("../images/icon-wish.png") scroll no-repeat bottom right;
+.mod.wish header {
+  background: transparent url("../images/icon-wish.png") scroll no-repeat 395px 10px;
   height: 50px;
+}
+
+.mod.wish footer {
+  border-top: 1px dashed #ccc;
+}
+
+.mod.wish footer a {
+  background-color: #eee;
+  border: none;
+}
+
+.mod.wish footer a:hover {
+  text-decoration: none;
+}
+
+/* speech extends mod */
+.mod.speech {
+  margin: 20px 0;
+}
+
+.mod.speech .arrow-left {
+  background: transparent url("../images/bg-arrow-outline-left.png") scroll no-repeat top left;
+  padding-left: 15px;
+  max-width: 200px;
+}
+
+.mod.speech .arrow-left div {
+  border-top: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+}
+
+.mod.speech .button {
+  background: #eee url("../images/bg-gift-button-bottom.png") scroll repeat-x bottom left;
+  color: #000;
+  display: block;
+  font-weight: bold;
+  padding: 15px;
+}
+
+.wish .mod.speech .button {
+  background-image: url("../images/bg-wish-button-bottom.png");
+}
+
+.mod.speech .button:hover {
+  text-decoration: none;
 }

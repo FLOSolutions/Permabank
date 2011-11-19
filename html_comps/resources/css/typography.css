@@ -1,3 +1,6 @@
-.invert, .invert a {color: #fff;}
-.invert a:hover {color: #fff;}
+.invert, .invert a {color: #fff}
+.invert a:hover {color: #fff}
+.black-text{color:#000}
+.gray-text{color:#999}
+a.black:hover {color:#000}
 .normal{font-weight: normal}
