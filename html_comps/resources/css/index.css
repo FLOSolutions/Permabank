@@ -16,19 +16,29 @@ body {
   margin: 0 auto;
 }
 
-a {
-  text-decoration: none;
-}
-
-a:hover {
-  color: #000;
-  text-decoration: underline;
-}
-
 .bg {
   background: transparent url() no-repeat scroll top left;
   text-indent: -9999px;
   border: none;
+}
+
+/* links */
+
+a {
+  color: #ffd300;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+a.give {
+  color: #fca25e;
+}
+
+a.wish {
+  color: #7fd1d0;
 }
 
 /* main header */
@@ -41,6 +51,20 @@ h1 a {
   background-image: url("../images/icon-hash-large.png");
   background-position: top left;
   padding: 6px 0 0 30px;
+}
+
+/* subhead */
+
+.subhead {
+  margin-top: 40px;
+  margin-bottom: 40px;
+
+}
+
+.subhead h2 {
+  font-size: 2.5em;
+  font-weight: normal;
+  line-height: 1.2em;
 }
 
 /* nav */

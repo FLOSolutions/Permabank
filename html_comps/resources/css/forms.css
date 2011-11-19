@@ -1,10 +1,4 @@
-input {
-  -moz-box-shadow: inset 2px 2px 3px #ccc;
-  -webkit-box-shadow: inset 2px 2px 3px #ccc;
-  box-shadow: inner 2px 2px 3px #ccc;
-}
-
-button, input {
+input, button, .button {
   outline: none;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
@@ -13,6 +7,21 @@ button, input {
   margin: 0;
   padding: 5px;
   font-size: 1.2em;
+  -moz-box-shadow: 1px 1px 1px #333;
+  -webkit-box-shadow: 1px 1px 1px #333;
+  box-shadow: 1px 1px 1px #333;
+}
+
+input {
+  -moz-box-shadow: inset 2px 2px 3px #ccc;
+  -webkit-box-shadow: inset 2px 2px 3px #ccc;
+  box-shadow: inner 2px 2px 3px #ccc;
+}
+
+button:hover, .button:hover {
+  -moz-box-shadow: 1px 1px 3px #333;
+  -webkit-box-shadow: 1px 1px 3px #333;
+  box-shadow: 2px 2px 3px #333;
 }
 
 /* search form in header */
@@ -26,6 +35,25 @@ button, input {
   background-position: 0 2px;
   width: 30px;
   height: 32px;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+/* big sign up button on homepage */
+
+a.sign-up {
+  font-size: 2.5em;
+  width: 160px;
+  text-align: center;
+  background-color: #ffd300;
+  color: #000;
+  border: none;
+}
+
+a.sign-up:hover {
+  color: #000;
+  text-decoration: none;
 }
 
 /* give and wish forms */
