@@ -1,10 +1,32 @@
-/* module container */
-.mod{}
-
-/* module header and footer */
-.mod header, .mod footer {}
-
-/* gray extended mod */
+/*
+ * modules are just blocks that are styled a specific way and can easily be reused.
+ *
+ * for example, the wish box on the homepage is created with:
+ * 
+ * <section class="mod rounded gray wish">
+ *       
+ *   <header>
+ *     <!-- header -->
+ *   </header>
+ * 
+ *   <div class="bd">
+ *     <!-- main content -->
+ *   </div>
+ *     
+ *   <footer>
+ *     <!-- footer -->
+ *   </footer>
+ *       
+ * </section>
+ * 
+ * .mod tell us it's a module, .rounded provides rounded corners,
+ * .gray gives it a gray border, .wish gives it some color and other tweaks
+ *
+ * module extensions can be mixed and matched to provide a variety of block skins.
+ *
+ */
+ 
+/* gray extends mod */
 .gray {
   border: 2px solid #ddd;
 }
@@ -16,13 +38,17 @@
   border-radius: 10px;
 }
 
-/* gift extends mod */
+/* give extends mod */
 .mod.give {
   background: #fff url("../images/bg-gift-top.png") scroll repeat-x top left;
 }
 
 .mod.give h1 {
   text-transform: lowercase;
+}
+
+.mod.give h3 {
+  margin-top: 7px;
 }
 
 .mod.give header {
@@ -50,6 +76,10 @@
 
 .mod.wish h1 {
   text-transform: lowercase;
+}
+
+.mod.wish h3 {
+  margin-top: 7px;
 }
 
 .mod.wish header {
@@ -134,4 +164,8 @@
 
 .mod.profile h2 {
   text-transform: lowercase;
+}
+
+.mod.profile h3 {
+  margin-top: 7px;
 }
