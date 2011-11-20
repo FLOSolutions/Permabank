@@ -135,6 +135,20 @@ a.dd-large:hover {color:#ffd300;}
 
 /* misc */
 
-.hilite {
-  background-color: #ffd300;
+.occupier-large {
+  background-image: url("../images/icon-hash-large.png");
+  width: 32px;
+  height: 33px;
+  position: absolute;
+  left: -10px;
+  top: 160px;
+}
+
+.occupier-small {
+  background-image: url("../images/icon-hash-small.png");
+  width: 20px;
+  height: 21px;
+  position: absolute;
+  left: 1px;
+  top: 45px;
 }

@@ -40,9 +40,9 @@ button:hover, .button:hover {
   box-shadow: none;
 }
 
-/* big sign up button on homepage */
+/* big sign up button on homepage and big edit button on profile pages */
 
-a.sign-up {
+a.sign-up, a.edit {
   -webkit-border-radius: 6px;
   -moz-border-radius: 6px;
   border-radius: 6px;
@@ -54,7 +54,12 @@ a.sign-up {
   border: none;
 }
 
-a.sign-up:hover {
+a.edit {
+  font-size: 1.5em;
+  width: 60px;
+}
+
+a.sign-up:hover, a.edit:hover {
   color: #000;
   text-decoration: none;
 }
