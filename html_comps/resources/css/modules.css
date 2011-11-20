@@ -128,6 +128,10 @@
   margin-top: 18px;
 }
 
+.mod.profile header a {
+  color: #000;
+}
+
 .mod.profile h2 {
   text-transform: lowercase;
 }
