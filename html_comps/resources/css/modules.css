@@ -102,3 +102,8 @@
 .mod.speech .button:hover {
   text-decoration: none;
 }
+
+/* headshot extends mod */
+.mod.headshot .bd {
+  background: transparent url("../images/bg-stripes-light-tile.png") scroll repeat top left;
+}
