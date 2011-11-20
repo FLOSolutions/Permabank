@@ -118,3 +118,16 @@
 .mod.headshot footer {
   min-height: 300px;
 }
+
+/* profile extends mod */
+.mod.profile {
+  background: #fff url("../images/bg-profile-top.png") scroll repeat-x top left;
+}
+
+.mod.profile header {
+  margin-top: 18px;
+}
+
+.mod.profile h2 {
+  text-transform: lowercase;
+}
