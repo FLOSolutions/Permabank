@@ -104,6 +104,17 @@
 }
 
 /* headshot extends mod */
-.mod.headshot .bd {
+.mod.headshot .bd, .mod.headshot footer {
   background: transparent url("../images/bg-stripes-light-tile.png") scroll repeat top left;
+}
+
+.mod.headshot .bd li {
+  background-color: #ffd300;
+  color: #000;
+  margin-right: 3px;
+  padding: 2px 8px;
+}
+
+.mod.headshot footer {
+  min-height: 300px;
 }
