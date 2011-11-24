@@ -8,5 +8,6 @@
   <li>created {{ wish.created|timesince }} ago
   <li>{% gravatar wish.user.user %}created by {{ wish.user }}
   <li><a href="{% url messages_compose_to recipient=wish.user.user.username %}">contact user</a>
+  <li>The current status of this wish is {{ wish.get_status_display }}
 </ul>
 {% endblock %}

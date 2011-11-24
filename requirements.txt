@@ -4,6 +4,7 @@ Unipath
 django-redis-cache
 fabric
 django-grappelli
+django-extensions
 -e svn+http://django-openid-consumer.googlecode.com/svn/trunk/#egg=django-openid-consumer
 -e svn+http://django-messages.googlecode.com/svn/trunk/#egg=django-messages
 -e git+https://github.com/FLOSolutions/python-openid.git#egg=python-openid

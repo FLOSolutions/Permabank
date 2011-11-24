@@ -1,20 +1,23 @@
 from django.conf import settings
 from django.conf.urls.defaults import patterns, include, url
 from django.contrib import admin
-import django_messages
+from django.views.generic import TemplateView
 
+import django_messages
 
 import admin_site
 
 
 urlpatterns = patterns('',
     # Examples:
-    # url(r'^$', 'epio_skel.views.home', name='home'),
+    url(r'^$', TemplateView.as_view(template_name='home.html'), name='home'),
+
+    #url(r'^$', 'epio_skel.views.home', name='home'),
     # url(r'^epio_skel/', include('epio_skel.foo.urls')),
 
     # profiles and authentication
     url(r'^openid/', include('django_openid_auth.urls')),
-    url(r'^logout/$', 'django.contrib.auth.views.logout'),
+    url(r'^logout/$', 'django.contrib.auth.views.logout', name='logout'),
     url(r'^profiles/', include('profiles.urls')),
 
     # messaging

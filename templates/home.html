@@ -10,11 +10,9 @@
       <li>
       <a href="">Gifts</a>
       <ul class="sub">
-        <li><a href="">Expendable Good</a></li>
-        <li><a href="">Durable Good</a></li>
-        <li><a href="">Service</a></li>
-        <li><a href="">Instruction</a></li>
-        <li><a href="">Space</a></li>
+        {% for category in categories %}
+          <li><a href="">{{ category.name }}</a></li>
+        {% endfor %}
       </ul>
       </li>
     </ul>
