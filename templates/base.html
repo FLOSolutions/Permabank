@@ -84,6 +84,7 @@
   </header>
   {% endblock header %}
   
+  {% if not user.is_authenticated %}
   {% block subhead %}
   <div class="grid_16 subhead">
   
@@ -92,14 +93,13 @@
       <h3 class="inline mll"><a href="@TODO">Learn more</a></h3>
     </div>
     
-    {% if not user.is.authenticated %}
     <div class="grid_3 omega tright">
       <a href="{% url openid-login %}">Log in</a> or <a href="@TODO" class="button sign-up mtm right pvm">sign up</a>
     </div>
-    {% endif %}
   
   </div>
   {% endblock subhead %}
+  {% endif %}
   
   {% block content %}
   {% endblock content %}
