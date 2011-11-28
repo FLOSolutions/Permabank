@@ -1,23 +1,148 @@
-{% load gravatar %}
-<!doctype html>
-<html>
-  <head>
-    <meta charset=utf-8>
-    <title>user profile</title>
-  </head>
-  <body>
-      {% gravatar profile.user %}
-      <dl>
-          <dt>e-mail:
-          <dd><a href="mailto:{{ profile.user.email }}">{{ profile.user.email }}</a>
-          <dt>first name:
-          <dd>{{ profile.user.first_name }}
-          <dt>last name:
-          <dd>{{ profile.user.last_name }}
-          <dt>joined:
-          <dd>{{ profile.user.date_joined }}
-          <dt>last seen:
-          <dd>{{ profile.user.last_login }}
-      </dl>
-  </body>
-</html>
+{% extends 'base.html' %}
+{% block content %}
+  <div class="grid_16 mtx">
+  
+    <!-- left column -->
+    <div class="grid_4 alpha">
+    
+      <div class="mod headshot">
+      
+        <div class="bd pam relative">
+          <img src="http://placehold.it/200x200" alt="Member photo" />
+          <div class="bg occupier-large" title="Wall Street Occupier">Wall Street Occupier</div>
+          <ul class="clearfix">
+            <li class="left">occupier</li>
+            <li class="left">volunteer</li>
+          </ul>
+        </div>
+        
+        <footer class="mtl">
+        
+        </footer>
+        
+      </div>
+      
+    </div>
+    <!-- end left column -->
+    
+    <!-- main content -->
+    <div class="grid_12 omega">
+    
+      <div class="grid_12 omega">
+      
+        <header>
+          <a href="@TODO" class="button edit right pvm">edit</a>
+          <hgroup>
+            <h1 class="normal">Jane McDoodleface</h1>
+            <h3>Brooklyn, NY</h3>
+          </hgroup>
+          <div>
+            <ul class="horiz">
+              <li><a href="@TODO"><img src="resources/images/icon-twitter.png" alt="Twitter" /></a></li>
+              <li><a href="@TODO"><img src="resources/images/icon-facebook.png" alt="Facebook" /></a></li>
+              <li><a href="@TODO"><img src="resources/images/icon-tumblr.png" alt="Tumblr" /></a></li>
+              <li><a href="@TODO"><img src="resources/images/icon-vimeo.png" alt="Viemo" /></a></li>
+            </ul>
+          </div>
+        </header>
+        
+      </div>
+        
+      <div class="grid_7 omega">
+      
+        <section class="mod rounded gray profile">
+    
+          <header>
+            <div class="stripes line">
+              <div class="size1of3 left stripes tcenter">
+                <h3><a href="@TODO">activity</a></h3>
+              </div>
+              <div class="size1of3 left stripes-arrow tcenter">
+                <h3><a href="@TODO">about</a></h3>
+              </div>
+              <div class="size1of3 left stripes tcenter">
+                <h3><a href="@TODO">testimonials</a></h3>
+              </div>
+            </div>
+          </header>
+          
+          <div id="activity" class="bd">
+          
+            <!-- activity content here -->
+            
+          </div>
+          
+          <div id="about" class="bd mhl">
+          
+            <h2 class="gray-text mbn">Bio</h2>
+            
+            <p class="mtn">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget vulputate nunc. Nulla tellus ligula, laoreet in mattis sed, viverra vel eros. Vivamus mi est, adipiscing at tincidunt ac, tincidunt ut dui. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Quisque risus felis, condimentum ut auctor ac, tempor vel dolor. Sed non massa ut nulla blandit gravida. Aenean tincidunt tempus tortor eu eleifend. Fusce ac tincidunt felis. Fusce pellentesque mattis felis, nec porta ligula imperdiet ac.</p>
+            
+            <h2 class="gray-text mbn">Occupied?</h2>
+            
+            <p class="mtn">New York</p>
+            
+            <h2 class="gray-text mbn">Hometown</h2>
+            
+            <p class="mtn">San Francisco</p>
+            
+            <h2 class="gray-text mbn">Status</h2>
+            
+            <p class="mtn">Volunteer</p>
+            
+          </div>
+          
+          <div id="testimonials" class="bd">
+          
+            <!-- testimonials content here -->
+            
+          </div>
+        
+        </section>
+      
+      </div>
+      
+      <div class="grid_5 omega">
+      
+        <section class="mod rounded gray profile">
+    
+          <header>
+              <div class="stripes line">
+                <div class="size1of3 left stripes-arrow tcenter">
+                  <h3 class=""><a href="@TODO">wishes</a></h3>
+                </div>
+                <div class="size1of3 left stripes tcenter">
+                  <h3 class=""><a href="@TODO">gifts</a></h3>
+                </div>
+                <div class="size1of3 left stripes tcenter">
+                  <h3 class=""> </h3>
+                </div>
+              </div>
+            </header>
+          
+          <div class="bd">
+            
+            <div id="wishes" class="bd">
+            
+              <!-- wishes here -->
+              &nbsp;
+              
+            </div>
+            
+            <div id="gifts" class="bd">
+            
+              <!-- gifts here -->
+              
+            </div>
+            
+          </div>
+        
+        </section>
+      
+      </div>
+    
+    </div>
+    <!-- end main content -->
+  
+  </div>
+{% endblock content %}
