@@ -37,7 +37,7 @@
 
 <body class="container_16">
   
-  {% block usernav %}
+  {% block header %}
   <nav class="grid_16">
     
     <ul class="horiz stretch invert">
@@ -50,9 +50,7 @@
     </ul>
   
   </nav>
-  {% endblock %}
 
-  {% block header %}
   <header class="main grid_16 relative">
     
     <h1 class="left mrn mtx">
@@ -85,6 +83,7 @@
   </header>
   {% endblock header %}
   
+  {% block subhead %}
   <div class="grid_16 subhead">
   
     <div class="grid_12 suffix_1 alpha">
@@ -99,9 +98,10 @@
     {% endif %}
   
   </div>
+  {% endblock subhead %}
   
   {% block content %}
-  {% endblock %}
+  {% endblock content %}
   
   {% block footer %}
   <footer class="grid_16 clearfix mtx">
@@ -109,7 +109,7 @@
     <p>&nbsp;</p>
     
   </footer>
-  {% endblock %}
+  {% endblock footer %}
   
 </body>
 </html>
