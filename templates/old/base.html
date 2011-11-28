@@ -1,0 +1,17 @@
+{% load inbox %}
+<!doctype html>
+<html>
+<head>
+  <meta charset=utf-8>
+  <title>{% block title %}Permabank{% endblock %}</title>
+  <link rel=stylesheet type=text/css href=/static/styles.css>
+</head>
+<body>
+  {% block inbox %}
+  {% if user.is_authenticated %}
+    <em>You have {% inbox_count %} messages</em>
+  {% endif %}
+  {% endblock %}
+  {% block content %}{% endblock %}
+</body>
+</html>

@@ -1,144 +1,161 @@
-{# vim: set ts=2 sw=2 #}
 {% extends 'base.html' %}
-{% load gravatar %}
 {% block content %}
-  <div id="header-wrapper">
-    <header>
-    <a class="logo" href="index.html"><img src="http://placehold.it/100x20" alt="LOGO" /></a>
-
-    <ul class="dropdown">
-      <li>
-      <a href="">Gifts</a>
-      <ul class="sub">
-        {% for category in categories %}
-          <li><a href="">{{ category.name }}</a></li>
-        {% endfor %}
-      </ul>
-      </li>
-    </ul>
-
-    <ul class="dropdown">
-      <li>
-      <a href="">Wishes</a>
-      <ul class="sub">
-        <li><a href="">Expendable Good</a></li>
-        <li><a href="">Durable Good</a></li>
-        <li><a href="">Service</a></li>
-        <li><a href="">Instruction</a></li>
-        <li><a href="">Space</a></li>
-      </ul>
-      </li>
-    </ul>
-
-    {% if user.is_authenticated %}
-      <ul class="dropdown user">
-        <li>
-        <a href="">{{ user.username }}</a>
-        <ul class="sub">
-          <li><a href="">Profile</a></li>
-          <li><a href="">Settings</a></li>
-          <li><a href={% url logout %}>Logout</a></li>
-        </ul>
-        </li>
-      </ul>
-    {% else %}
-      <ul class="dropdown user">
-        <li> <a href={% url openid-login %}>log in</a> </li>
-      </ul>
-    {% endif %}
-
+<div class="grid_8">
+  
+  <section class="mod rounded gray give">
+    
+    <header class="mtl mll plm ptl">
+      <h1 class="normal">Offer a gift</h1>
     </header>
-  </div><!-- END #header-wrapper -->
-
-  <div id="wrapper">
-    <section class="find-gifts-wishes clearfix">
-    <div class="find-submit">
-      <h1>Offer a Gift</h1>
-      <form>
-        <input type="text" value="enter gift" />
-        <input type="submit" value="Give" />
+  
+    <div class="bd">
+    
+      <form method="post" class="give mll plm" action="/action.py">
+        <fieldset>
+          <input type="text" />
+          <button title="Give" class="">give</button>
+        </fieldset>
       </form>
-    </div><!-- END .find-submit -->
+      
+      <div class="stripes line mtx">
+        <div class="size2of5 left stripes-arrow tcenter">
+          <h3 class="">featured gifts</h3>
+        </div>
+        <div class="size3of5 right tright ptm">
+          <a href="@TODO" class="mrl prl clear">view all</a>
+        </div>
+      </div>
+      
+      
+      <div class="mod speech clearfix">
+        <div class="left mll plm relative">
+          <img src="http://placehold.it/80x80" alt="Member photo" />
+        </div>
+        <div class="left arrow-left mls">
+          <div class="pam">
+            <a href="@TODO">John</a> is offering a <strong>military style sleeping bag</strong>.
+          </div>
+        </div>
+        <div class="left view mlm">
+          <a href="@TODO" class="button">view</a>
+        </div>
+      </div>
+      
+      <div class="mod speech clearfix">
+        <div class="left mll plm relative">
+          <img src="http://placehold.it/80x80" alt="Member photo" />
+        </div>
+        <div class="left arrow-left mls">
+          <div class="pam">
+            <a href="@TODO">John</a> is offering a <strong>military style sleeping bag</strong>.
+          </div>
+        </div>
+        <div class="left view mlm">
+          <a href="@TODO" class="button">view</a>
+        </div>
+      </div>
+      
+      <div class="mod speech clearfix">
+        <div class="left mll plm relative">
+          <img src="http://placehold.it/80x80" alt="Member photo" />
+        </div>
+        <div class="left arrow-left mls">
+          <div class="pam">
+            <a href="@TODO">John</a> is offering a <strong>military style sleeping bag</strong>.
+          </div>
+        </div>
+        <div class="left view mlm">
+          <a href="@TODO" class="button">view</a>
+        </div>
+      </div>
+      
+    </div>
+      
+    <footer class="mbl mhm">
+      <a href="@TODO" class="button mal pas tcenter clear">load more gifts</a>
+    </footer>
+        
+  </section>
 
-    <div class="find-submit">
-      <h1>Make a Wish</h1>
-      <form>
-        <input type="text" value="enter wish" />
-        <input type="submit" value="Get" />
+</div>
+
+<div class="grid_8">
+
+  <section class="mod rounded gray wish">
+  
+    <header class="mtl mll plm ptl">
+      <h1 class="normal">Make a wish</h1>
+    </header>
+    
+    <div class="bd">
+    
+      <form method="post" class="wish mll plm " action="/action.py">
+        <fieldset>
+          <input type="text" />
+          <button title="Get" class="">get</button>
+        </fieldset>
       </form>
-    </div><!-- END .find-submit -->
-    </section><!-- END .find-gifts-wishes -->
+      
+      <div class="stripes line mtx">
+        <div class="size2of5 left stripes-arrow tcenter">
+          <h3 class="">featured wishes</h3>
+        </div>
+        <div class="size3of5 right tright ptm">
+          <a href="@TODO" class="mrl prl clear">view all</a>
+        </div>
+      </div>
+      
+      <div class="mod speech clearfix">
+        <div class="left mll plm relative">
+          <img src="http://placehold.it/80x80" alt="Member photo" />
+          <div class="bg occupier-small" title="Wall Street Occupier">Wall Street Occupier</div>
+        </div>
+        <div class="left arrow-left mls">
+          <div class="pam">
+            <a href="@TODO">John</a> is looking for a <strong>military style sleeping bag</strong>.
+          </div>
+        </div>
+        <div class="left view mlm">
+          <a href="@TODO" class="button">view</a>
+        </div>
+      </div>
+      
+      <div class="mod speech clearfix">
+        <div class="left mll plm relative">
+          <img src="http://placehold.it/80x80" alt="Member photo" />
+        </div>
+        <div class="left arrow-left mls">
+          <div class="pam">
+            <a href="@TODO">John</a> is looking for a <strong>military style sleeping bag</strong>.
+          </div>
+        </div>
+        <div class="left view mlm">
+          <a href="@TODO" class="button">view</a>
+        </div>
+      </div>
+      
+      <div class="mod speech clearfix">
+        <div class="left mll plm relative">
+          <img src="http://placehold.it/80x80" alt="Member photo" />
+          <div class="bg occupier-small" title="Wall Street Occupier">Wall Street Occupier</div>
+        </div>
+        <div class="left arrow-left mls">
+          <div class="pam">
+            <a href="@TODO">John</a> is looking for a <strong>military style sleeping bag</strong>.
+          </div>
+        </div>
+        <div class="left view mlm">
+          <a href="@TODO" class="button">view</a>
+        </div>
+      </div>
+      
+    </div>
+      
+    <footer class="mbl mhm">
+      <a href="@TODO" class="button mal pas tcenter clear">load more wishes</a>
+    </footer>
+  
+  </section>
 
-    <section class="featured items clearfix">
-    <h2>Featured Wishes</h2>
-    <article>
-    <a class="item" href=""><img src="http://placehold.it/75x75" alt="item/icon" /></a>
-    <div class="item-summary">
-      <span class="meta-info"><a href="">Michael</a> is looking for a</span>
-      <span class="item-name">Winter Coat</span>
-    </div>
-    <a class="button" href="">View Wish</a>
-    </article>
-    <article>
-    <a class="item" href=""><img src="http://placehold.it/75x75" alt="item/icon" /></a>
-    <div class="item-summary">
-      <span class="meta-info"><a href="">Michael</a> is looking for a</span>
-      <span class="item-name">Winter Coat</span>
-    </div>
-    <a class="button" href="">View Wish</a>
-    </article>
-    <article>
-    <a class="item" href=""><img src="http://placehold.it/75x75" alt="item/icon" /></a>
-    <div class="item-summary">
-      <span class="meta-info"><a href="">Michael</a> is looking for a</span>
-      <span class="item-name">Winter Coat</span>
-    </div>
-    <a class="button" href="">View Wish</a>
-    </article>
-    <article>
-    <a class="item" href=""><img src="http://placehold.it/75x75" alt="item/icon" /></a>
-    <div class="item-summary">
-      <span class="meta-info"><a href="">Michael</a> is looking for a</span>
-      <span class="item-name">Winter Coat</span>
-    </div>
-    <a class="button" href="">View Wish</a>
-    </article>
-    </section><!-- END .featured.items -->
-
-    <section class="featured items clearfix">
-    <h2>Featured Gifts</h2>
-    <article>
-    <a class="item" href=""><img src="http://placehold.it/75x75" alt="item/icon" /></a>
-    <div class="item-summary">
-      <span class="meta-info"><a href="">Michael</a> is looking for a</span>
-      <span class="item-name">Winter Coat</span>
-    </div>
-    <a class="button" href="">View Wish</a>
-    </article>
-    <article>
-    <a class="item" href=""><img src="http://placehold.it/75x75" alt="item/icon" /></a>
-    <div class="item-summary">
-      <span class="meta-info"><a href="">Michael</a> is looking for a</span>
-      <span class="item-name">Winter Coat</span>
-    </div>
-    <a class="button" href="">View Wish</a>
-    </article>
-    <article>
-    <a class="item" href=""><img src="http://placehold.it/75x75" alt="item/icon" /></a>
-    <div class="item-summary">
-      <span class="meta-info"><a href="">Michael</a> is looking for a</span>
-      <span class="item-name">Winter Coat</span>
-    </div>
-    <a class="button" href="">View Wish</a>
-    </article>
-    <article>
-    <a class="item" href=""><img src="http://placehold.it/75x75" alt="item/icon" /></a>
-    <div class="item-summary">
-      <span class="meta-info"><a href="">Michael</a> is looking for a</span>
-      <span class="item-name">Winter Coat</span>
-    </div>
-    <a class="button" href="">View Wish</a>
-    </article>
-    </section><!-- END .featured.items -->
-  </div><!-- END #wrapper -->
+</div>
 {% endblock %}
