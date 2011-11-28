@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load gravatar %}
 {% block content %}
   <div class="grid_16 mtx">
   
@@ -8,8 +9,8 @@
       <div class="mod headshot">
       
         <div class="bd pam relative">
-          <img src="http://placehold.it/200x200" alt="Member photo" />
-          <div class="bg occupier-large" title="Wall Street Occupier">Wall Street Occupier</div>
+          {% gravatar profile.user 200 %}
+          <div class="bg occupier-large" title="{{ profile }}">{{ profile }}</div>
           <ul class="clearfix">
             <li class="left">occupier</li>
             <li class="left">volunteer</li>
@@ -33,7 +34,7 @@
         <header>
           <a href="@TODO" class="button edit right pvm">edit</a>
           <hgroup>
-            <h1 class="normal">Jane McDoodleface</h1>
+          <h1 class="normal">{{ profile }}</h1>
             <h3>Brooklyn, NY</h3>
           </hgroup>
           <div>
