@@ -42,9 +42,11 @@
     
     <ul class="horiz stretch invert">
       <li class="left"><a href="@TODO">about permabank</a></li>
-      <li class="right mhm"><a href="@TODO">my wishes</a></li>
-      <li class="right mhm"><a href="@TODO">my gifts</a></li>
-      <li class="right mhm"><a href="@TODO" class="bg dd-small-white prm">username</a></li>
+      {% if user.is_authenticated %}
+        <li class="right mhm"><a href="@TODO">my wishes</a></li>
+        <li class="right mhm"><a href="@TODO">my gifts</a></li>
+        <li class="right mhm"><a href="@TODO" class="bg dd-small-white prm">{{ user.username }}</a></li>
+      {% endif %}
     </ul>
   
   </nav>
@@ -90,9 +92,11 @@
       <h3 class="inline mll"><a href="@TODO">Learn more</a></h3>
     </div>
     
+    {% if not user.is.authenticated %}
     <div class="grid_3 omega tright">
       <a href="@TODO">Log in</a> or <a href="@TODO" class="button sign-up mtm right pvm">sign up</a>
     </div>
+    {% endif %}
   
   </div>
   
