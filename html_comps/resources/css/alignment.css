@@ -1,0 +1,12 @@
+.inline{display:inline}
+.block{display:block}
+.left{float:left}
+.tleft{text-align:left}
+.right{float:right}
+.tright{text-align:right}
+.center{margin:10px auto;text-align:center}
+.tcenter{text-align:center}
+.relative{position:relative}
+.clear{min-height:1px;clear:both;display:block}
+.horiz li{display:inline}
+.hidden{ display: none; }

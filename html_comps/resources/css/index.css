@@ -1,0 +1,203 @@
+@import url("reset.css");
+@import url("960_16_col.css");
+@import url("headings.css");
+@import url("modules.css");
+@import url("alignment.css");
+@import url("spacing.css");
+@import url("grids.css");
+@import url("typography.css");
+@import url("forms.css");
+
+html {
+  background-image: url("../images/bg-page-top.jpg"), url("../images/bg-page-bottom.jpg");
+  background-position: top left, bottom left;
+  background-repeat: repeat-x;
+}
+
+body {
+  margin: 0 auto;
+}
+
+/* pulldown */
+/* need to make pos of header relative to allow #locations to be absolute relative to its parent (header) */
+header { position: relative; }
+header ul#locations{ position: absolute; left: 16em; top: .475em; }
+
+
+ul#locations li{
+	display: none;
+	background: #000;
+	font-size: 12px;
+	color: #fff;
+	padding: .125em .5em .125em .5em;
+	margin: 0 0 1px 0;
+	line-height: inherit;
+}
+
+ul#locations li.selected{
+	border-top: none;
+	background: none;
+	font-size: inherit;
+	padding: 0;
+	line-height: 2.5em;
+}
+
+ul#locations li.selected,
+ul#locations:hover li{
+	display: block !important;
+}
+
+ul#locations li.selected span.long,
+ul#locations li span.short{
+	display: none;
+}
+ul#locations li span.long,
+ul#locations li.selected span.short{
+	display: inline;
+}
+
+
+ul#locations li.selected h2{
+	font-size: 250%;
+	font-weight: 800;	
+}
+ul#locations li h2{
+	font-size: 12px;
+	font-weight: 500;
+}
+
+
+/* links */
+
+a {
+  color: #ffd300;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.give a {
+  color: #fca25e;
+}
+
+.wish a {
+  color: #7fd1d0;
+}
+
+/* background images */
+
+.bg {
+  background: transparent url() no-repeat scroll top left;
+  text-indent: -9999px;
+  border: none;
+}
+
+.stripes {
+  background: transparent url("../images/bg-stripes-light.png") repeat-x scroll top left;
+  height: 43px;
+}
+
+.stripes-arrow {
+  background: transparent url("../images/bg-stripes-arrow-down.png") repeat-x scroll top left;
+  height: 43px;
+}
+
+/* main header */
+
+h1 a {
+  color: #000;
+}
+
+.logo {
+  background-image: url("../images/icon-hash-large.png");
+  background-position: top left;
+  padding: 6px 0 0 30px;
+}
+
+/* subhead */
+
+.subhead {
+  margin-top: 40px;
+  margin-bottom: 40px;
+
+}
+
+.subhead h2 {
+  font-size: 2.5em;
+  font-weight: normal;
+  line-height: 1.2em;
+}
+
+/* nav */
+
+#icon-nav {
+  position: absolute;
+  left: 390px;
+  top: 6px;
+}
+
+nav .wish {
+  background-image: url("../images/nav-wish-icon.png");
+  width: 18px;
+  height: 45px;
+}
+
+nav .wish.active, nav .wish:hover {
+  background-image: url("../images/nav-wish-icon-active.png");
+}
+
+nav .gift {
+  background-image: url("../images/nav-gift-icon.png");
+  width: 23px;
+  height: 45px;
+}
+
+nav .gift.active, nav .gift:hover {
+  background-image: url("../images/nav-gift-icon-active.png");
+}
+
+nav .exchange {
+  background-image: url("../images/nav-exchange-icon.png");
+  width: 25px;
+  height: 45px;
+}
+
+nav .exchange.active, nav .exchange:hover {
+  background-image: url("../images/nav-exchange-icon-active.png");
+}
+
+/* drop downs */
+
+.dd-large {
+  background-image: url("../images/nav-dropdown-large.png");
+  background-position: right center;
+  color: #ffd300;
+}
+a.dd-large:hover {color:#ffd300;}
+
+.dd-small-white {
+  background-image: url("../images/nav-dropdown-small-white.png");
+  background-position: right center;
+}
+
+/* misc */
+
+.occupier-large {
+  background-image: url("../images/icon-hash-large.png");
+  width: 32px;
+  height: 33px;
+  position: absolute;
+  left: -10px;
+  top: 160px;
+}
+
+.occupier-small {
+  background-image: url("../images/icon-hash-small.png");
+  width: 20px;
+  height: 21px;
+  position: absolute;
+  left: 1px;
+  top: 45px;
+}

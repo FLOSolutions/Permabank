@@ -1,0 +1,171 @@
+/*
+ * modules are just blocks that are styled a specific way and can easily be reused.
+ *
+ * for example, the wish box on the homepage is created with:
+ * 
+ * <section class="mod rounded gray wish">
+ *       
+ *   <header>
+ *     <!-- header -->
+ *   </header>
+ * 
+ *   <div class="bd">
+ *     <!-- main content -->
+ *   </div>
+ *     
+ *   <footer>
+ *     <!-- footer -->
+ *   </footer>
+ *       
+ * </section>
+ * 
+ * .mod tell us it's a module, .rounded provides rounded corners,
+ * .gray gives it a gray border, .wish gives it some color and other tweaks
+ *
+ * module extensions can be mixed and matched to provide a variety of block skins.
+ *
+ */
+ 
+/* gray extends mod */
+.gray {
+  border: 2px solid #ddd;
+}
+
+/* rounded extends mod */
+.mod.rounded {
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+}
+
+/* give extends mod */
+.mod.give {
+  background: #fff url("../images/bg-gift-top.png") scroll repeat-x top left;
+}
+
+.mod.give h1 {
+  text-transform: lowercase;
+}
+
+.mod.give h3 {
+  margin-top: 7px;
+}
+
+.mod.give header {
+  background: transparent url("../images/icon-gift.png") scroll no-repeat 395px 10px;
+  height: 50px;
+}
+
+.mod.give footer {
+  border-top: 1px dashed #ccc;
+}
+
+.mod.give footer a {
+  background-color: #eee;
+  border: none;
+}
+
+.mod.give footer a:hover {
+  text-decoration: none;
+}
+
+/* wish extends mod */
+.mod.wish {
+  background: #fff url("../images/bg-wish-top.png") scroll repeat-x top left;
+}
+
+.mod.wish h1 {
+  text-transform: lowercase;
+}
+
+.mod.wish h3 {
+  margin-top: 7px;
+}
+
+.mod.wish header {
+  background: transparent url("../images/icon-wish.png") scroll no-repeat 395px 10px;
+  height: 50px;
+}
+
+.mod.wish footer {
+  border-top: 1px dashed #ccc;
+}
+
+.mod.wish footer a {
+  background-color: #eee;
+  border: none;
+}
+
+.mod.wish footer a:hover {
+  text-decoration: none;
+}
+
+/* speech extends mod */
+.mod.speech {
+  margin: 20px 0;
+}
+
+.mod.speech .arrow-left {
+  background: transparent url("../images/bg-arrow-outline-left.png") scroll no-repeat top left;
+  padding-left: 15px;
+  max-width: 200px;
+}
+
+.mod.speech .arrow-left div {
+  border-top: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+}
+
+.mod.speech .button {
+  background: #eee url("../images/bg-gift-button-bottom.png") scroll repeat-x bottom left;
+  color: #000;
+  display: block;
+  font-weight: bold;
+  padding: 15px;
+}
+
+.wish .mod.speech .button {
+  background-image: url("../images/bg-wish-button-bottom.png");
+}
+
+.mod.speech .button:hover {
+  text-decoration: none;
+}
+
+/* headshot extends mod */
+.mod.headshot .bd, .mod.headshot footer {
+  background: transparent url("../images/bg-stripes-light-tile.png") scroll repeat top left;
+}
+
+.mod.headshot .bd li {
+  background-color: #ffd300;
+  color: #000;
+  margin-right: 3px;
+  padding: 2px 8px;
+}
+
+.mod.headshot footer {
+  min-height: 300px;
+}
+
+/* profile extends mod */
+.mod.profile {
+  background: #fff url("../images/bg-profile-top.png") scroll repeat-x top left;
+}
+
+.mod.profile header {
+  margin-top: 18px;
+}
+
+.mod.profile header a {
+  color: #000;
+}
+
+.mod.profile h2 {
+  text-transform: lowercase;
+}
+
+.mod.profile h3 {
+  margin-top: 7px;
+}
