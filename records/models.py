@@ -56,6 +56,12 @@ class Record(models.Model):
                 return child_model
         raise ObjectDoesNotExist("Record has no child.")
 
+    def __unicode__(self):
+        # truncate to 20 characters
+        title = self.title
+        if len(title) > 20:
+            title = title[:17] + '...'
+        return "{user}: {record}".format(user=self.user, record=self)
 
 class Wish(Record):
     """ Model for user wishes """
@@ -75,13 +81,3 @@ class Wish(Record):
 class Gift(Record):
     """ Model for user gifts """
     record = models.OneToOneField(Record, parent_link=True)
-
-    class Meta:
-	    verbose_name_plural = 'gifts'
-
-    def __unicode__(self):
-        # truncate to 20 characters
-        gift = self.title
-        if len(gift) > 20:
-            gift = gift[:17] + '...'
-        return "{user}: {gift}".format(user=self.user, gift=gift)
