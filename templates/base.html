@@ -46,7 +46,9 @@
         <li class="right mhm"><a href="{% url logout %}">log out</a>{# todo(ori): is this right? #}
         <li class="right mhm"><a href="@TODO">my wishes</a></li>
         <li class="right mhm"><a href="@TODO">my gifts</a></li>
-        <li class="right mhm"><a href="@TODO" class="bg dd-small-white prm">{{ user.username }}</a></li>
+        <li class="right mhm"><a href="@TODO" class="bg dd-small-white prm">{{ user.username }}</a>
+          <a href="{% url messages_inbox %}">({% inbox_count %})</a>
+        </li>
       {% endif %}
     </ul>
   
