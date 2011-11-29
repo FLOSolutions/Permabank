@@ -102,6 +102,7 @@ EXTERNAL_APPS = (
     'django.contrib.admin',
     'django.contrib.admindocs',
     'django_messages',
+    'south',
 )
 
 INSTALLED_APPS = EXTERNAL_APPS + PROJECT_APPS
