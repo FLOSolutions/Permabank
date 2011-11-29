@@ -18,6 +18,8 @@ class ProfileManager(models.Manager):
 class Profile(models.Model):
     """ Represents a user's profile """
     user = models.OneToOneField(User, primary_key=True)
+    location = models.CharField(max_length=64)
+    bio = models.TextField()
     objects = ProfileManager()
 
     def __unicode__(self):
