@@ -28,7 +28,7 @@ class CreateWishView(UserCreateView):
     model = Wish
     form_class = WishForm
     template_name = 'add_wish.html'
-    success_url = '/wishes/%(id)s'
+    success_url = '/wish/%(id)s'
 
 class RecordListView(ListView):
     def get_queryset(self):
