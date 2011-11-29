@@ -3,7 +3,7 @@
 <h1>Wishes</h1>
 <ul>
   {% for wish in wishes %}
-  <li><a href=/wish/{{ wish.id }}>{{ wish.description }}</a> ({{ wish.created }})
+  <li><a href="/wish/{{ wish.id }}">{{ wish.title }}</a> ({{ wish.created }})
   {% endfor %}
 </ul>
 {% endblock %}
