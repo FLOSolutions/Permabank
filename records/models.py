@@ -75,3 +75,13 @@ class Wish(Record):
 class Gift(Record):
     """ Model for user gifts """
     record = models.OneToOneField(Record, parent_link=True)
+
+    class Meta:
+	    verbose_name_plural = 'gifts'
+
+    def __unicode__(self):
+        # truncate to 20 characters
+        gift = self.title
+        if len(gift) > 20:
+            gift = gift[:17] + '...'
+        return "{user}: {gift}".format(user=self.user, gift=gift)

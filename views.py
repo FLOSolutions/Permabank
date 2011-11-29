@@ -10,6 +10,6 @@ class HomeView(TemplateView):
 	
 	def get_context_data(self, **kwargs):
 		context = super(HomeView, self).get_context_data(**kwargs)
-		context['gifts'] = Gift.objects.filter()[:3]
-		context['wishes'] = Wish.objects.order_by('created').filter()[:3]
+		context['gifts'] = Gift.objects.order_by('-created','title').filter(is_featured=True)[:3]
+		context['wishes'] = Wish.objects.order_by('-created','title').filter(is_featured=True)[:3]
 		return context 
