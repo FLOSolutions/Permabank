@@ -20,14 +20,14 @@ class UserCreateView(CreateView):
 class CreateGiftView(UserCreateView):
     model = Gift
     form_class = GiftForm
-    template_name = 'add_gift.html'
+    template_name = 'records/add_gift.html'
     sucess_url = '/gifts/%(id)s'
 
 @requires_login
 class CreateWishView(UserCreateView):
     model = Wish
     form_class = WishForm
-    template_name = 'add_wish.html'
+    template_name = 'records/add_wish.html'
     success_url = '/wish/%(id)s'
 
 class RecordListView(ListView):
@@ -46,9 +46,9 @@ class RecordListView(ListView):
 class WishListView(RecordListView):
     model = Wish
     context_object_name = "wishes"
-    template_name = "wish_list.html"
+    template_name = "records/wish_list.html"
 
 class WishDetailView(DetailView):
     model = Wish
     context_object_name = "wish"
-    template_name = "wish_details.html"
+    template_name = "records/wish_details.html"
