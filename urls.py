@@ -11,6 +11,8 @@ import admin_site
 urlpatterns = patterns('',
     # Examples:
     url(r'^$', TemplateView.as_view(template_name='home.html'), name='home'),
+    url(r'^about$', TemplateView.as_view(template_name='about.html'),
+        name='about'),
 
     #url(r'^$', 'epio_skel.views.home', name='home'),
     # url(r'^epio_skel/', include('epio_skel.foo.urls')),
