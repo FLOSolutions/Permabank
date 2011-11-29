@@ -33,7 +33,7 @@ class CreateWishView(UserCreateView):
 class RecordListView(ListView):
     def get_queryset(self):
         slug = self.kwargs.get('slug')
-        if slug == 'all':
+        if not slug or slug == 'all':
             return self.model.objects.order_by('-created')
         else:
             try:

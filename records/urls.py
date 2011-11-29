@@ -4,7 +4,7 @@ from records.views import (CreateWishView, CreateGiftView, WishListView,
         WishDetailView)
 
 urlpatterns = patterns('records.views',
-    #(r'^wishes$', WishListView.as_view()),
+    (r'^wishes$', WishListView.as_view()),
     (r'^wishes/add$', CreateWishView.as_view()),
     (r'^wishes/(?P<slug>[\w-]+)/$', WishListView.as_view()),
     (r'^wish/(?P<pk>[0-9]+)', WishDetailView.as_view()),
