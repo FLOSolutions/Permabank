@@ -75,6 +75,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django_openid_consumer.middleware.OpenIDMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+    'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
 )
 
 ROOT_URLCONF = 'urls'
@@ -102,6 +103,7 @@ EXTERNAL_APPS = (
     'django.contrib.admin',
     'django.contrib.admindocs',
     'django_messages',
+    'django.contrib.flatpages',
     'south',
 )
 
