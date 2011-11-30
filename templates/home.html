@@ -33,11 +33,13 @@
 	        </div>
 	        <div class="left arrow-left mls">
 	          <div class="pam">
-	            <a href="@TODO">{{ gift.user.user.username }}</a> is offering a <strong>{{ gift.title }}</strong>.
+				{% url profileview gift.user.user.pk as user_url %}
+	            <a href="{{ user_url }}">{{ gift.user.user.username }}</a> is offering a <strong>{{ gift.title }}</strong>.
 	          </div>
 	        </div>
 	        <div class="left view mlm">
-	          <a href="@TODO" class="button">view</a>
+			  {% url giftview gift.pk as gift_url %}
+	          <a href="{{ gift_url }}" class="button">view</a>
 	        </div>
 	      </div>
 	  {% endfor %}  
@@ -86,11 +88,13 @@
         </div>
         <div class="left arrow-left mls">
           <div class="pam">
-            <a href="@TODO">{{ wish.user.user.username }}</a> is looking for a <strong>{{ wish.title }}</strong>.
+			{% url profileview wish.user.user.pk as user_url %}
+            <a href="{{ user_url }}">{{ wish.user.user.username }}</a> is looking for a <strong>{{ wish.title }}</strong>.
           </div>
         </div>
         <div class="left view mlm">
-          <a href="@TODO" class="button">view</a>
+		  {% url wishview wish.pk as wish_url %}
+          <a href="{{ wish_url }}" class="button">view</a>
         </div>
       </div>
 	  {% endfor %}

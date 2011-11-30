@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% load gravatar %}
+{% block content %}
+<h1>{{ gift.title }}</h1>
+<ul>
+  <li><img src="{{ gift.picture }}" width=40px height=40px>
+  <li>{{ gift.description }}
+  <li>created {{ gift.created|timesince }} ago
+  <li>{% gravatar gift.user.user %}created by {{ gift.user }}
+  <li><a href="{% url messages_compose_to recipient=gift.user.user.username %}">contact user</a>
+  <li>The current status of this gift is {{ gift.get_status_display }}
+</ul>
+{% endblock %}
