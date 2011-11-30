@@ -11,6 +11,8 @@ class Migration(SchemaMigration):
         # Adding model 'Profile'
         db.create_table('profiles_profile', (
             ('user', self.gf('django.db.models.fields.related.OneToOneField')(to=orm['auth.User'], unique=True, primary_key=True)),
+            ('location', self.gf('django.db.models.fields.CharField')(max_length=64, null=True, blank=True)),
+            ('bio', self.gf('django.db.models.fields.TextField')(null=True, blank=True)),
         ))
         db.send_create_signal('profiles', ['Profile'])
 
@@ -60,6 +62,8 @@ class Migration(SchemaMigration):
         },
         'profiles.profile': {
             'Meta': {'object_name': 'Profile'},
+            'bio': ('django.db.models.fields.TextField', [], {'null': 'True', 'blank': 'True'}),
+            'location': ('django.db.models.fields.CharField', [], {'max_length': '64', 'null': 'True', 'blank': 'True'}),
             'user': ('django.db.models.fields.related.OneToOneField', [], {'to': "orm['auth.User']", 'unique': 'True', 'primary_key': 'True'})
         }
     }
