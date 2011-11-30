@@ -52,3 +52,8 @@ class WishDetailView(DetailView):
     model = Wish
     context_object_name = "wish"
     template_name = "wish_details.html"
+
+class GiftDetailView(DetailView):
+    model = Gift
+    context_object_name = "gift"
+    template_name = "gift_details.html"

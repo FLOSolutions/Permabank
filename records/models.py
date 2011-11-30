@@ -76,9 +76,6 @@ class Gift(Record):
     """ Model for user gifts """
     record = models.OneToOneField(Record, parent_link=True)
 
-    class Meta:
-	    verbose_name_plural = 'gifts'
-
     def __unicode__(self):
         # truncate to 20 characters
         gift = self.title
