@@ -29,6 +29,7 @@ class Migration(SchemaMigration):
             ('location', self.gf('django.db.models.fields.CharField')(max_length=256)),
             ('contact_info', self.gf('django.db.models.fields.CharField')(max_length=256)),
             ('category', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['records.Category'])),
+            ('is_featured', self.gf('django.db.models.fields.BooleanField')(default=False)),
             ('status', self.gf('django.db.models.fields.PositiveSmallIntegerField')(default=0, db_index=True)),
         ))
         db.send_create_signal('records', ['Record'])
@@ -121,6 +122,7 @@ class Migration(SchemaMigration):
             'created': ('django.db.models.fields.DateTimeField', [], {'auto_now_add': 'True', 'blank': 'True'}),
             'description': ('django.db.models.fields.TextField', [], {}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'is_featured': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
             'location': ('django.db.models.fields.CharField', [], {'max_length': '256'}),
             'other_user': ('django.db.models.fields.related.ForeignKey', [], {'blank': 'True', 'related_name': "'records_fulfilled'", 'null': 'True', 'to': "orm['profiles.Profile']"}),
             'picture': ('django.db.models.fields.files.ImageField', [], {'default': "'/static/placeholder.jpg'", 'max_length': '100', 'blank': 'True'}),
