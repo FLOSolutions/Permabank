@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load gravatar %}
+{% block extracss %}
+<link rel="stylesheet" href="/static/css/compose.css">
+{% endblock %}
+{% block content %}
+<h1>{{ wish.title }}</h1>
+<ul>
+  <li><img src="{{ wish.picture }}" width=40px height=40px>
+  <li>{{ wish.description }}
+  <li>{% gravatar wish.user.user %} created by {{ wish.user }} {{ wish.created|timesince }} ago
+  <li>Status: {{ wish.get_status_display }}
+</ul>
+    
+{% if user.is_authenticated %}
+  <iframe class="compose" 
+          src="{% url messages_compose_to recipient=wish.user.user.username %}?subject={{ contact_subject|urlencode }}">
+  </iframe>
+{% else %}
+  Login to send a message about this wish!
+{% endif %}  
+{% endblock %}
