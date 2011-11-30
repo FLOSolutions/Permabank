@@ -67,6 +67,8 @@ LOGIN_URL = '/openid/login/'
 LOGIN_REDIRECT_URL = '/'
 OPENID_USE_AS_ADMIN_LOGIN = False
 
+TINYMCE_SPELLCHECKER = True
+#TINYMCE_COMPRESSOR = True
 
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
@@ -104,6 +106,7 @@ EXTERNAL_APPS = (
     'django.contrib.admindocs',
     'django_messages',
     'django.contrib.flatpages',
+    'tinymce',
     'south',
 )
 

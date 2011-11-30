@@ -6,6 +6,7 @@ django-redis-cache
 fabric
 django-grappelli
 django-extensions
+django-tinymce
 South
 -e svn+http://django-openid-consumer.googlecode.com/svn/trunk/#egg=django-openid-consumer
 -e svn+http://django-messages.googlecode.com/svn/trunk/#egg=django-messages
