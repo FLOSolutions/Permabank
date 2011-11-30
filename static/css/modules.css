@@ -125,6 +125,14 @@
   padding: 15px;
 }
 
+.mod.speech .profile-button {
+	background: #eee url("../images/bg-gift-button-bottom.png") scroll repeat-x bottom left;
+	color: #000;
+	display: block;
+	font-weight: bold;
+    padding: 8px;
+}
+
 .wish .mod.speech .button {
   background-image: url("../images/bg-wish-button-bottom.png");
 }

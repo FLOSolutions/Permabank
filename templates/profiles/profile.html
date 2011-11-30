@@ -1,5 +1,8 @@
 {% extends 'base.html' %}
 {% load gravatar %}
+{% block extrajs %}
+	<script src="/static/js/profiles.js"></script>
+{% endblock %}
 {% block content %}
   <div class="grid_16 mtx">
   
@@ -109,11 +112,11 @@
     
           <header>
               <div class="stripes line">
-                <div class="size1of3 left stripes-arrow tcenter">
-                  <h3 class=""><a href="@TODO">wishes</a></h3>
+                <div class="size1of3 left stripes-arrow tcenter" id="wishesContainer">
+                  <h3 class=""><a href="#" id="wishesClick">wishes</a></h3>
                 </div>
-                <div class="size1of3 left stripes tcenter">
-                  <h3 class=""><a href="@TODO">gifts</a></h3>
+                <div class="size1of3 left stripes tcenter" id="giftsContainer">
+                  <h3 class=""><a href="#" id="giftsClick">gifts</a></h3>
                 </div>
                 <div class="size1of3 left stripes tcenter">
                   <h3 class=""> </h3>
@@ -125,14 +128,45 @@
             
             <div id="wishes" class="bd">
             
-              <!-- wishes here -->
-              &nbsp;
+              	{% for wish in wishes %}
+			      <div class="mod speech clearfix">
+			        <div class="left mll plm relative">
+			          <img src="http://placehold.it/40x40" alt="Member photo" />
+			          {# <div class="bg occupier-small" title="Wall Street Occupier">Wall Street Occupier</div> #}
+			        </div>
+			        <div class="left arrow-left mls">
+			          <div class="pam">
+			            <strong>{{ wish.title }}</strong>
+			          </div>
+			        </div>
+			        <div class="left view mlm">
+					  {% url wishview wish.pk as wish_url %}
+			          <a href="{{ wish_url }}" class="button profile-button">view</a>
+			        </div>
+			      </div>
+				  {% endfor %}
               
             </div>
             
             <div id="gifts" class="bd">
             
-              <!-- gifts here -->
+              	{% for gift in gifts %}
+			      <div class="mod speech clearfix">
+			        <div class="left mll plm relative">
+			          <img src="http://placehold.it/40x40" alt="Member photo" />
+			          {# <div class="bg occupier-small" title="Wall Street Occupier">Wall Street Occupier</div> #}
+			        </div>
+			        <div class="left arrow-left mls">
+			          <div class="pam">
+			            <strong>{{ gift.title }}</strong>
+			          </div>
+			        </div>
+			        <div class="left view mlm">
+					  {% url giftview gift.pk as gift_url %}
+			          <a href="{{ gift_url }}" class="button profile-button">view</a>
+			        </div>
+			      </div>
+				  {% endfor %}
               
             </div>
             
