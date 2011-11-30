@@ -12,8 +12,9 @@
 {% endblock %}
 <div id="compose">
   <strong>Send a message to this user!</strong>
-  <form action="/messages/compose/Matias/" method="POST">
-    {% csrf_token %} 
+  <form action="/messages/compose_embedded" method="POST">
+    {% csrf_token %}
+    <input type="hidden" name="recipient" id="id_recipient" value="{{ wish.user.user.username }}"/>
     <div>
       {# Separate input.hidden to not have to override all the input CSS... #}
       <input type="hidden" name="subject" id="id_subject" value="{{ contact_subject }}">
