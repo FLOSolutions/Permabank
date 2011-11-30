@@ -12,13 +12,9 @@ import admin_site
 
 urlpatterns = patterns('',
     # Examples:
-    #url(r'^$', TemplateView.as_view(template_name='home.html'), name='home'),
-	url(r'^$', HomeView.as_view()),
+	url(r'^$', HomeView.as_view(), name='home'),
     url(r'^about$', TemplateView.as_view(template_name='about.html'),
         name='about'),
-
-    #url(r'^$', 'epio_skel.views.home', name='home'),
-    # url(r'^epio_skel/', include('epio_skel.foo.urls')),
 
     # profiles and authentication
     url(r'^openid/', include('django_openid_auth.urls')),
@@ -36,6 +32,10 @@ urlpatterns = patterns('',
     # tinymce
     url(r'^tinymce/', include('tinymce.urls')),
 
+    # search
+    (r'^search/', include('haystack.urls')),
+
+    # records
     url(r'', include('records.urls')),
 )
 

@@ -107,6 +107,7 @@ EXTERNAL_APPS = (
     'django_messages',
     'django.contrib.flatpages',
     'tinymce',
+    'haystack',
     'south',
 )
 
