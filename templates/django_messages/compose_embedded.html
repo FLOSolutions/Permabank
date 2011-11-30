@@ -1,0 +1,28 @@
+{% block extrajs %}
+  <script src="/static/js/jquery.form.js" type="text/javascript" charset="utf-8"></script>
+  {# <script src="/static/js/forms.js" type="text/javascript" charset="utf-8"></script> #}
+  <script>
+  $(function() {
+    $('#compose form').ajaxForm(function() {
+      $('#id_body').attr('disabled', true);
+      $('#compose .success').fadeIn();
+    })
+  });
+  </script>
+{% endblock %}
+<div id="compose">
+  <strong>Send a message to this user!</strong>
+  <form action="/messages/compose/Matias/" method="POST">
+    {% csrf_token %} 
+    <div>
+      {# Separate input.hidden to not have to override all the input CSS... #}
+      <input type="hidden" name="subject" id="id_subject" value="{{ contact_subject }}">
+      Subject: {{ contact_subject }}
+    </div>
+    <textarea id="id_body" rows="12" cols="55" name="body"></textarea>
+    <div>
+      <input type="submit" value="Send &raquo;"/>
+      <span class="success" style="display: none">Your message has been sent!</span>
+    </div>
+  </form>
+</div>
