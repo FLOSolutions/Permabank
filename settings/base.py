@@ -86,6 +86,10 @@ TEMPLATE_DIRS = (
     PROJECT_DIR.child('templates'),
 )
 
+FIXTURE_DIRS = (
+    PROJECT_DIR.child('fixtures_site'),
+)
+
 PROJECT_APPS = (
     'profiles',
     'records',

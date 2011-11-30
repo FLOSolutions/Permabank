@@ -11,7 +11,6 @@ import admin_site
 
 
 urlpatterns = patterns('',
-    # Examples:
 	url(r'^$', HomeView.as_view(), name='home'),
     url(r'^about$', TemplateView.as_view(template_name='about.html'),
         name='about'),
