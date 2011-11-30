@@ -1,7 +1,7 @@
-from django.conf.urls.defaults import patterns, include
+from django.conf.urls.defaults import patterns, include, url
 
 from records.views import (CreateWishView, CreateGiftView, WishListView,
-        WishDetailView)
+        WishDetailView, GiftDetailView)
 
 urlpatterns = patterns('records.views',
     (r'^wishes$', WishListView.as_view()),
@@ -10,7 +10,8 @@ urlpatterns = patterns('records.views',
     (r'^wish/(?P<pk>[0-9]+)', WishDetailView.as_view()),
 
 
-    (r'^gifts/add$', CreateGiftView.as_view()),
+    url(r'^gifts/add$', CreateGiftView.as_view()),
+    url(r'^gift/(?P<pk>[0-9]+)', GiftDetailView.as_view(), name='giftview'),
     #(r'^$', ProfileListView.as_view()),
     #(r'^edit/$', UserUpdateView.as_view()),
 )

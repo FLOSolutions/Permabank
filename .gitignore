@@ -7,3 +7,4 @@ static_root/
 .localhooks
 .ipython.py
 src/
+*~

@@ -26,49 +26,24 @@
         </div>
       </div>
       
-      
-      <div class="mod speech clearfix">
-        <div class="left mll plm relative">
-          <img src="http://placehold.it/80x80" alt="Member photo" />
-        </div>
-        <div class="left arrow-left mls">
-          <div class="pam">
-            <a href="@TODO">John</a> is offering a <strong>military style sleeping bag</strong>.
-          </div>
-        </div>
-        <div class="left view mlm">
-          <a href="@TODO" class="button">view</a>
-        </div>
-      </div>
-      
-      <div class="mod speech clearfix">
-        <div class="left mll plm relative">
-          <img src="http://placehold.it/80x80" alt="Member photo" />
-        </div>
-        <div class="left arrow-left mls">
-          <div class="pam">
-            <a href="@TODO">John</a> is offering a <strong>military style sleeping bag</strong>.
-          </div>
-        </div>
-        <div class="left view mlm">
-          <a href="@TODO" class="button">view</a>
-        </div>
-      </div>
-      
-      <div class="mod speech clearfix">
-        <div class="left mll plm relative">
-          <img src="http://placehold.it/80x80" alt="Member photo" />
-        </div>
-        <div class="left arrow-left mls">
-          <div class="pam">
-            <a href="@TODO">John</a> is offering a <strong>military style sleeping bag</strong>.
-          </div>
-        </div>
-        <div class="left view mlm">
-          <a href="@TODO" class="button">view</a>
-        </div>
-      </div>
-      
+      {% for gift in gifts %}
+      	<div class="mod speech clearfix">
+	        <div class="left mll plm relative">
+	          <img src="http://placehold.it/80x80" alt="Member photo" />
+	        </div>
+	        <div class="left arrow-left mls">
+	          <div class="pam">
+				{% url profileview gift.user.user.pk as user_url %}
+	            <a href="{{ user_url }}">{{ gift.user.user.username }}</a> is offering a <strong>{{ gift.title }}</strong>.
+	          </div>
+	        </div>
+	        <div class="left view mlm">
+			  {% url giftview gift.pk as gift_url %}
+	          <a href="{{ gift_url }}" class="button">view</a>
+	        </div>
+	      </div>
+	  {% endfor %}  
+	    
     </div>
       
     <footer class="mbl mhm">
@@ -105,6 +80,7 @@
         </div>
       </div>
       
+	  {% for wish in wishes %}
       <div class="mod speech clearfix">
         <div class="left mll plm relative">
           <img src="http://placehold.it/80x80" alt="Member photo" />
@@ -112,42 +88,16 @@
         </div>
         <div class="left arrow-left mls">
           <div class="pam">
-            <a href="@TODO">John</a> is looking for a <strong>military style sleeping bag</strong>.
+			{% url profileview wish.user.user.pk as user_url %}
+            <a href="{{ user_url }}">{{ wish.user.user.username }}</a> is looking for a <strong>{{ wish.title }}</strong>.
           </div>
         </div>
         <div class="left view mlm">
-          <a href="@TODO" class="button">view</a>
+		  {% url wishview wish.pk as wish_url %}
+          <a href="{{ wish_url }}" class="button">view</a>
         </div>
       </div>
-      
-      <div class="mod speech clearfix">
-        <div class="left mll plm relative">
-          <img src="http://placehold.it/80x80" alt="Member photo" />
-        </div>
-        <div class="left arrow-left mls">
-          <div class="pam">
-            <a href="@TODO">John</a> is looking for a <strong>military style sleeping bag</strong>.
-          </div>
-        </div>
-        <div class="left view mlm">
-          <a href="@TODO" class="button">view</a>
-        </div>
-      </div>
-      
-      <div class="mod speech clearfix">
-        <div class="left mll plm relative">
-          <img src="http://placehold.it/80x80" alt="Member photo" />
-          <div class="bg occupier-small" title="Wall Street Occupier">Wall Street Occupier</div>
-        </div>
-        <div class="left arrow-left mls">
-          <div class="pam">
-            <a href="@TODO">John</a> is looking for a <strong>military style sleeping bag</strong>.
-          </div>
-        </div>
-        <div class="left view mlm">
-          <a href="@TODO" class="button">view</a>
-        </div>
-      </div>
+	  {% endfor %}
       
     </div>
       

@@ -3,7 +3,7 @@ from profiles.views import (TestView, UserUpdateView, ProfileDetailView,
     ProfileListView)
 
 urlpatterns = patterns('profiles.views',
-    (r'^$', ProfileListView.as_view()),
-    (r'^(?P<pk>[0-9]+)', ProfileDetailView.as_view()),
-    (r'^edit/$', UserUpdateView.as_view()),
+    url(r'^$', ProfileListView.as_view()),
+    url(r'^(?P<pk>[0-9]+)', ProfileDetailView.as_view(), name='profileview'),
+    url(r'^edit/$', UserUpdateView.as_view()),
 )

@@ -57,3 +57,8 @@ class WishDetailView(DetailView):
         context = super(WishDetailView, self).get_context_data(**kwargs)
         context['contact_subject'] = "Your wish for %s" % self.object.title
         return context
+
+class GiftDetailView(DetailView):
+    model = Gift
+    context_object_name = "gift"
+    template_name = "records/gift_details.html"
