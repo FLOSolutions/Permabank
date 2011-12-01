@@ -1,5 +1,6 @@
-import django_messages
-
+"""
+    Permabank URL Mapping
+"""
 from django.conf import settings
 from django.conf.urls.defaults import patterns, include, url
 from django.contrib import admin
@@ -11,7 +12,10 @@ import admin_site
 
 
 urlpatterns = patterns('',
+    # home page
 	url(r'^$', HomeView.as_view(), name='home'),
+
+    # static pages
     url(r'^about$', TemplateView.as_view(template_name='about.html'),
         name='about'),
 
@@ -39,6 +43,7 @@ urlpatterns = patterns('',
 )
 
 if settings.DEBUG:
+    # when running locally, Django should serve static files
     urlpatterns += patterns('',
         url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {
             'document_root': settings.MEDIA_ROOT,
