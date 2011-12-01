@@ -3,6 +3,7 @@ from django.views.generic import DetailView, TemplateView, UpdateView, ListView
 from django.contrib.auth.models import User
 
 from profiles.models import Profile
+from records.models import Gift, Wish
 from utils import requires_login
 
 class TestView(TemplateView):
@@ -17,6 +18,11 @@ class ProfileListView(ProfileViewMixin, ListView):
 
 class ProfileDetailView(ProfileViewMixin, DetailView):
     template_name = "profiles/profile.html"
+    def get_context_data(self, **kwargs):
+        context = super(ProfileDetailView, self).get_context_data(**kwargs)
+        context['gifts'] = Gift.objects.order_by('-created', 'title').filter(user__pk=self.object.pk)[:5]
+        context['wishes'] = Wish.objects.order_by('-created', 'title').filter(user__pk=self.object.pk)[:5]
+        return context
 
 @requires_login
 class ProfileUpdateView(ProfileViewMixin, UpdateView):
