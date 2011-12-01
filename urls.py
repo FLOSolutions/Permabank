@@ -1,11 +1,11 @@
+import django_messages
+
 from django.conf import settings
 from django.conf.urls.defaults import patterns, include, url
 from django.contrib import admin
 from django.views.generic import TemplateView
 
-from permabank.views import (HomeView)
-
-import django_messages
+from views import HomeView
 
 import admin_site
 
