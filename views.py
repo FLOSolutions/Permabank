@@ -1,5 +1,4 @@
 from django.views.generic import TemplateView
-
 from django.contrib.auth.models import User
 
 from records.models import Wish, Gift
