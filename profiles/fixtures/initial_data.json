@@ -1,0 +1,10 @@
+[
+    {
+        "pk": 2,
+        "model": "profiles.profile",
+        "fields": {
+            "bio": "Born under a bad sign",
+            "location": "Reno, NV"
+        }
+    }
+]
