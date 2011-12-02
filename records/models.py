@@ -1,6 +1,17 @@
 from django.core.exceptions import ObjectDoesNotExist
 from django.db import models
 
+def _truncate_title(title):
+    return title[:17] + '...' if len(title) > 20 else title
+
+class FeaturedManager(models.Manager):
+    """
+    Custom manager for record model types. Fetches active, featured records,
+    ordered by creation date (descending).
+    """
+    def get_query_set(self):
+        queryset = super(FeaturedManager, self).get_query_set()
+        return queryset.filter(is_featured=True, status=0).order_by('-created')
 
 class Category(models.Model):
     """ Entry categories: things like 'space', 'skill', etc. """
@@ -46,6 +57,8 @@ class Record(models.Model):
     status = models.PositiveSmallIntegerField(choices=status_choices.items(),
                                               db_index=True, default=0)
 
+    # managers
+    featured = FeaturedManager()
 
     def get_child(self):
         """ Gets the current Record object as an instance of its subclass """
@@ -61,7 +74,7 @@ class Record(models.Model):
         title = self.title
         if len(title) > 20:
             title = title[:17] + '...'
-        return "{user}: {record}".format(user=self.user, record=self)
+        return "{user}: {title}".format(user=self.user, title=title)
 
 class Wish(Record):
     """ Model for user wishes """
@@ -70,21 +83,7 @@ class Wish(Record):
     class Meta:
         verbose_name_plural = 'wishes'
 
-    def __unicode__(self):
-        # truncate to 20 characters
-        wish = self.title
-        if len(wish) > 20:
-            wish = wish[:17] + '...'
-        return "{user}: {wish}".format(user=self.user, wish=wish)
-
 
 class Gift(Record):
     """ Model for user gifts """
     record = models.OneToOneField(Record, parent_link=True)
-
-    def __unicode__(self):
-        # truncate to 20 characters
-        gift = self.title
-        if len(gift) > 20:
-            gift = gift[:17] + '...'
-        return "{user}: {gift}".format(user=self.user, gift=gift)
