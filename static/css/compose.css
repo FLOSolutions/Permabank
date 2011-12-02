@@ -1,13 +1,7 @@
-body,
-input {
-  font: 13px Helmet, Freesans, sans-serif;
+form.compose {
+  width: 300px;
 }
 
-iframe.compose {
-  height: 300px;
-  width: 500px;
-}
-
-#id_subject {
-  border: none;
+#id_submit {
+  font-size: 13px;
 }
