@@ -23,9 +23,8 @@ class ProfileDetailView(ProfileViewMixin, DetailView):
     def get_context_data(self, **kwargs):
         """ Adds records recently created by user to the context """
         context = super(ProfileDetailView, self).get_context_data(**kwargs)
-        records = self.object.records_created.order_by(
+        context['records'] = self.object.records_created.order_by(
                 '-created')[:self.max_records]
-        context['records'] = [record.child for record in records]
         return context
 
 @requires_login
