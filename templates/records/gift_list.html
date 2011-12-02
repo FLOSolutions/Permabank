@@ -1,14 +1,19 @@
-{% extends 'base.html' %}
+{% extends 'records/record_list.html' %}
 
 {% block title %}
-permabank - gifts
+    permabank - gifts
 {% endblock %}
 
-{% block content %}
-<h1>Gifts</h1>
-<ul>
-  {% for gift in gifts %}
-  <li><a href="/gift/{{ gift.id }}">{{ gift.title }}</a> ({{ gift.created }})
-  {% endfor %}
-</ul>
+{% block section_heading %}
+    gifts
+{% endblock %}
+
+{% block records %}
+    {% for gift in gifts %}
+    <li class="plm">
+        <a href="{{ gift.user.get_absolute_url }}">{{ gift.user.user.username }}</a> 
+        is offering a 
+        <a href="{{ gift.get_absolute_url }}"><strong>{{ gift.title }}</strong></a>.
+    </li>
+    {% endfor %}
 {% endblock %}

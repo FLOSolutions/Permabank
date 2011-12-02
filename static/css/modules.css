@@ -51,8 +51,12 @@
   margin-top: 7px;
 }
 
+.mod.give li {
+  float: left; width: 375px;
+}
+
 .mod.give header {
-  background: transparent url("../images/icon-gift.png") scroll no-repeat 395px 10px;
+  background: transparent url("../images/icon-gift.png") scroll no-repeat right 10px; margin-right: 10px;
   height: 50px;
 }
 
@@ -82,8 +86,12 @@
   margin-top: 7px;
 }
 
+.mod.wish li {
+  float: left; width: 375px;
+}
+
 .mod.wish header {
-  background: transparent url("../images/icon-wish.png") scroll no-repeat 395px 10px;
+  background: transparent url("../images/icon-wish.png") scroll no-repeat right 10px; margin-right: 10px;
   height: 50px;
 }
 

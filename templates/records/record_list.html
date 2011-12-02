@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="grid_14">
+    <section class="mod rounded gray give"> 
+
+    <header class="mtl mll plm ptl">
+        <h1 class="normal">
+            {% block section_heading %}{% endblock %}
+        </h1>
+    </header>
+                    
+    <div class="bd">
+        <div class="stripes line mtx"></div>
+
+        <ul>
+            {% block records %}
+            {% endblock %}
+
+            <div class="clear"></div>
+        </ul>
+    </div>
+    </section>
+
+</div>
+{% endblock %}
+
