@@ -22,9 +22,11 @@
         <div class="size2of5 left stripes-arrow tcenter">
           <h3 class="">featured gifts</h3>
         </div>
+<!-- This isn't needed until the big 'view all' becomes a 'load more'
         <div class="size3of5 right tright ptm">
           <a href="@TODO" class="mrl prl clear">view all</a>
         </div>
+-->
       </div>
       
       {% for gift in gifts %}
@@ -48,7 +50,7 @@
     </div>
       
     <footer class="mbl mhm">
-      <a href="@TODO" class="button mal pas tcenter clear">load more gifts</a>
+      <a href="{% url giftlistview 'all' %}" class="button mal pas tcenter clear">view all</a>
     </footer>
         
   </section>
@@ -76,9 +78,11 @@
         <div class="size2of5 left stripes-arrow tcenter">
           <h3 class="">featured wishes</h3>
         </div>
+<!-- This isn't needed until the big 'view all' becomes a 'load more'
         <div class="size3of5 right tright ptm">
           <a href="@TODO" class="mrl prl clear">view all</a>
         </div>
+-->
       </div>
       
 	  {% for wish in wishes %}
@@ -103,7 +107,7 @@
     </div>
       
     <footer class="mbl mhm">
-      <a href="@TODO" class="button mal pas tcenter clear">load more wishes</a>
+      <a href="{% url wishlistview 'all'%}" class="button mal pas tcenter clear">view all</a>
     </footer>
   
   </section>
