@@ -14,7 +14,8 @@ class FeaturedManager(models.Manager):
     """
     def get_query_set(self):
         queryset = super(FeaturedManager, self).get_query_set()
-        return queryset.filter(is_featured=True, status=0).order_by('-created')
+        return queryset.select_related('wish', 'gift').filter(
+                is_featured=True, status=0).order_by('-created')
 
 
 class WithChildrenManager(models.Manager):
@@ -84,7 +85,16 @@ class Record(models.Model):
 
     @property
     def child(self):
-        return self.wish or self.gift
+        """ Cast a Record into its corresponding Wish or Gift object """
+        try:
+            # If the record is a Gift, self.wish will evaluate to None (if we
+            # pulled it in via `select_related`) or raise an exception (if we
+            # hadn't.)
+            assert self.wish is not None
+        except (ObjectDoesNotExist, AssertionError):
+            return self.gift
+        else:
+            return self.wish
 
     def get_absolute_url(self):
         return self.child.get_absolute_url()
@@ -102,7 +112,7 @@ class Wish(Record):
 
     @models.permalink
     def get_absolute_url(self):
-        return ('gift', (), {'pk': self.id})
+        return ('wish', (), {'pk': self.id})
 
 
 class Gift(Record):
@@ -111,4 +121,4 @@ class Gift(Record):
 
     @models.permalink
     def get_absolute_url(self):
-        return ('wish', (), {'pk': self.id})
+        return ('gift', (), {'pk': self.id})
