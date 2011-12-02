@@ -11,9 +11,17 @@
   <li>{% gravatar wish.user.user %} created by {{ wish.user }} {{ wish.created|timesince }} ago
   <li>Status: {{ wish.get_status_display }}
 </ul>
-    
+<<<<<<< HEAD
+
 {% if user.is_authenticated %}
   {% include "django_messages/compose_embedded.html" %}
+=======
+    
+{% if user.is_authenticated %}
+  <iframe class="compose" 
+          src="{% url messages_compose_to recipient=wish.user.user.username %}?subject={{ contact_subject|urlencode }}">
+  </iframe>
+>>>>>>> master
 {% else %}
   Login to send a message about this wish!
 {% endif %}  
