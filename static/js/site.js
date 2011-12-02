@@ -10,7 +10,6 @@ $(document).ready(function() {
 		nycga.ui.addDropShadow( element );
 	});
 	roundedCorners.each( function( i, element ){
-		console.log("roundedCorners loop", element );
 		radius = parseInt( element.className.split('_')[1] );
 		nycga.ui.roundCorners( element, radius );
 	});

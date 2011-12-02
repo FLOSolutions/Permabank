@@ -37,7 +37,6 @@ nycga.ui.roundCorners = function( el, radius ){
 	}else{
 		borderStyle = "border-radius";
 	}
-	console.log( el, borderStyle, radius );
 	if( ( browser.ie && browser.version >= 9) || !browser.ie  ){
 		jQuery( el ).css( borderStyle, radius + "px" );
 	}
