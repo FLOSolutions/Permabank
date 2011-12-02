@@ -1,4 +1,4 @@
-from django.views.generic import CreateView, ListView, DetailView
+from django.views.generic import CreateView, ListView, DetailView, TemplateView
 
 from django.http import Http404
 
@@ -44,10 +44,12 @@ class RecordListView(ListView):
             return self.model.objects.filter(category=category).order_by(
                     '-created')
 
+
 class WishListView(RecordListView):
     model = Wish
     context_object_name = "wishes"
     template_name = "records/wish_list.html"
+
 
 class WishDetailView(DetailView):
     model = Wish
@@ -59,6 +61,7 @@ class WishDetailView(DetailView):
         context['contact_subject'] = "Your wish for %s" % self.object.title
         return context
 
+
 class GiftListView(RecordListView):
     model = Gift
     context_object_name = "gifts"
@@ -69,3 +72,10 @@ class GiftDetailView(DetailView):
     model = Gift
     context_object_name = "gift"
     template_name = "records/gift_details.html"
+
+
+class ComposeSuccessView(TemplateView):
+    """NOTE(matias): django-messages forces a redirect on compose success;
+       in our case, we don't want to do anything... so we render this template.
+       There may be some way better to do this?"""
+    template_name = "records/compose_success.html"
