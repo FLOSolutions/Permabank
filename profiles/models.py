@@ -22,6 +22,10 @@ class Profile(models.Model):
     bio = models.TextField(null=True, blank=True)
     objects = ProfileManager()
 
+    @models.permalink
+    def get_absolute_url(self):
+        return ('profile', (), {'pk': self.user.pk})
+
     def __unicode__(self):
         """ Unicode representation of user profiles """
         full_name = self.user.get_full_name()

@@ -4,6 +4,6 @@ from profiles.views import (TestView, UserUpdateView, ProfileDetailView,
 
 urlpatterns = patterns('profiles.views',
     url(r'^$', ProfileListView.as_view()),
-    url(r'^(?P<pk>[0-9]+)', ProfileDetailView.as_view(), name='profileview'),
+    url(r'^(?P<pk>[0-9]+)', ProfileDetailView.as_view(), name='profile'),
     url(r'^edit/$', UserUpdateView.as_view()),
 )

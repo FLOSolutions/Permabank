@@ -104,16 +104,14 @@
 				          </div>
 				        </div>
 				        <div class="left view mlm">
-						  {% url giftview record.pk as gift_url %}
-				          <a href="{{ gift_url }}" class="button profile-gift-button">view</a>
+				          <a href="{{ record.get_absolute_url }}" class="button profile-gift-button">view</a>
 				        </div>
 				       </div>
 				     {% endif %}
 				     {% if record.type == 'Wish' %}
 				      <div class="mod speech clearfix">
 				        <div class="left view mlm" style="padding-right:5px;">
-						  {% url wishview record.pk as wish_url %}
-				          <a href="{{ wish_url }}" class="wish button profile-wish-button">view</a>
+				          <a href="{{ record.get_absolute_url }}" class="wish button profile-wish-button">view</a>
 				        </div>
 				        <div class="left arrow-right mls">
 				          <div class="pam" style="width:180px;">
@@ -176,8 +174,7 @@
 			          </div>
 			        </div>
 			        <div class="left view mlm">
-					  {% url wishview wish.pk as wish_url %}
-			          <a href="{{ wish_url }}" class="button profile-button">view</a>
+			          <a href="{{ wish.get_absolute_url }}" class="button profile-button">view</a>
 			        </div>
 			      </div>
 				  {% endfor %}
@@ -198,8 +195,7 @@
 			          </div>
 			        </div>
 			        <div class="left view mlm">
-					  {% url giftview gift.pk as gift_url %}
-			          <a href="{{ gift_url }}" class="button profile-button">view</a>
+			          <a href="{{ gift.get_absolute_url }}" class="button profile-button">view</a>
 			        </div>
 			      </div>
 				  {% endfor %}

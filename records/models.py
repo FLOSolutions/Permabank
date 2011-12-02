@@ -86,6 +86,9 @@ class Record(models.Model):
     def child(self):
         return self.wish or self.gift
 
+    def get_absolute_url(self):
+        return self.child.get_absolute_url()
+
     def __unicode__(self):
         return "{user}: {title}".format(user=self.user,
                 title=_truncate_title(self.title))
@@ -97,7 +100,15 @@ class Wish(Record):
     class Meta:
         verbose_name_plural = 'wishes'
 
+    @models.permalink
+    def get_absolute_url(self):
+        return ('gift', (), {'pk': self.id})
+
 
 class Gift(Record):
     """ Model for user gifts """
     record = models.OneToOneField(Record, parent_link=True)
+
+    @models.permalink
+    def get_absolute_url(self):
+        return ('wish', (), {'pk': self.id})

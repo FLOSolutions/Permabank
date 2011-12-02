@@ -36,13 +36,11 @@
 	        </div>
 	        <div class="left arrow-left mls">
 	          <div class="pam">
-				{% url profileview gift.user.user.pk as user_url %}
-	            <a href="{{ user_url }}">{{ gift.user.user.username }}</a> is offering a <strong>{{ gift.title }}</strong>.
+	            <a href="{{ gift.user.get_absolute_url }}">{{ gift.user.user.username }}</a> is offering a <strong>{{ gift.title }}</strong>.
 	          </div>
 	        </div>
 	        <div class="left view mlm">
-			  {% url giftview gift.pk as gift_url %}
-	          <a href="{{ gift_url }}" class="button">view</a>
+	          <a href="{{ gift.get_absolute_url }}" class="button">view</a>
 	        </div>
 	      </div>
 	  {% endfor %}
@@ -50,7 +48,7 @@
     </div>
       
     <footer class="mbl mhm">
-      <a href="{% url giftlistview 'all' %}" class="button mal pas tcenter clear">view all</a>
+      <a href="{% url giftlist 'all' %}" class="button mal pas tcenter clear">view all</a>
     </footer>
         
   </section>
@@ -93,13 +91,11 @@
         </div>
         <div class="left arrow-left mls">
           <div class="pam">
-			{% url profileview wish.user.user.pk as user_url %}
-            <a href="{{ user_url }}">{{ wish.user.user.username }}</a> is looking for a <strong>{{ wish.title }}</strong>.
+            <a href="{{ wish.user.get_absolute_url }}">{{ wish.user.user.username }}</a> is looking for a <strong>{{ wish.title }}</strong>.
           </div>
         </div>
         <div class="left view mlm">
-		  {% url wishview wish.pk as wish_url %}
-          <a href="{{ wish_url }}" class="button">view</a>
+          <a href="{{ wish.get_absolute_url }}" class="button">view</a>
         </div>
       </div>
 	  {% endfor %}
@@ -107,7 +103,7 @@
     </div>
       
     <footer class="mbl mhm">
-      <a href="{% url wishlistview 'all'%}" class="button mal pas tcenter clear">view all</a>
+      <a href="{% url wishlist 'all'%}" class="button mal pas tcenter clear">view all</a>
     </footer>
   
   </section>
