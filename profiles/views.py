@@ -17,17 +17,15 @@ class ProfileListView(ProfileViewMixin, ListView):
     pass
 
 class ProfileDetailView(ProfileViewMixin, DetailView):
-    template_name = "profiles/profile.html"
+    template_name = 'profile.html'
+    max_records = 10  # max. records to display in activity stream
+
     def get_context_data(self, **kwargs):
+        """ Adds records recently created by user to the context """
         context = super(ProfileDetailView, self).get_context_data(**kwargs)
-        #context['gifts'] = Gift.objects.order_by('-created', 'title').filter(user__pk=self.object.pk)[:5]
-        #context['wishes'] = Wish.objects.order_by('-created', 'title').filter(user__pk=self.object.pk)[:5]
-        list1 = list(Gift.objects.order_by('-created', 'title').filter(user__pk=self.object.pk)[:5])
-        list2 = list(Wish.objects.order_by('-created', 'title').filter(user__pk=self.object.pk)[:5])
-        list3 = list1 + list2
-        context['giftswishes'] = sorted(list3, key=lambda record: record.pk, reverse=True)
-        
-            
+        records = self.object.records_created.order_by(
+                '-created')[:self.max_records]
+        context['records'] = [record.child for record in records]
         return context
 
 @requires_login

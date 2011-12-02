@@ -4,6 +4,10 @@ from django.db import models
 def _truncate_title(title):
     return title[:17] + '...' if len(title) > 20 else title
 
+
+# Managers
+
+
 class FeaturedManager(models.Manager):
     """
     Custom manager for record model types. Fetches active, featured records,
@@ -12,6 +16,20 @@ class FeaturedManager(models.Manager):
     def get_query_set(self):
         queryset = super(FeaturedManager, self).get_query_set()
         return queryset.filter(is_featured=True, status=0).order_by('-created')
+
+
+class WithChildrenManager(models.Manager):
+    """ Custom manager for Record that left joins wishes and records """
+
+    use_for_related_fields = True
+
+    def get_query_set(self):
+        queryset = super(WithChildrenManager, self).get_query_set()
+        return queryset.select_related('wish', 'gift')
+
+
+# Models
+
 
 class Category(models.Model):
     """ Entry categories: things like 'space', 'skill', etc. """
@@ -58,16 +76,16 @@ class Record(models.Model):
                                               db_index=True, default=0)
 
     # managers
+    objects = WithChildrenManager()
     featured = FeaturedManager()
 
-    def get_child(self):
-        """ Gets the current Record object as an instance of its subclass """
-        # todo(ori): this is a hack to allow list_filter by subtype in the
-        # admin, but maybe it's not necessary. take out if unused.
-        for child_model in (Wish, Request):
-            if child_model.objects.filter(pk=self.pk).exists():
-                return child_model
-        raise ObjectDoesNotExist("Record has no child.")
+    @property
+    def type(self):
+        return type(self.child).__name__
+
+    @property
+    def child(self):
+        return self.wish or self.gift
 
     def __unicode__(self):
         # truncate to 20 characters

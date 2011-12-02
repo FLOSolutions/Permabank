@@ -91,37 +91,37 @@
 
             <div id="wishes" class="bd">
             
-              	{% for giftwish in giftswishes %}
-                  	{% if giftwish.objType = 'gifttype' %}
+              	{% for record in records %}
+                  	{% if record.type = 'Gift' %}
 				      <div class="mod speech clearfix">
 				        <div class="left mll plm relative" style="margin-left: 5px !important;padding-left: 5px !important;">
-				          {% gravatar giftwish.user.user 80 %}
+				          {% gravatar record.user.user 80 %}
 				          {# <div class="bg occupier-small" title="Wall Street Occupier">Wall Street Occupier</div> #}
 				        </div>
 				        <div class="left arrow-left mls">
 				          <div class="pam" style="width:180px;">
-				            <strong>{{ giftwish.title }}</strong>
+				            <strong>{{ record.title }}</strong>
 				          </div>
 				        </div>
 				        <div class="left view mlm">
-						  {% url giftview giftwish.pk as gift_url %}
+						  {% url giftview record.pk as gift_url %}
 				          <a href="{{ gift_url }}" class="button profile-gift-button">view</a>
 				        </div>
 				       </div>
 				     {% endif %}
-				     {% if giftwish.objType = 'wishtype' %}
+				     {% if record.type = 'Wish' %}
 				      <div class="mod speech clearfix">
 				        <div class="left view mlm" style="padding-right:5px;">
-						  {% url wishview giftwish.pk as wish_url %}
+						  {% url wishview record.pk as wish_url %}
 				          <a href="{{ wish_url }}" class="wish button profile-wish-button">view</a>
 				        </div>
 				        <div class="left arrow-right mls">
 				          <div class="pam" style="width:180px;">
-				            <strong>{{ giftwish.title }}</strong>
+				            <strong>{{ record.title }}</strong>
 				          </div>
 				        </div>
 				        <div class="left mll plm relative" style="margin-left:2px !important;padding-left:2px !important;">
-				          {% gravatar giftwish.user.user 80 %}
+				          {% gravatar record.user.user 80 %}
 				          {# <div class="bg occupier-small" title="Wall Street Occupier">Wall Street Occupier</div> #}
 				        </div>
 				      </div>
