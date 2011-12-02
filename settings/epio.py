@@ -2,6 +2,7 @@ from __future__ import absolute_import
 from .base import *
 
 from bundle_config import config
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -24,7 +25,16 @@ CACHES = {
         'VERSION': config['core']['version'],
     },
 }
+
 MEDIA_ROOT = config['core']['data_directory']
 
 DEBUG = True
 TEMPLATE_DEBUG = True
+
+# search 
+HAYSTACK_CONNECTIONS = {
+    'default': {
+        'ENGINE': 'haystack.backends.solr_backend.SolrEngine',
+        'URL': config['solr']['path']
+    },
+}

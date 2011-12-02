@@ -67,6 +67,8 @@ LOGIN_URL = '/openid/login/'
 LOGIN_REDIRECT_URL = '/'
 OPENID_USE_AS_ADMIN_LOGIN = False
 
+TINYMCE_SPELLCHECKER = True
+#TINYMCE_COMPRESSOR = True
 
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
@@ -75,12 +77,17 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django_openid_consumer.middleware.OpenIDMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+    'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
 )
 
 ROOT_URLCONF = 'urls'
 
 TEMPLATE_DIRS = (
     PROJECT_DIR.child('templates'),
+)
+
+FIXTURE_DIRS = (
+    PROJECT_DIR.child('fixtures_site'),
 )
 
 PROJECT_APPS = (
@@ -102,6 +109,9 @@ EXTERNAL_APPS = (
     'django.contrib.admin',
     'django.contrib.admindocs',
     'django_messages',
+    'django.contrib.flatpages',
+    'tinymce',
+    'haystack',
     'south',
 )
 

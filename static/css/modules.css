@@ -117,12 +117,40 @@
   border-bottom: 1px solid #ccc;
 }
 
+.mod.speech .arrow-right {
+  background: transparent url("../images/bg-arrow-outline-right.png") scroll no-repeat top right;
+  padding-right: 15px;
+  max-width: 200px;
+}
+
+.mod.speech .arrow-right div {
+  border-top: 1px solid #ccc;
+  border-left: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+}
+
 .mod.speech .button {
   background: #eee url("../images/bg-gift-button-bottom.png") scroll repeat-x bottom left;
   color: #000;
   display: block;
   font-weight: bold;
   padding: 15px;
+}
+
+.mod.speech .profile-wish-button {
+	background: #eee url("../images/bg-wish-button-bottom.png") scroll repeat-x bottom left;
+	color: #000;
+	display: block;
+	font-weight: bold;
+    padding: 15px;
+}
+
+.mod.speech .profile-gift-button {
+	background: #eee url("../images/bg-gift-button-bottom.png") scroll repeat-x bottom left;
+	color: #000;
+	display: block;
+	font-weight: bold;
+    padding: 15px;
 }
 
 .wish .mod.speech .button {

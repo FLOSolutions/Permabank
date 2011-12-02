@@ -70,6 +70,8 @@ class Wish(Record):
     class Meta:
         verbose_name_plural = 'wishes'
 
+    objType = 'wishtype'
+
     def __unicode__(self):
         # truncate to 20 characters
         wish = self.title
@@ -81,6 +83,8 @@ class Wish(Record):
 class Gift(Record):
     """ Model for user gifts """
     record = models.OneToOneField(Record, parent_link=True)
+
+    objType = 'gifttype'
 
     def __unicode__(self):
         # truncate to 20 characters

@@ -1,15 +1,19 @@
 Django>=1.3,<1.4
-pil
-epio
-Unipath
-django-redis-cache
-fabric
-django-grappelli
-django-extensions
 South
--e svn+http://django-openid-consumer.googlecode.com/svn/trunk/#egg=django-openid-consumer
--e svn+http://django-messages.googlecode.com/svn/trunk/#egg=django-messages
--e git+https://github.com/FLOSolutions/python-openid.git#egg=python-openid
+Unipath
+django-extensions
+django-grappelli
+django-redis-cache
+django-tinymce
+epio
+fabric
+pil
+pysolr
+https://github.com/toastdriven/django-haystack/tarball/v1.2.5
 -e git+git://github.com/FLOSolutions/django-openid-auth.git#egg=django_openid_auth
--e svn+http://django-gravatar.googlecode.com/svn/trunk/#egg=django-gravatar
+-e git+https://github.com/FLOSolutions/python-openid.git#egg=python-openid
 -e git+https://github.com/django-debug-toolbar/django-debug-toolbar.git#egg=django-debug-toolbar
+-e git+https://github.com/toastdriven/django-haystack.git#egg=django-haystack
+-e svn+http://django-gravatar.googlecode.com/svn/trunk/#egg=django-gravatar
+-e svn+http://django-messages.googlecode.com/svn/trunk/#egg=django-messages
+-e svn+http://django-openid-consumer.googlecode.com/svn/trunk/#egg=django-openid-consumer

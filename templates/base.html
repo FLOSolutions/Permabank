@@ -41,7 +41,11 @@
   <nav class="grid_16">
     
     <ul class="horiz stretch invert">
-      <li class="left"><a href="@TODO">about permabank</a></li>
+      {% load flatpages %}
+      {% get_flatpages as flatpages %}
+      {% for page in flatpages %}
+        <li class="left"><a href="{{ page.url }}">{{ page.title }}</a></li>
+      {% endfor %}
       {% if user.is_authenticated %}
         <li class="right mhm"><a href="{% url logout %}">log out</a>{# todo(ori): is this right? #}
         <li class="right mhm"><a href="@TODO">my wishes</a></li>
@@ -71,7 +75,8 @@
       <ul class="horiz man">
         <li><a href="@TODO" class="bg mrl block left wish active">Wishes</a></li>
         <li><a href="@TODO" class="bg mrl block left gift">Gifts</a></li>
-        <li><a href="@TODO" class="bg mrl block left exchange">Exchanges</a></li>
+        {# todo: figure out what to do with exchanges #}
+        {# <li><a href="@TODO" class="bg mrl block left exchange">Exchanges</a></li> #}
       </ul>
   
     </nav>

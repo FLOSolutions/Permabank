@@ -9,6 +9,7 @@ from utils import requires_login
 
 class UserCreateView(CreateView):
     """ A generic view that attaches the current user to the form """
+
     def get_form_kwargs(self):
         """ Attach the current user to the form """
         kwargs = super(UserCreateView, self).get_form_kwargs()
@@ -21,7 +22,7 @@ class CreateGiftView(UserCreateView):
     model = Gift
     form_class = GiftForm
     template_name = 'records/add_gift.html'
-    sucess_url = '/gifts/%(id)s'
+    success_url = '/gift/%(id)s'
 
 @requires_login
 class CreateWishView(UserCreateView):

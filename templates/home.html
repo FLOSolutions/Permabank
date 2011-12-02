@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load gravatar %}
 {% block content %}
 <div class="grid_8">
   
@@ -29,7 +30,7 @@
       {% for gift in gifts %}
       	<div class="mod speech clearfix">
 	        <div class="left mll plm relative">
-	          <img src="http://placehold.it/80x80" alt="Member photo" />
+            {% gravatar gift.user.user 80 %}
 	        </div>
 	        <div class="left arrow-left mls">
 	          <div class="pam">
@@ -42,8 +43,8 @@
 	          <a href="{{ gift_url }}" class="button">view</a>
 	        </div>
 	      </div>
-	  {% endfor %}  
-	    
+	  {% endfor %}
+	
     </div>
       
     <footer class="mbl mhm">
@@ -83,7 +84,7 @@
 	  {% for wish in wishes %}
       <div class="mod speech clearfix">
         <div class="left mll plm relative">
-          <img src="http://placehold.it/80x80" alt="Member photo" />
+          {% gravatar wish.user.user 80 %}
           <div class="bg occupier-small" title="Wall Street Occupier">Wall Street Occupier</div>
         </div>
         <div class="left arrow-left mls">

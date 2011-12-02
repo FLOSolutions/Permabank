@@ -1,5 +1,8 @@
 {% extends 'base.html' %}
 {% load gravatar %}
+{% block extrajs %}
+	<script src="/static/js/profiles.js"></script>
+{% endblock %}
 {% block content %}
   <div class="grid_16 mtx">
   
@@ -17,8 +20,23 @@
           </ul>
         </div>
         
-        <footer class="mtl">
-        
+        <footer class="bd mtl" style="padding-left:10px;padding-right:10px;">
+        	<h2 class="gray-text mbn">my story</h2>
+            
+            <p class="mtn">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget vulputate nunc. Nulla tellus ligula, laoreet in mattis sed, viverra vel eros. Vivamus mi est, adipiscing at tincidunt ac, tincidunt ut dui. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Quisque risus felis, condimentum ut auctor ac, tempor vel dolor. Sed non massa ut nulla blandit gravida. Aenean tincidunt tempus tortor eu eleifend. Fusce ac tincidunt felis. Fusce pellentesque mattis felis, nec porta ligula imperdiet ac.</p>
+            
+            <h2 class="gray-text mbn">occupied?</h2>
+            
+            <p class="mtn">New York</p>
+            
+            <h2 class="gray-text mbn">hometown</h2>
+            
+            <p class="mtn">San Francisco</p>
+            
+            <h2 class="gray-text mbn">status</h2>
+            
+            <p class="mtn">Volunteer</p>
+			<p>&nbsp</p>
         </footer>
         
       </div>
@@ -39,10 +57,10 @@
           </hgroup>
           <div>
             <ul class="horiz">
-              <li><a href="@TODO"><img src="resources/images/icon-twitter.png" alt="Twitter" /></a></li>
-              <li><a href="@TODO"><img src="resources/images/icon-facebook.png" alt="Facebook" /></a></li>
-              <li><a href="@TODO"><img src="resources/images/icon-tumblr.png" alt="Tumblr" /></a></li>
-              <li><a href="@TODO"><img src="resources/images/icon-vimeo.png" alt="Viemo" /></a></li>
+              <li><a href="@TODO"><img src="/static/images/icon-twitter.png" alt="Twitter" /></a></li>
+              <li><a href="@TODO"><img src="/static/images/icon-facebook.png" alt="Facebook" /></a></li>
+              <li><a href="@TODO"><img src="/static/images/icon-tumblr.png" alt="Tumblr" /></a></li>
+              <li><a href="@TODO"><img src="/static/images/icon-vimeo.png" alt="Viemo" /></a></li>
             </ul>
           </div>
         </header>
@@ -55,50 +73,71 @@
     
           <header>
             <div class="stripes line">
-              <div class="size1of3 left stripes tcenter">
-                <h3><a href="@TODO">activity</a></h3>
+              <div class="size1of5 left tcenter">
+                <h3><a href="@TODO">active</a></h3>
               </div>
-              <div class="size1of3 left stripes-arrow tcenter">
+              <!--<div class="size1of3 left stripes-arrow tcenter">
                 <h3><a href="@TODO">about</a></h3>
               </div>
               <div class="size1of3 left stripes tcenter">
                 <h3><a href="@TODO">testimonials</a></h3>
-              </div>
+              </div>-->
             </div>
           </header>
           
-          <div id="activity" class="bd">
+          <div id="active" class="bd">
           
             <!-- activity content here -->
+
+            <div id="wishes" class="bd">
+            
+              	{% for giftwish in giftswishes %}
+                  	{% if giftwish.objType = 'gifttype' %}
+				      <div class="mod speech clearfix">
+				        <div class="left mll plm relative" style="margin-left: 5px !important;padding-left: 5px !important;">
+				          {% gravatar giftwish.user.user 80 %}
+				          {# <div class="bg occupier-small" title="Wall Street Occupier">Wall Street Occupier</div> #}
+				        </div>
+				        <div class="left arrow-left mls">
+				          <div class="pam" style="width:180px;">
+				            <strong>{{ giftwish.title }}</strong>
+				          </div>
+				        </div>
+				        <div class="left view mlm">
+						  {% url giftview giftwish.pk as gift_url %}
+				          <a href="{{ gift_url }}" class="button profile-gift-button">view</a>
+				        </div>
+				       </div>
+				     {% endif %}
+				     {% if giftwish.objType = 'wishtype' %}
+				      <div class="mod speech clearfix">
+				        <div class="left view mlm" style="padding-right:5px;">
+						  {% url wishview giftwish.pk as wish_url %}
+				          <a href="{{ wish_url }}" class="wish button profile-wish-button">view</a>
+				        </div>
+				        <div class="left arrow-right mls">
+				          <div class="pam" style="width:180px;">
+				            <strong>{{ giftwish.title }}</strong>
+				          </div>
+				        </div>
+				        <div class="left mll plm relative" style="margin-left:2px !important;padding-left:2px !important;">
+				          {% gravatar giftwish.user.user 80 %}
+				          {# <div class="bg occupier-small" title="Wall Street Occupier">Wall Street Occupier</div> #}
+				        </div>
+				      </div>
+				     {% endif %}
+				{% endfor %}
+              
+            </div>
             
           </div>
-          
-          <div id="about" class="bd mhl">
-          
-            <h2 class="gray-text mbn">Bio</h2>
-            
-            <p class="mtn">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget vulputate nunc. Nulla tellus ligula, laoreet in mattis sed, viverra vel eros. Vivamus mi est, adipiscing at tincidunt ac, tincidunt ut dui. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Quisque risus felis, condimentum ut auctor ac, tempor vel dolor. Sed non massa ut nulla blandit gravida. Aenean tincidunt tempus tortor eu eleifend. Fusce ac tincidunt felis. Fusce pellentesque mattis felis, nec porta ligula imperdiet ac.</p>
-            
-            <h2 class="gray-text mbn">Occupied?</h2>
-            
-            <p class="mtn">New York</p>
-            
-            <h2 class="gray-text mbn">Hometown</h2>
-            
-            <p class="mtn">San Francisco</p>
-            
-            <h2 class="gray-text mbn">Status</h2>
-            
-            <p class="mtn">Volunteer</p>
-            
-          </div>
-          
-          <div id="testimonials" class="bd">
-          
-            <!-- testimonials content here -->
-            
-          </div>
-        
+
+          <footer class="mbl mhm" style="border-top: 1px dashed #CCC;">
+	        <a href="@TODO" class="button mal pas tcenter clear" style="width:155px;display:inline-block;background-color: #EEE;
+                color: #FCA25E;margin-right: 0px !important;padding-right: 0px !important;">post new gift</a>
+            <a href="@TODO" class="button mal pas tcenter clear" 	style="width: 155px;display:inline-block;background-color: #EEE;
+                color: #7FD1D0;margin-left: 0px !important; padding-left: 0px !important;">post new wish</a>
+          </footer>  
         </section>
       
       </div>
@@ -109,15 +148,15 @@
     
           <header>
               <div class="stripes line">
-                <div class="size1of3 left stripes-arrow tcenter">
-                  <h3 class=""><a href="@TODO">wishes</a></h3>
+                <div class="size1of3 left stripes tcenter" id="wishesContainer">
+                  <h3 class=""><a href="#">fulfilled</a></h3>
                 </div>
-                <div class="size1of3 left stripes tcenter">
-                  <h3 class=""><a href="@TODO">gifts</a></h3>
+                <!--<div class="size1of3 left stripes tcenter" id="giftsContainer">
+                  <h3 class=""><a href="#" id="giftsClick">gifts</a></h3>
                 </div>
                 <div class="size1of3 left stripes tcenter">
                   <h3 class=""> </h3>
-                </div>
+                </div>-->
               </div>
             </header>
           
@@ -125,14 +164,45 @@
             
             <div id="wishes" class="bd">
             
-              <!-- wishes here -->
-              &nbsp;
+              	{% for wish in wishes %}
+			      <div class="mod speech clearfix">
+			        <div class="left mll plm relative">
+			          <img src="http://placehold.it/40x40" alt="Member photo" />
+			          {# <div class="bg occupier-small" title="Wall Street Occupier">Wall Street Occupier</div> #}
+			        </div>
+			        <div class="left arrow-left mls">
+			          <div class="pam">
+			            <strong>{{ wish.title }}</strong>
+			          </div>
+			        </div>
+			        <div class="left view mlm">
+					  {% url wishview wish.pk as wish_url %}
+			          <a href="{{ wish_url }}" class="button profile-button">view</a>
+			        </div>
+			      </div>
+				  {% endfor %}
               
             </div>
             
             <div id="gifts" class="bd">
             
-              <!-- gifts here -->
+              	{% for gift in gifts %}
+			      <div class="mod speech clearfix">
+			        <div class="left mll plm relative">
+			          <img src="http://placehold.it/40x40" alt="Member photo" />
+			          {# <div class="bg occupier-small" title="Wall Street Occupier">Wall Street Occupier</div> #}
+			        </div>
+			        <div class="left arrow-left mls">
+			          <div class="pam">
+			            <strong>{{ gift.title }}</strong>
+			          </div>
+			        </div>
+			        <div class="left view mlm">
+					  {% url giftview gift.pk as gift_url %}
+			          <a href="{{ gift_url }}" class="button profile-button">view</a>
+			        </div>
+			      </div>
+				  {% endfor %}
               
             </div>
             
