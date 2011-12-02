@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}
+permabank - gifts
+{% endblock %}
+
+{% block content %}
+<h1>Gifts</h1>
+<ul>
+  {% for gift in gifts %}
+  <li><a href="/gift/{{ gift.id }}">{{ gift.title }}</a> ({{ gift.created }})
+  {% endfor %}
+</ul>
+{% endblock %}

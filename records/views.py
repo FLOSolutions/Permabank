@@ -59,6 +59,12 @@ class WishDetailView(DetailView):
         context['contact_subject'] = "Your wish for %s" % self.object.title
         return context
 
+class GiftListView(RecordListView):
+    model = Gift
+    context_object_name = "gifts"
+    template_name = "records/gift_list.html"
+
+
 class GiftDetailView(DetailView):
     model = Gift
     context_object_name = "gift"
