@@ -4,7 +4,6 @@ from django.db import models
 def _truncate_title(title):
     return title[:17] + '...' if len(title) > 20 else title
 
-
 # Managers
 
 
@@ -88,11 +87,8 @@ class Record(models.Model):
         return self.wish or self.gift
 
     def __unicode__(self):
-        # truncate to 20 characters
-        title = self.title
-        if len(title) > 20:
-            title = title[:17] + '...'
-        return "{user}: {title}".format(user=self.user, title=title)
+        return "{user}: {title}".format(user=self.user,
+                title=_truncate_title(self.title))
 
 class Wish(Record):
     """ Model for user wishes """
