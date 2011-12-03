@@ -109,6 +109,10 @@ class Wish(Record):
     record = models.OneToOneField(Record, parent_link=True)
     subject_prefix = 'wish for'
 
+    # Managers
+    featured = FeaturedManager()
+    objects = models.Manager()
+
     class Meta:
         verbose_name_plural = 'wishes'
 
@@ -121,6 +125,10 @@ class Gift(Record):
     """ Model for user gifts """
     record = models.OneToOneField(Record, parent_link=True)
     subject_prefix = 'gift of'
+
+    # Managers
+    featured = FeaturedManager()
+    objects = models.Manager()
 
     @models.permalink
     def get_absolute_url(self):
