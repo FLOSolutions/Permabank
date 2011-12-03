@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load gravatar %}
+{% load record_type %}
 {% block extrajs %}
 	<script src="/static/js/profiles.js"></script>
 {% endblock %}
@@ -92,7 +93,7 @@
             <div id="wishes" class="bd">
             
               	{% for record in records %}
-                  	{% if record.type == 'Gift' %}
+                  	{% if record|record_type == 'gift' %}
 				      <div class="mod speech clearfix">
 				        <div class="left mll plm relative" style="margin-left: 5px !important;padding-left: 5px !important;">
 				          {% gravatar record.user.user 80 %}
@@ -104,14 +105,14 @@
 				          </div>
 				        </div>
 				        <div class="left view mlm">
-				          <a href="{{ record.get_absolute_url }}" class="button profile-gift-button">view</a>
+				          <a href="{{ record.get_absolute_url }}" class="button profile-gift-button">give</a>
 				        </div>
 				       </div>
 				     {% endif %}
-				     {% if record.type == 'Wish' %}
+				     {% if record|record_type == 'wish' %}
 				      <div class="mod speech clearfix">
 				        <div class="left view mlm" style="padding-right:5px;">
-				          <a href="{{ record.get_absolute_url }}" class="wish button profile-wish-button">view</a>
+				          <a href="{{ record.get_absolute_url }}" class="wish button profile-wish-button">get</a>
 				        </div>
 				        <div class="left arrow-right mls">
 				          <div class="pam" style="width:180px;">
