@@ -1,3 +1,4 @@
+{# Assumes a wish or gift record is in the template context. #}
 {% block extracss %}
 <link rel="stylesheet" href="/static/css/compose.css">
 {% endblock %}
@@ -5,8 +6,8 @@
   <script src="/static/js/jquery.form.js" type="text/javascript" charset="utf-8"></script>
   <script>
     $('#compose form').ajaxForm(function(data, status, xhr) {
-      // We check the response data; the response code would be OK if we got
-      // redirected to a compose form with an error message.
+      // We check the response data; the response code would still be OK even
+      // if we got redirected to a compose form with an error message.
       if (data.trim() == "OK") {
         $('#id_body, #id_submit').attr('disabled', true);
         $('#compose .error').hide();
@@ -20,13 +21,13 @@
 <div id="compose">
   <form class="compose" action="{% url messages_compose_embedded %}" method="POST">
     {% csrf_token %}
-    <input type="hidden" name="recipient" id="id_recipient" value="{{ wish.user.user.username }}"/>
+    <input type="hidden" name="recipient" id="id_recipient" value="{{ record.user.user.username }}"/>
     <fieldset>
       <legend>Send a message to this user</legend>
       <div>
-        {# Separate input.hidden to not have to override all the input CSS... #}
-        <input type="hidden" name="subject" id="id_subject" value="{{ contact_subject }}">
-        Subject: {{ contact_subject }}
+        Subject: 
+        <input type="text" class="subject" name="subject" id="id_subject" readonly 
+               value="Your {{ record.subject_prefix }} {{ record.title }}">
       </div>
       <textarea id="id_body" rows="4" cols="55" name="body"></textarea>
       <div>

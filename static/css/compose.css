@@ -5,3 +5,14 @@ form.compose {
 #id_submit {
   font-size: 13px;
 }
+
+#compose .subject {
+  border: none;
+  font: 13px Helmet, Freesans, sans-serif;
+  display: inline-block;
+  padding: 0;
+  width: 200px;
+  box-shadow: none;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+}
