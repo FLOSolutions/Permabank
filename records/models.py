@@ -125,3 +125,15 @@ class Gift(Record):
     @models.permalink
     def get_absolute_url(self):
         return ('gift', (), {'pk': self.id})
+
+
+class RecordResponse(models.Model):
+    """ Represent an interaction between users regarding a record """
+
+    record = models.ForeignKey(Record)
+    sender = models.ForeignKey('profiles.Profile',
+            related_name='sent_responses')
+    recipient = models.ForeignKey('profiles.Profile',
+            related_name='received_responses')
+    parent = models.ForeignKey('self', null=True)
+    text = models.TextField()
