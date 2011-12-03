@@ -5,26 +5,58 @@
 <link rel="stylesheet" href="/static/css/compose.css">
 {% endblock %}
 {% block content %}
-<h1>{{ record|record_type|title }}: {{ record.title }}</h1>
+
+<div style="padding-top:200px;padding-bottom:10px;">
+	<h1>{{ record|record_type|title }}: {{ record.title }}</h1>
+</div>
+
+<div style="display:inline-block;">
+	<img src="{{ record.picture }}" width=100px height=100px>
+</div>
+<div style="display:inline-block;padding-left:20px;">
+	<div>
+		<h2><p>
+			{% gravatar record.user.user 40 %}
+		    <a href="{{ record.user.get_absolute_url }}">{{ record.user.user.username }}</a> is 
+			{% if record|record_type == 'gift' %}
+			    offering a
+			{% else %}
+			    looking for a
+			{% endif %}
+			<strong>{{ record.title }}</strong>
+		</p></h2>
+	</div>
+	<div>
+		<h3><p>{{ record.description }}</p></h3>
+	</div>
+</div>
+
+<!--<h1>{{ record|record_type|title }}: {{ record.title }}</h1>
 <ul>
-  <li><img src="{{ record.picture }}" width=40px height=40px>
+  <li><img src="{{ record.picture }}" width=100px height=100px>
   <li>{{ record.description }}
-  <li>{% gravatar record.user.user 40 %} created by 
+  <li>{% gravatar record.user.user 40 %} created by <a href="{{ record.user.user.get_absolute_url }}"> 
     {% if user == record.user.user %}
       you
     {% else %}
       {{ record.user.user.username }} 
     {% endif %}
+    </a>
     {{ record.created|timesince }} ago
   <li>Status: {{ record.get_status_display }}
-</ul>
+</ul>-->
 
-{% if user == record.user.user %}
-  You posted this! Coming soon: edit
-  {# TODO: Show edit controls. Show messages for this record? #}
-{% else %}{% if user.is_authenticated %}
-  {% include "django_messages/compose_embedded.html" %}
-{% else %}
-  <a href="{% url openid-login %}">Log in</a> to send a message about this item!
-{% endif %}{% endif %} 
+<p >
+    {% if user == record.user.user %}
+        You posted this! Coming soon: edit
+    {# TODO: Show edit controls. Show messages for this record? #}
+    {% else %}
+        {% if user.is_authenticated %}
+            {% include "django_messages/compose_embedded.html" %}
+        {% else %}
+            <a href="{% url openid-login %}">Log in</a> to send a message about this item!
+        {% endif %}
+    {% endif %}
+</p>
+<BR><BR><BR><BR><BR><BR><BR>
 {% endblock %}
