@@ -1,6 +1,7 @@
 from django.views.generic import CreateView, ListView, DetailView, TemplateView
 
 from django.http import Http404
+from profiles.models import Profile
 
 from records.models import Wish, Gift, Category
 from records.forms import WishForm, GiftForm
@@ -44,30 +45,25 @@ class RecordListView(ListView):
             return self.model.objects.filter(category=category).order_by(
                     '-created')
 
-
 class WishListView(RecordListView):
     model = Wish
     context_object_name = "wishes"
     template_name = "records/wish_list.html"
-
 
 class WishDetailView(DetailView):
     model = Wish
     context_object_name = "record"
     template_name = "records/record_details.html"
 
-
 class GiftListView(RecordListView):
     model = Gift
     context_object_name = "gifts"
     template_name = "records/gift_list.html"
 
-
 class GiftDetailView(DetailView):
     model = Gift
     context_object_name = "record"
     template_name = "records/record_details.html"
-
 
 class ComposeSuccessView(TemplateView):
     """NOTE(matias): django-messages forces a redirect on compose success;
