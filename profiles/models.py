@@ -29,11 +29,10 @@ class Profile(models.Model):
     def __unicode__(self):
         """ Unicode representation of user profiles """
         full_name = self.user.get_full_name()
-        email = self.user.email
         if not full_name:
-            return email
+            return self.user.username
         else:
-            return u"%s (%s)" % (email, full_name)
+            return u"%s (%s)" % (self.user.username, full_name)
 
 class UserForm(forms.ModelForm):
     class Meta:

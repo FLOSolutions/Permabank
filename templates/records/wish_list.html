@@ -10,7 +10,7 @@
 
 {% block records %}
     {% for wish in wishes %}
-    <li class="plm">
+    <li class="plm wish">
         <a href="{{ wish.user.get_absolute_url }}">{{ wish.user.user.username }}</a> 
         is looking for a 
         <a href="{{ wish.get_absolute_url }}"><strong>{{ wish.title }}</strong></a>.
