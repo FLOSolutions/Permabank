@@ -24,7 +24,7 @@ class Profile(models.Model):
 
     @models.permalink
     def get_absolute_url(self):
-        return ('profile', (), {'pk': self.user.pk})
+        return ('profile', (), {'pk': self.pk})
 
     def __unicode__(self):
         """ Unicode representation of user profiles """
