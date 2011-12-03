@@ -49,8 +49,8 @@
       {% endfor %}
       {% if user.is_authenticated %}
         <li class="right mhm"><a href="{% url logout %}">log out</a>{# todo(ori): is this right? #}
-        <li class="right mhm"><a href="@TODO">my wishes</a></li>
-        <li class="right mhm"><a href="@TODO">my gifts</a></li>
+        <li class="right mhm"><a href="{% url profile_records user.pk %}">my gifts/wishes</a></li>
+        <!--<li class="right mhm"><a href="@TODO">my gifts</a></li>-->
         <li class="right mhm"><a href="{{ user.profile.get_absolute_url }}" class="bg dd-small-white prm">{{ user.username }}</a>
           <a href="{% url messages_inbox %}">({% inbox_count %})</a>
         </li>
