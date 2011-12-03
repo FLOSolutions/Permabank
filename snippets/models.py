@@ -23,7 +23,7 @@ class Snippet(models.Model):
     @classmethod
     def get_cache_key(cls, slug):
         digest = hashlib.md5(slug).hexdigest()
-        return 
+        return cls.key_format.format(digest=digest)
 
     @classmethod
     def get(cls, slug):
