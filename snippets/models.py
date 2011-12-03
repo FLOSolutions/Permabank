@@ -8,7 +8,7 @@ class Snippet(models.Model):
     """ Represents a named snippet of text """
 
     key_format = 'snippet:{digest}'
-    cache_timeout = 86400  # 24 hrs
+    cache_timeout = 60
 
     slug = models.SlugField(primary_key=True)
     text = models.TextField()
