@@ -116,7 +116,7 @@
 .mod.speech .arrow-left {
   background: transparent url("../images/bg-arrow-outline-left.png") scroll no-repeat top left;
   padding-left: 15px;
-  max-width: 200px;
+  width: 200px;
 }
 
 .mod.speech .arrow-left div {
@@ -128,7 +128,7 @@
 .mod.speech .arrow-right {
   background: transparent url("../images/bg-arrow-outline-right.png") scroll no-repeat top right;
   padding-right: 15px;
-  max-width: 200px;
+  width: 200px;
 }
 
 .mod.speech .arrow-right div {
