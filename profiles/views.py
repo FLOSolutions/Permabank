@@ -43,7 +43,6 @@ class ProfileRecordsView(TemplateView):
     template_name = "profiles/records.html"
     def get_context_data(self, **kwargs):
         profile_id = self.kwargs.get('profile_id')
-        #profile = get_object_or_404(Profile, pk=profile_id)
         try:
             profile = Profile.objects.get(pk=profile_id)
         except Profile.DoesNotExist:
