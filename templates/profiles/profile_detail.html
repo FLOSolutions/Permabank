@@ -162,44 +162,10 @@
           <div class="bd">
             
             <div id="wishes" class="bd">
-            
-              	{% for wish in wishes %}
-			      <div class="mod speech clearfix">
-			        <div class="left mll plm relative">
-			          <img src="http://placehold.it/40x40" alt="Member photo" />
-			          {# <div class="bg occupier-small" title="Wall Street Occupier">Wall Street Occupier</div> #}
-			        </div>
-			        <div class="left arrow-left mls">
-			          <div class="pam">
-			            <strong>{{ wish.title }}</strong>
-			          </div>
-			        </div>
-			        <div class="left view mlm">
-			          <a href="{{ wish.get_absolute_url }}" class="button profile-button">view</a>
-			        </div>
-			      </div>
-				  {% endfor %}
               
             </div>
             
             <div id="gifts" class="bd">
-            
-              	{% for gift in gifts %}
-			      <div class="mod speech clearfix">
-			        <div class="left mll plm relative">
-			          <img src="http://placehold.it/40x40" alt="Member photo" />
-			          {# <div class="bg occupier-small" title="Wall Street Occupier">Wall Street Occupier</div> #}
-			        </div>
-			        <div class="left arrow-left mls">
-			          <div class="pam">
-			            <strong>{{ gift.title }}</strong>
-			          </div>
-			        </div>
-			        <div class="left view mlm">
-			          <a href="{{ gift.get_absolute_url }}" class="button profile-button">view</a>
-			        </div>
-			      </div>
-				  {% endfor %}
               
             </div>
             
