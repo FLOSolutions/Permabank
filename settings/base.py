@@ -93,6 +93,7 @@ FIXTURE_DIRS = (
 PROJECT_APPS = (
     'profiles',
     'records',
+    'snippets',
 )
 
 EXTERNAL_APPS = (

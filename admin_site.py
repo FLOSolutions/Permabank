@@ -1,8 +1,10 @@
+import django.contrib.auth.admin
+import django.contrib.flatpages.admin
+
 # apps for admin
 import profiles.admin
 import records.admin
-import django.contrib.auth.admin
-import django.contrib.flatpages.admin
+import snippets.admin
 
 # wysiwyg editor for flatpages
 from django.contrib import admin
