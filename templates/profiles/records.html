@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+{% load gravatar %}
+{% block extrajs %}
+	<script src="/static/js/profiles.js"></script>
+{% endblock %}
+{% block content %}
+<div class="grid_12 omega">
+
+<header>
+  <hgroup>
+  <h1 class="normal"><a href="/profiles/{{ profile.pk }}">{{ profile }}</a></h1>
+    <h3>Brooklyn, NY</h3>
+  </hgroup>
+  <div>
+    <ul class="horiz">
+      <li><a href="@TODO"><img src="/static/images/icon-twitter.png" alt="Twitter" /></a></li>
+      <li><a href="@TODO"><img src="/static/images/icon-facebook.png" alt="Facebook" /></a></li>
+      <li><a href="@TODO"><img src="/static/images/icon-tumblr.png" alt="Tumblr" /></a></li>
+      <li><a href="@TODO"><img src="/static/images/icon-vimeo.png" alt="Viemo" /></a></li>
+    </ul>
+  </div>
+</header>
+
+</div>
+
+<div class="grid_8">
+
+  <section class="mod rounded gray give">
+  
+    <header class="mtl mll plm ptl">
+      <h2 class="normal">{{ profile }}'s <strong>gifts</strong></h2>
+    </header>
+
+    <div class="bd">
+    
+      {% for gift in gifts %}
+      <div class="mod speech clearfix">
+        <div class="left mll plm relative" style="margin-left: 5px !important;padding-left: 5px !important;">
+          {% gravatar gift.user.user 80 %}
+          {# <div class="bg occupier-small" title="Wall Street Occupier">Wall Street Occupier</div> #}
+        </div>
+        <div class="left arrow-left mls">
+          <div class="pam" style="width:180px;">
+            <strong>{{ gift.title }}</strong>
+          </div>
+        </div>
+        <div class="left view mlm">
+          <a href="{{ gift.get_absolute_url }}" class="button profile-gift-button">view</a>
+        </div>
+       </div>
+	  {% endfor %}
+	
+    </div>
+      
+  </section>
+
+</div>
+
+<div class="grid_8">
+
+  <section class="mod rounded gray wish">
+  
+    <header class="mtl mll plm ptl">
+      <h2 class="normal">{{ profile }}'s <strong>wishes</strong></h2>
+    </header>
+    
+    <div class="bd">
+    
+	  {% for wish in wishes %}
+       <div class="mod speech clearfix">
+        <div class="left view mlm" style="padding-right:5px;">
+          <a href="{{ wish.get_absolute_url }}" class="wish button profile-wish-button">view</a>
+        </div>
+        <div class="left arrow-right mls">
+          <div class="pam" style="width:180px;">
+            <strong>{{ wish.title }}</strong>
+          </div>
+        </div>
+        <div class="left mll plm relative" style="margin-left:2px !important;padding-left:2px !important;">
+          {% gravatar wish.user.user 80 %}
+          {# <div class="bg occupier-small" title="Wall Street Occupier">Wall Street Occupier</div> #}
+        </div>
+      </div>
+	  {% endfor %}
+
+    </div>
+  
+  </section>
+
+</div>
+{% endblock content %}

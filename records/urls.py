@@ -1,8 +1,7 @@
 from django.conf.urls.defaults import patterns, include, url
 from django_messages.views import compose
 
-from records.views import (CreateWishView, CreateGiftView, WishListView,
-        WishDetailView, GiftDetailView, GiftListView, ComposeSuccessView)
+from records.views import *
 
 urlpatterns = patterns('records.views',
     url(r'^wishes$', WishListView.as_view()),
