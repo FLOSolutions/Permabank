@@ -35,6 +35,6 @@ TEMPLATE_DEBUG = True
 HAYSTACK_CONNECTIONS = {
     'default': {
         'ENGINE': 'haystack.backends.solr_backend.SolrEngine',
-        'URL': config['solr']['path']
+        'URL': 'http://%(host)s:%(port)s%(path)s' % config['solr']
     },
 }

@@ -1,0 +1,9 @@
+[
+    {
+        "pk": "calltoaction",
+        "model": "snippets.snippet",
+        "fields": {
+            "text": "Permabank is a site that is awesome and cool"
+        }
+    }
+]

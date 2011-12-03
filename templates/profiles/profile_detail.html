@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load gravatar %}
+{% load record_type %}
 {% block extrajs %}
 	<script src="/static/js/profiles.js"></script>
 {% endblock %}
@@ -24,8 +25,16 @@
         	<h2 class="gray-text mbn">my story</h2>
             
             <p class="mtn">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget vulputate nunc. Nulla tellus ligula, laoreet in mattis sed, viverra vel eros. Vivamus mi est, adipiscing at tincidunt ac, tincidunt ut dui. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Quisque risus felis, condimentum ut auctor ac, tempor vel dolor. Sed non massa ut nulla blandit gravida. Aenean tincidunt tempus tortor eu eleifend. Fusce ac tincidunt felis. Fusce pellentesque mattis felis, nec porta ligula imperdiet ac.</p>
+
+			<h2 class="gray-text mbn">praises</h2>
             
-            <h2 class="gray-text mbn">occupied?</h2>
+            <p class="mtn">Woo!</p>
+
+			<h2 class="gray-text mbn">grievances</h2>
+            
+            <p class="mtn">Oh no!</p>
+            
+            <h2 class="gray-text mbn">occupying</h2>
             
             <p class="mtn">New York</p>
             
@@ -52,7 +61,7 @@
         <header>
           <a href="@TODO" class="button edit right pvm">edit</a>
           <hgroup>
-          <h1 class="normal">{{ profile }}</h1>
+          <h1 class="normal">{{ profile.user.username }}</h1>
             <h3>Brooklyn, NY</h3>
           </hgroup>
           <div>
@@ -92,7 +101,7 @@
             <div id="wishes" class="bd">
             
               	{% for record in records %}
-                  	{% if record.type == 'Gift' %}
+                  	{% if record|record_type == 'gift' %}
 				      <div class="mod speech clearfix">
 				        <div class="left mll plm relative" style="margin-left: 5px !important;padding-left: 5px !important;">
 				          {% gravatar record.user.user 80 %}
@@ -104,14 +113,14 @@
 				          </div>
 				        </div>
 				        <div class="left view mlm">
-				          <a href="{{ record.get_absolute_url }}" class="button profile-gift-button">view</a>
+				          <a href="{{ record.get_absolute_url }}" class="button profile-gift-button">give</a>
 				        </div>
 				       </div>
 				     {% endif %}
-				     {% if record.type == 'Wish' %}
+				     {% if record|record_type == 'wish' %}
 				      <div class="mod speech clearfix">
 				        <div class="left view mlm" style="padding-right:5px;">
-				          <a href="{{ record.get_absolute_url }}" class="wish button profile-wish-button">view</a>
+				          <a href="{{ record.get_absolute_url }}" class="wish button profile-wish-button">get</a>
 				        </div>
 				        <div class="left arrow-right mls">
 				          <div class="pam" style="width:180px;">
@@ -161,44 +170,10 @@
           <div class="bd">
             
             <div id="wishes" class="bd">
-            
-              	{% for wish in wishes %}
-			      <div class="mod speech clearfix">
-			        <div class="left mll plm relative">
-			          <img src="http://placehold.it/40x40" alt="Member photo" />
-			          {# <div class="bg occupier-small" title="Wall Street Occupier">Wall Street Occupier</div> #}
-			        </div>
-			        <div class="left arrow-left mls">
-			          <div class="pam">
-			            <strong>{{ wish.title }}</strong>
-			          </div>
-			        </div>
-			        <div class="left view mlm">
-			          <a href="{{ wish.get_absolute_url }}" class="button profile-button">view</a>
-			        </div>
-			      </div>
-				  {% endfor %}
               
             </div>
             
             <div id="gifts" class="bd">
-            
-              	{% for gift in gifts %}
-			      <div class="mod speech clearfix">
-			        <div class="left mll plm relative">
-			          <img src="http://placehold.it/40x40" alt="Member photo" />
-			          {# <div class="bg occupier-small" title="Wall Street Occupier">Wall Street Occupier</div> #}
-			        </div>
-			        <div class="left arrow-left mls">
-			          <div class="pam">
-			            <strong>{{ gift.title }}</strong>
-			          </div>
-			        </div>
-			        <div class="left view mlm">
-			          <a href="{{ gift.get_absolute_url }}" class="button profile-button">view</a>
-			        </div>
-			      </div>
-				  {% endfor %}
               
             </div>
             

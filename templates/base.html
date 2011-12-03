@@ -1,5 +1,6 @@
 <!DOCTYPE HTML>
 {% load gravatar %}
+{% load snippet %}
 {% load inbox %}
 
 <!--[if lt IE 7 ]> <html class="ie ie6 no-js" lang="en"> <![endif]-->
@@ -50,7 +51,7 @@
         <li class="right mhm"><a href="{% url logout %}">log out</a>{# todo(ori): is this right? #}
         <li class="right mhm"><a href="@TODO">my wishes</a></li>
         <li class="right mhm"><a href="@TODO">my gifts</a></li>
-        <li class="right mhm"><a href="@TODO" class="bg dd-small-white prm">{{ user.username }}</a>
+        <li class="right mhm"><a href="{{ user.user.get_absolute_url }}" class="bg dd-small-white prm">{{ user.username }}</a>
           <a href="{% url messages_inbox %}">({% inbox_count %})</a>
         </li>
       {% endif %}
@@ -96,7 +97,7 @@
   <div class="grid_16 subhead">
   
     <div class="grid_12 suffix_1 alpha">
-      <h2 class="inline gray-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris at felis mi.</h2>
+      <h2 class="inline gray-text">{% snippet 'calltoaction' %}</h2>
       <h3 class="inline mll"><a href="@TODO">Learn more</a></h3>
     </div>
     

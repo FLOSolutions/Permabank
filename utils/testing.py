@@ -17,3 +17,5 @@ class DjangoTestCase(unittest.TestCase):
     def post(self, url_name, *args, **kwargs):
         data = kwargs.pop("data", {})
         return self.client.post(reverse(url_name, args=args, kwargs=kwargs), data)
+
+main = unittest.main
