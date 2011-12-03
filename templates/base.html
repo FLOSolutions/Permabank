@@ -1,5 +1,6 @@
 <!DOCTYPE HTML>
 {% load gravatar %}
+{% load snippet %}
 {% load inbox %}
 
 <!--[if lt IE 7 ]> <html class="ie ie6 no-js" lang="en"> <![endif]-->
@@ -96,7 +97,7 @@
   <div class="grid_16 subhead">
   
     <div class="grid_12 suffix_1 alpha">
-      <h2 class="inline gray-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris at felis mi.</h2>
+      <h2 class="inline gray-text">{% snippet 'calltoaction' %}</h2>
       <h3 class="inline mll"><a href="@TODO">Learn more</a></h3>
     </div>
     

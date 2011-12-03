@@ -103,9 +103,11 @@ class Record(models.Model):
         return "{user}: {title}".format(user=self.user,
                 title=_truncate_title(self.title))
 
+
 class Wish(Record):
     """ Model for user wishes """
     record = models.OneToOneField(Record, parent_link=True)
+    subject_prefix = 'wish for'
 
     class Meta:
         verbose_name_plural = 'wishes'
@@ -118,6 +120,7 @@ class Wish(Record):
 class Gift(Record):
     """ Model for user gifts """
     record = models.OneToOneField(Record, parent_link=True)
+    subject_prefix = 'gift of'
 
     @models.permalink
     def get_absolute_url(self):
