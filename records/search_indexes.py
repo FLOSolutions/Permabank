@@ -7,6 +7,7 @@ from records.models import Wish, Gift
 
 class WishIndex(indexes.SearchIndex, indexes.Indexable):
     text = indexes.CharField(document=True, use_template=True)
+    title = indexes.CharField(model_attr='title')
 
     def get_model(self):
         return Wish
@@ -18,6 +19,7 @@ class WishIndex(indexes.SearchIndex, indexes.Indexable):
 
 class GiftIndex(indexes.SearchIndex, indexes.Indexable):
     text = indexes.CharField(document=True, use_template=True)
+    title = indexes.CharField(model_attr='title')
 
     def get_model(self):
         return Gift
