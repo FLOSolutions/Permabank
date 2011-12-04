@@ -52,8 +52,6 @@ class WishListView(RecordListView):
 
 class WishDetailView(DetailView):
     model = Wish
-    context_object_name = "record"
-    template_name = "records/record_details.html"
 
 class GiftListView(RecordListView):
     model = Gift
@@ -62,8 +60,6 @@ class GiftListView(RecordListView):
 
 class GiftDetailView(DetailView):
     model = Gift
-    context_object_name = "record"
-    template_name = "records/record_details.html"
 
 class ComposeSuccessView(TemplateView):
     """NOTE(matias): django-messages forces a redirect on compose success;

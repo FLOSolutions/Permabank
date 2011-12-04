@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load gravatar %}
+{% block extracss %}
+<link rel="stylesheet" href="/static/css/compose.css">
+{% endblock %}
+{% block content %}
+
+<div style="padding-top:200px;padding-bottom:10px;">
+	<h1>Wish: {{ wish.title }}</h1>
+</div>
+
+<div style="display:inline-block;">
+	<img src="{{ wish.picture }}" width=100px height=100px>
+</div>
+<div style="display:inline-block;padding-left:20px;">
+	<div>
+		<h2><p>
+			{% gravatar wish.user.user 40 %}
+      <a href="{{ wish.user.get_absolute_url }}">{{ wish.user.user.username }}</a> is looking for
+			<strong>{{ wish.title }}</strong>
+		</p></h2>
+	</div>
+	<div>
+		<h3><p>{{ wish.description }}</p></h3>
+	</div>
+</div>
+
+<p >
+    {% if user == wish.user.user %}
+        You posted this! Coming soon: edit
+    {# TODO: Show edit controls. Show messages for this wish? #}
+    {% else %}
+        {% if user.is_authenticated %}
+            {% include "django_messages/compose_embedded.html" %}
+        {% else %}
+            <a href="{% url openid-login %}">Log in</a> to send a message about this item!
+        {% endif %}
+    {% endif %}
+</p>
+<BR><BR><BR><BR><BR><BR><BR>
+{% endblock %}

@@ -110,8 +110,8 @@ class Wish(Record):
     subject_prefix = 'wish for'
 
     # Managers
-    featured = FeaturedManager()
     objects = models.Manager()
+    featured = FeaturedManager()
 
     class Meta:
         verbose_name_plural = 'wishes'
@@ -127,8 +127,8 @@ class Gift(Record):
     subject_prefix = 'gift of'
 
     # Managers
-    featured = FeaturedManager()
     objects = models.Manager()
+    featured = FeaturedManager()
 
     @models.permalink
     def get_absolute_url(self):
