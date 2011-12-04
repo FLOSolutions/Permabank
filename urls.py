@@ -21,7 +21,9 @@ urlpatterns = patterns('',
 
     # profiles and authentication
     url(r'^openid/', include('django_openid_auth.urls')),
-    url(r'^logout/$', 'django.contrib.auth.views.logout', name='logout'),
+    # todo: successful logout should add an alert, in the style of flask.flash
+    url(r'^logout/$', 'django.contrib.auth.views.logout',
+            kwargs={'next_page': '/'}, name='logout'),
     url(r'^profiles/', include('profiles.urls')),
 
     # messaging
