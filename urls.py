@@ -23,7 +23,7 @@ urlpatterns = patterns('',
     url(r'^openid/', include('django_openid_auth.urls')),
     # todo: successful logout should add an alert, in the style of flask.flash
     url(r'^logout/$', 'django.contrib.auth.views.logout',
-            kwargs={'next_page': '/'}, name='logout'),
+            kwargs={'next_page': settings.LOGOUT_REDIRECT_URL}, name='logout'),
     url(r'^profiles/', include('profiles.urls')),
 
     # messaging
