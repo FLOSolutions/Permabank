@@ -3,6 +3,8 @@ from .base import *
 
 from bundle_config import config
 
+DATA_DIR = Path(config['core']['data_directory'])
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -31,8 +33,14 @@ MEDIA_ROOT = config['core']['data_directory']
 DEBUG = True
 TEMPLATE_DEBUG = True
 
-# add solr search 
-HAYSTACK_CONNECTIONS['solr'] = {
+# search
+HAYSTACK_CONNECTIONS = {
+    'default': {
+        'ENGINE': 'haystack.backends.whoosh_backend.WhooshEngine',
+        'PATH': DATA_DIR.child('whoosh_index'),
+    },
+    'solr': {
         'ENGINE': 'haystack.backends.solr_backend.SolrEngine',
         'URL': 'http://%(host)s:%(port)s%(path)s' % config['solr']
+    },
 }
