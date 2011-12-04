@@ -113,7 +113,6 @@ EXTERNAL_APPS = (
     'django.contrib.flatpages',
     'tinymce',
     'haystack',
-    'south',
 )
 
 INSTALLED_APPS = EXTERNAL_APPS + PROJECT_APPS
