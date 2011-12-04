@@ -11,11 +11,21 @@ from utils import requires_login
 class UserCreateView(CreateView):
     """ A generic view that attaches the current user to the form """
 
+    # Should form fields be pre-populated with data from query string?
+    initial_data_from_query = True
+
     def get_form_kwargs(self):
         """ Attach the current user to the form """
         kwargs = super(UserCreateView, self).get_form_kwargs()
+
+        # Pre-populate form fields with query params
+        if self.initial_data_from_query:
+            kwargs['initial'] = self.request.REQUEST
+
+        # Attach user
         if self.request.method in ('POST', 'PUT'):
             kwargs['user'] = self.request.user.profile
+
         return kwargs
 
 @requires_login
