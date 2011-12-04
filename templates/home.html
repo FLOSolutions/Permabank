@@ -11,9 +11,10 @@
   
     <div class="bd">
     
-      <form method="post" class="give mll plm" action="/action.py">
+      <form method="post" class="give mll plm" action="/gifts/add">
+        {% csrf_token %}
         <fieldset>
-          <input type="text" />
+          <input type="text" name="title" />
           <button title="Give" class="">give</button>
         </fieldset>
       </form>
@@ -65,9 +66,10 @@
     
     <div class="bd">
     
-      <form method="post" class="wish mll plm " action="/action.py">
+      <form method="post" class="wish mll plm " action="/wishes/add">
+        {% csrf_token %}
         <fieldset>
-          <input type="text" />
+          <input type="text" name="title" />
           <button title="Get" class="">get</button>
         </fieldset>
       </form>
