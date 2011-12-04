@@ -31,10 +31,8 @@ MEDIA_ROOT = config['core']['data_directory']
 DEBUG = True
 TEMPLATE_DEBUG = True
 
-# search 
-HAYSTACK_CONNECTIONS = {
-    'default': {
+# add solr search 
+HAYSTACK_CONNECTIONS['solr'] = {
         'ENGINE': 'haystack.backends.solr_backend.SolrEngine',
         'URL': 'http://%(host)s:%(port)s%(path)s' % config['solr']
-    },
 }
