@@ -4,6 +4,7 @@
 *.un~
 *.db
 static_root/
+search/whoosh_index
 .localhooks
 .ipython.py
 src/
