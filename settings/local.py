@@ -20,8 +20,7 @@ DATABASES = {
 # use redis as cache backend
 CACHES = {
     'default': {
-        'BACKEND': 'redis_cache.RedisCache',
-        'LOCATION': 'localhost:6379',
+        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
     },
 }
 
