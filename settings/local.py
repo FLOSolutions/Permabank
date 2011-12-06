@@ -48,3 +48,5 @@ HAYSTACK_CONNECTIONS = {
         'PATH': PROJECT_DIR.child('search', 'whoosh_index'),
     },
 }
+
+SNIPPET_STRING_IF_INVALID = "Snippet goes here"
