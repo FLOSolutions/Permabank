@@ -20,6 +20,12 @@ class Profile(models.Model):
     user = models.OneToOneField(User, primary_key=True)
     location = models.CharField(max_length=64, null=True, blank=True)
     bio = models.TextField(null=True, blank=True)
+    
+    facebook_username = models.CharField(max_length=50, blank=True)
+    twitter_username = models.CharField(max_length=15, blank=True)
+    tumblr_name = models.CharField(max_length=64, blank=True) # can't find the actual max length
+    vimeo_username = models.CharField(max_length=64, blank=True) # can't find the actual max length
+
     objects = ProfileManager()
 
     @models.permalink
