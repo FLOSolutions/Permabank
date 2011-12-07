@@ -1,5 +1,11 @@
 {% extends 'base.html' %}
 {% load gravatar %}
+
+{% block extracss %}
+<style type="text/css">
+    label { display: block; }
+</style>
+{% endblock %}
       
 {% block content %}
     {% gravatar profile %}
