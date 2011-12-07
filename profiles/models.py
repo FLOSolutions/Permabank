@@ -18,8 +18,12 @@ class ProfileManager(models.Manager):
 class Profile(models.Model):
     """ Represents a user's profile """
     user = models.OneToOneField(User, primary_key=True)
+
     location = models.CharField(max_length=64, null=True, blank=True)
+    hometown = models.CharField(max_length=64, null=True, blank=True)
     bio = models.TextField(null=True, blank=True)
+    praises = models.TextField(null=True, blank=True)
+    grievances = models.TextField(null=True, blank=True)
     
     facebook_username = models.CharField(max_length=50, blank=True)
     twitter_username = models.CharField(max_length=15, blank=True)
