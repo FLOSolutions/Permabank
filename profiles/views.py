@@ -30,7 +30,7 @@ class ProfileDetailView(ProfileViewMixin, DetailView):
 class ProfileUpdateForm(ModelForm):
     class Meta:
         model = Profile
-        exclude = ('user',)
+        exclude = ('user','tags',)
 
 @requires_login
 class ProfileUpdateView(UpdateView):

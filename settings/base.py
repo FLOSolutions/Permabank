@@ -114,6 +114,7 @@ EXTERNAL_APPS = (
     'django.contrib.flatpages',
     'tinymce',
     'haystack',
+    'taggit',
 )
 
 INSTALLED_APPS = EXTERNAL_APPS + PROJECT_APPS

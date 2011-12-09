@@ -16,8 +16,9 @@
           {% gravatar profile.user 200 %}
           <div class="bg occupier-large" title="{{ profile }}">{{ profile }}</div>
           <ul class="clearfix">
-            <li class="left">occupier</li>
-            <li class="left">volunteer</li>
+            {% for tag in profile.tags.all %}
+                <li class="left">{{ tag }}</li>
+            {% endfor %}
           </ul>
         </div>
         

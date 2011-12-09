@@ -3,7 +3,7 @@ from django.db import models
 from django import forms
 from django.db.models.signals import post_save
 from django.dispatch import receiver
-
+from taggit.managers import TaggableManager
 
 class ProfileManager(models.Manager):
     """ Custom Manager for Profile model """
@@ -29,6 +29,8 @@ class Profile(models.Model):
     twitter_username = models.CharField(max_length=15, blank=True)
     tumblr_name = models.CharField(max_length=64, blank=True) # can't find the actual max length
     vimeo_username = models.CharField(max_length=64, blank=True) # can't find the actual max length
+
+    tags = TaggableManager()
 
     objects = ProfileManager()
 
