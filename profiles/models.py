@@ -3,7 +3,7 @@ from django.db import models
 from django import forms
 from django.db.models.signals import post_save
 from django.dispatch import receiver
-
+from taggit.managers import TaggableManager
 
 class ProfileManager(models.Manager):
     """ Custom Manager for Profile model """
@@ -18,8 +18,20 @@ class ProfileManager(models.Manager):
 class Profile(models.Model):
     """ Represents a user's profile """
     user = models.OneToOneField(User, primary_key=True)
+
     location = models.CharField(max_length=64, null=True, blank=True)
+    hometown = models.CharField(max_length=64, null=True, blank=True)
     bio = models.TextField(null=True, blank=True)
+    praises = models.TextField(null=True, blank=True)
+    grievances = models.TextField(null=True, blank=True)
+    
+    facebook_username = models.CharField(max_length=50, blank=True)
+    twitter_username = models.CharField(max_length=15, blank=True)
+    tumblr_name = models.CharField(max_length=64, blank=True) # can't find the actual max length
+    vimeo_username = models.CharField(max_length=64, blank=True) # can't find the actual max length
+
+    tags = TaggableManager()
+
     objects = ProfileManager()
 
     @models.permalink

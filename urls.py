@@ -15,10 +15,6 @@ urlpatterns = patterns('',
     # home page
 	url(r'^$', HomeView.as_view(), name='home'),
 
-    # static pages
-    url(r'^about$', TemplateView.as_view(template_name='about.html'),
-        name='about'),
-
     # profiles and authentication
     url(r'^openid/', include('django_openid_auth.urls')),
     # todo: successful logout should add an alert, in the style of flask.flash

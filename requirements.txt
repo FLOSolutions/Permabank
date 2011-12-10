@@ -5,6 +5,7 @@ django-extensions
 django-grappelli
 django-redis-cache
 django-tinymce
+django-taggit
 epio
 fabric
 pil

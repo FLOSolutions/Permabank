@@ -1,7 +1,7 @@
 from django.views.generic import DetailView, TemplateView, UpdateView, ListView
-#from django.shortcuts import get_object_or_404, render_to_response
 from django.http import Http404
 from django.contrib.auth.models import User
+from django.forms import ModelForm
 
 from profiles.models import Profile
 from records.models import Gift, Wish
@@ -27,20 +27,23 @@ class ProfileDetailView(ProfileViewMixin, DetailView):
                 '-created')[:self.max_records]
         return context
 
-@requires_login
-class ProfileUpdateView(ProfileViewMixin, UpdateView):
-    pass
+class ProfileUpdateForm(ModelForm):
+    class Meta:
+        model = Profile
+        exclude = ('user','tags',)
 
 @requires_login
-class UserUpdateView(UpdateView):
+class ProfileUpdateView(UpdateView):
     context_object_name = "profile"
+    form_class = ProfileUpdateForm
     template_name = "profiles/edit.html"
-
+    
     def get_object(self):
-        return User.objects.get(pk=self.request.user.pk)
+        return Profile.objects.get(user__pk=self.request.user.pk)
 
 class ProfileRecordsView(TemplateView):
     template_name = "profiles/records.html"
+
     def get_context_data(self, **kwargs):
         profile_id = self.kwargs.get('profile_id')
         try:

@@ -16,35 +16,36 @@
           {% gravatar profile.user 200 %}
           <div class="bg occupier-large" title="{{ profile }}">{{ profile }}</div>
           <ul class="clearfix">
-            <li class="left">occupier</li>
-            <li class="left">volunteer</li>
+            {% for tag in profile.tags.all %}
+                <li class="left">{{ tag }}</li>
+            {% endfor %}
           </ul>
         </div>
         
         <footer class="bd mtl" style="padding-left:10px;padding-right:10px;">
         	<h2 class="gray-text mbn">my story</h2>
             
-            <p class="mtn">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget vulputate nunc. Nulla tellus ligula, laoreet in mattis sed, viverra vel eros. Vivamus mi est, adipiscing at tincidunt ac, tincidunt ut dui. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Quisque risus felis, condimentum ut auctor ac, tempor vel dolor. Sed non massa ut nulla blandit gravida. Aenean tincidunt tempus tortor eu eleifend. Fusce ac tincidunt felis. Fusce pellentesque mattis felis, nec porta ligula imperdiet ac.</p>
-
-			<h2 class="gray-text mbn">praises</h2>
+            <p class="mtn">{{ profile.bio }}</p>            
             
-            <p class="mtn">Woo!</p>
+  			<h2 class="gray-text mbn">praises</h2>
+            
+            <p class="mtn">{{ profile.praises }}</p>
 
 			<h2 class="gray-text mbn">grievances</h2>
             
-            <p class="mtn">Oh no!</p>
+            <p class="mtn">{{ profile.grievances }}</p>
             
             <h2 class="gray-text mbn">occupying</h2>
             
-            <p class="mtn">New York</p>
+            <p class="mtn">{{ profile.location }}</p>
             
             <h2 class="gray-text mbn">hometown</h2>
             
-            <p class="mtn">San Francisco</p>
+            <p class="mtn">{{ profile.hometown }}</p>
             
             <h2 class="gray-text mbn">status</h2>
             
-            <p class="mtn">Volunteer</p>
+            {#<p class="mtn">Volunteer</p>#}
 			<p>&nbsp</p>
         </footer>
         
@@ -56,25 +57,7 @@
     <!-- main content -->
     <div class="grid_12 omega">
     
-      <div class="grid_12 omega">
-      
-        <header>
-          <a href="@TODO" class="button edit right pvm">edit</a>
-          <hgroup>
-          <h1 class="normal">{{ profile }}</h1>
-            <h3>Brooklyn, NY</h3>
-          </hgroup>
-          <div>
-            <ul class="horiz">
-              <li><a href="@TODO"><img src="/static/images/icon-twitter.png" alt="Twitter" /></a></li>
-              <li><a href="@TODO"><img src="/static/images/icon-facebook.png" alt="Facebook" /></a></li>
-              <li><a href="@TODO"><img src="/static/images/icon-tumblr.png" alt="Tumblr" /></a></li>
-              <li><a href="@TODO"><img src="/static/images/icon-vimeo.png" alt="Viemo" /></a></li>
-            </ul>
-          </div>
-        </header>
-        
-      </div>
+      {% include "profiles/profile_header.html" with include_edit_link="true" %}
         
       <div class="grid_7 omega">
       
@@ -83,14 +66,16 @@
           <header>
             <div class="stripes line">
               <div class="size1of5 left tcenter">
-                <h3><a href="@TODO">active</a></h3>
+                <h3><a href="#active">active</a></h3>
               </div>
-              <!--<div class="size1of3 left stripes-arrow tcenter">
+              <!--
+              <div class="size1of3 left stripes-arrow tcenter">
                 <h3><a href="@TODO">about</a></h3>
               </div>
               <div class="size1of3 left stripes tcenter">
                 <h3><a href="@TODO">testimonials</a></h3>
-              </div>-->
+              </div>
+              -->
             </div>
           </header>
           
@@ -140,9 +125,9 @@
           </div>
 
           <footer class="mbl mhm" style="border-top: 1px dashed #CCC;">
-	        <a href="@TODO" class="button mal pas tcenter clear" style="width:155px;display:inline-block;background-color: #EEE;
+	        <a href="/wishes/add" class="button mal pas tcenter clear" style="width:155px;display:inline-block;background-color: #EEE;
                 color: #FCA25E;margin-right: 0px !important;padding-right: 0px !important;">post new gift</a>
-            <a href="@TODO" class="button mal pas tcenter clear" 	style="width: 155px;display:inline-block;background-color: #EEE;
+            <a href="/gifts/add" class="button mal pas tcenter clear" 	style="width: 155px;display:inline-block;background-color: #EEE;
                 color: #7FD1D0;margin-left: 0px !important; padding-left: 0px !important;">post new wish</a>
           </footer>  
         </section>
@@ -156,7 +141,7 @@
           <header>
               <div class="stripes line">
                 <div class="size1of3 left stripes tcenter" id="wishesContainer">
-                  <h3 class=""><a href="#">fulfilled</a></h3>
+                  <h3 class=""><a href="#fulfilled">fulfilled</a></h3>
                 </div>
                 <!--<div class="size1of3 left stripes tcenter" id="giftsContainer">
                   <h3 class=""><a href="#" id="giftsClick">gifts</a></h3>
