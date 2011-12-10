@@ -113,6 +113,7 @@ EXTERNAL_APPS = (
     'django.contrib.admindocs',
     'permabank.messages',
     'django.contrib.flatpages',
+    #'notification',
     'tinymce',
     'haystack',
     'taggit',

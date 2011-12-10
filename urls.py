@@ -9,6 +9,7 @@ from django.views.generic import TemplateView
 from views import HomeView
 
 import admin_site
+#import notification
 
 
 urlpatterns = patterns('',
@@ -35,6 +36,9 @@ urlpatterns = patterns('',
 
     # search
     (r'^search/', include('haystack.urls')),
+
+    # notification
+    #(r'^notification/', include('notification.urls')),
 
     # records
     url(r'', include('records.urls')),

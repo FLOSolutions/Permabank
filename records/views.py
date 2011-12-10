@@ -57,20 +57,12 @@ class RecordListView(ListView):
             return self.model.objects.filter(category=category).order_by(
                     '-created')
 
-class WishListView(RecordListView):
-    model = Wish
-    context_object_name = "wishes"
-    template_name = "records/wish_list.html"
-
-class WishDetailView(DetailView):
-    model = Wish
-
+class RecordMessageMixin(object):
     def post(self, request, *args, **kwargs):
         message_body = self.request.POST.get('body')
         if message_body:
             record = self.get_object()
-            message_subject = 'Your wish for "{offer}"'.format(
-                    offer=record.short_title)
+            message_subject = self.subject_format.format(record.short_title)
             message = Message.objects.create(
                 sender=self.request.user,
                 recipient=record.user.user,
@@ -81,10 +73,14 @@ class WishDetailView(DetailView):
             # todo: handle notifications and messages?
         return self.get(request, *args, **kwargs)
 
-    #def get_context_data(self, **kwargs):
-    #    context = super(WishDetailView, self).get_context_data(**kwargs)
-    #    context['form'] = RecordMessageForm()
-    #    return context
+class WishListView(RecordListView):
+    model = Wish
+    context_object_name = "wishes"
+    template_name = "records/wish_list.html"
+
+class WishDetailView(RecordMessageMixin, DetailView):
+    model = Wish
+    subject_format = '''Your wish for "{}"'''
 
 
 class GiftListView(RecordListView):
@@ -92,7 +88,7 @@ class GiftListView(RecordListView):
     context_object_name = "gifts"
     template_name = "records/gift_list.html"
 
-class GiftDetailView(DetailView):
+class GiftDetailView(RecordMessageMixin, DetailView):
     model = Gift
 
 class ComposeSuccessView(TemplateView):
