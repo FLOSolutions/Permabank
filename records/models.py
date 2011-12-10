@@ -1,8 +1,6 @@
 from django.core.exceptions import ObjectDoesNotExist
 from django.db import models
 
-def _truncate_title(title):
-    return title[:17] + '...' if len(title) > 20 else title
 
 # Managers
 
@@ -96,12 +94,15 @@ class Record(models.Model):
         else:
             return self.wish
 
+    @property
+    def short_title(self):
+        return self.title[:17] + '...' if len(self.title) > 20 else self.title
+
     def get_absolute_url(self):
         return self.child.get_absolute_url()
 
     def __unicode__(self):
-        return "{user}: {title}".format(user=self.user,
-                title=_truncate_title(self.title))
+        return "{user}: {title}".format(user=self.user, title=self.short_title)
 
 
 class Wish(Record):

@@ -56,6 +56,7 @@ class Message(models.Model):
     replied_at = models.DateTimeField(_("replied at"), null=True, blank=True)
     sender_deleted_at = models.DateTimeField(_("Sender deleted at"), null=True, blank=True)
     recipient_deleted_at = models.DateTimeField(_("Recipient deleted at"), null=True, blank=True)
+    record = models.ForeignKey('records.Record', null=True, blank=True)
     
     objects = MessageManager()
     
@@ -81,6 +82,8 @@ class Message(models.Model):
     def save(self, **kwargs):
         if not self.id:
             self.sent_at = datetime.datetime.now()
+        if self.parent_msg is not None:
+            self.record = self.parent_msg.record
         super(Message, self).save(**kwargs) 
     
     class Meta:

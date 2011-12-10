@@ -1,10 +1,12 @@
-from django.views.generic import CreateView, ListView, DetailView, TemplateView
+from django.views.generic import (CreateView, ListView, DetailView,
+        TemplateView)
 
 from django.http import Http404
 from profiles.models import Profile
 
 from records.models import Wish, Gift, Category
 from records.forms import WishForm, GiftForm
+from messages.forms import RecordMessageForm
 
 from utils import requires_login
 
@@ -62,6 +64,28 @@ class WishListView(RecordListView):
 
 class WishDetailView(DetailView):
     model = Wish
+
+    def post(self, request, *args, **kwargs):
+        message_body = self.request.POST.get('message')
+        if message_body:
+            record = self.object
+            message_subject = 'Your wish for "{offer}"'.format(
+                    offer=record.short_title)
+            message = Message.objects.create(
+                sender=self.request.user,
+                recipient=record.user,
+                record=record,
+                body=message_body,
+                subject=message_subject
+            )
+            # todo: handle notifications and messages?
+        return self.get(request, *args, **kwargs)
+
+    def get_context_data(self, **kwargs):
+        context = super(WishDetailView, self).get_context_data(**kwargs)
+        context['form'] = RecordMessageForm()
+        return context
+
 
 class GiftListView(RecordListView):
     model = Gift

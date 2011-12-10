@@ -1,9 +1,12 @@
 import datetime
+
 from django import forms
 from django.conf import settings
 from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import ugettext_noop
 from django.contrib.auth.models import User
+
+from permabank.records.models import Record
 
 if "notification" in settings.INSTALLED_APPS:
     from notification import models as notification
@@ -21,6 +24,8 @@ class ComposeForm(forms.Form):
     subject = forms.CharField(label=_(u"Subject"))
     body = forms.CharField(label=_(u"Body"),
         widget=forms.Textarea(attrs={'rows': '12', 'cols':'55'}))
+    record = forms.ModelChoiceField(widget=forms.HiddenInput,
+            queryset=Record.objects.all(), required=False)
     
         
     def __init__(self, *args, **kwargs):
@@ -34,6 +39,7 @@ class ComposeForm(forms.Form):
         recipients = self.cleaned_data['recipient']
         subject = self.cleaned_data['subject']
         body = self.cleaned_data['body']
+        record = self.cleaned_data['record']
         message_list = []
         for r in recipients:
             msg = Message(
@@ -41,6 +47,7 @@ class ComposeForm(forms.Form):
                 recipient = r,
                 subject = subject,
                 body = body,
+                record = record,
             )
             if parent_msg is not None:
                 msg.parent_msg = parent_msg
@@ -56,3 +63,8 @@ class ComposeForm(forms.Form):
                     notification.send([sender], "messages_sent", {'message': msg,})
                     notification.send([r], "messages_received", {'message': msg,})
         return message_list
+
+class RecordMessageForm(forms.ModelForm):
+    class Meta:
+        fields = ['body']
+        model = Message
