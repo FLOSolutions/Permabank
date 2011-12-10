@@ -1,12 +1,15 @@
+from django import forms
 from django.contrib.auth.models import User
 from django.db import models
-from django import forms
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+
 from taggit.managers import TaggableManager
+
 
 class ProfileManager(models.Manager):
     """ Custom Manager for Profile model """
+
     use_for_related_fields = True
 
     def get_query_set(self):
@@ -17,22 +20,27 @@ class ProfileManager(models.Manager):
 
 class Profile(models.Model):
     """ Represents a user's profile """
-    user = models.OneToOneField(User, primary_key=True)
 
+    user = models.OneToOneField(User, primary_key=True)
     location = models.CharField(max_length=64, null=True, blank=True)
     hometown = models.CharField(max_length=64, null=True, blank=True)
     bio = models.TextField(null=True, blank=True)
     praises = models.TextField(null=True, blank=True)
     grievances = models.TextField(null=True, blank=True)
-    
-    facebook_username = models.CharField(max_length=50, blank=True)
-    twitter_username = models.CharField(max_length=15, blank=True)
-    tumblr_name = models.CharField(max_length=64, blank=True) # can't find the actual max length
-    vimeo_username = models.CharField(max_length=64, blank=True) # can't find the actual max length
 
-    tags = TaggableManager()
+    ############################
+    # social media integration #
+    ############################
+    facebook_username = models.CharField(max_length=50, blank=True, null=True)
+    twitter_username = models.CharField(max_length=15, blank=True, null=True)
+    tumblr_name = models.CharField(max_length=64, blank=True, null=True)
+    vimeo_username = models.CharField(max_length=64, blank=True, null=True)
 
+    ############
+    # managers #
+    ############
     objects = ProfileManager()
+    tags = TaggableManager()
 
     @models.permalink
     def get_absolute_url(self):
@@ -46,9 +54,12 @@ class Profile(models.Model):
         else:
             return u"%s (%s)" % (self.user.username, full_name)
 
+
 class UserForm(forms.ModelForm):
+
     class Meta:
         model = User
+
 
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
