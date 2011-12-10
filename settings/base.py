@@ -95,6 +95,7 @@ PROJECT_APPS = (
     'profiles',
     'records',
     'snippets',
+    'messages',
 )
 
 EXTERNAL_APPS = (
@@ -110,7 +111,7 @@ EXTERNAL_APPS = (
     'django_openid_auth',
     'django.contrib.admin',
     'django.contrib.admindocs',
-    'django_messages',
+    'permabank.messages',
     'django.contrib.flatpages',
     'tinymce',
     'haystack',

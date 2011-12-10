@@ -31,7 +31,7 @@
     {# TODO: Show edit controls. Show messages for this gift? #}
     {% else %}
         {% if user.is_authenticated %}
-            {% include "django_messages/compose_embedded.html" %}
+            {% include "messages/compose_embedded.html" %}
         {% else %}
             <a href="{% url openid-login %}">Log in</a> to send a message about this item!
         {% endif %}

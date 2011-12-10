@@ -23,7 +23,7 @@ urlpatterns = patterns('',
     url(r'^profiles/', include('profiles.urls')),
 
     # messaging
-    (r'^messages/', include('django_messages.urls')),
+    (r'^messages/', include('messages.urls')),
 
     # admin
     url(r'^grappelli/', include('grappelli.urls')),

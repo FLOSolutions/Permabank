@@ -16,6 +16,5 @@ https://github.com/toastdriven/django-haystack/tarball/v1.2.5
 -e git+https://github.com/django-debug-toolbar/django-debug-toolbar.git#egg=django-debug-toolbar
 -e git+https://github.com/toastdriven/django-haystack.git#egg=django-haystack
 -e svn+http://django-gravatar.googlecode.com/svn/trunk/#egg=django-gravatar
--e svn+http://django-messages.googlecode.com/svn/trunk/#egg=django-messages
 -e svn+http://django-openid-consumer.googlecode.com/svn/trunk/#egg=django-openid-consumer
 -e hg+https://bitbucket.org/mchaput/whoosh#egg=whoosh

@@ -1,5 +1,5 @@
 from django.conf.urls.defaults import patterns, include, url
-from django_messages.views import compose
+from permabank.messages.views import compose
 
 from records.views import *
 

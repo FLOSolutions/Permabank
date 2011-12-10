@@ -72,8 +72,8 @@ class Record(models.Model):
     contact_info = models.CharField(max_length=256)
     category = models.ForeignKey(Category, db_index=True)
     is_featured = models.BooleanField()
-    status = models.PositiveSmallIntegerField(choices=status_choices.items(),
-                                              db_index=True, default=0)
+    status = models.PositiveSmallIntegerField(
+            choices=status_choices.items(), db_index=True, default=0)
 
     # managers
     objects = WithChildrenManager()
