@@ -4,9 +4,9 @@ from django.views.generic import (CreateView, ListView, DetailView,
 from django.http import Http404
 from profiles.models import Profile
 
-from records.models import Wish, Gift, Category
-from records.forms import WishForm, GiftForm
-from messages.forms import RecordMessageForm
+from permabank.records.models import Wish, Gift, Category
+from permabank.records.forms import WishForm, GiftForm
+from permabank.messages.models import Message
 
 from utils import requires_login
 
@@ -66,14 +66,14 @@ class WishDetailView(DetailView):
     model = Wish
 
     def post(self, request, *args, **kwargs):
-        message_body = self.request.POST.get('message')
+        message_body = self.request.POST.get('body')
         if message_body:
-            record = self.object
+            record = self.get_object()
             message_subject = 'Your wish for "{offer}"'.format(
                     offer=record.short_title)
             message = Message.objects.create(
                 sender=self.request.user,
-                recipient=record.user,
+                recipient=record.user.user,
                 record=record,
                 body=message_body,
                 subject=message_subject
@@ -81,10 +81,10 @@ class WishDetailView(DetailView):
             # todo: handle notifications and messages?
         return self.get(request, *args, **kwargs)
 
-    def get_context_data(self, **kwargs):
-        context = super(WishDetailView, self).get_context_data(**kwargs)
-        context['form'] = RecordMessageForm()
-        return context
+    #def get_context_data(self, **kwargs):
+    #    context = super(WishDetailView, self).get_context_data(**kwargs)
+    #    context['form'] = RecordMessageForm()
+    #    return context
 
 
 class GiftListView(RecordListView):
