@@ -58,7 +58,7 @@ def format_subject(subject):
     
 def new_message_email(sender, instance, signal, 
         subject_prefix=_(u'New Message: %(subject)s'),
-        template_name="permabank.messages/new_message.html",
+        template_name="messaging/new_message.html",
         default_protocol=None,
         *args, **kwargs):
     """

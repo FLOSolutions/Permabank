@@ -13,8 +13,8 @@ if "notification" in settings.INSTALLED_APPS:
 else:
     notification = None
 
-from permabank.messages.models import Message
-from permabank.messages.fields import CommaSeparatedUserField
+from permabank.messaging.models import Message
+from permabank.messaging.fields import CommaSeparatedUserField
 
 class ComposeForm(forms.Form):
     """

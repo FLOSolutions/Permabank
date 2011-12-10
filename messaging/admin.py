@@ -9,7 +9,7 @@ if "notification" in settings.INSTALLED_APPS:
 else:
     notification = None
     
-from permabank.messages.models import Message
+from permabank.messaging.models import Message
 
 class MessageAdminForm(forms.ModelForm):
     """

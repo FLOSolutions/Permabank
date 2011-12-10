@@ -1,5 +1,5 @@
 from django import forms
-from permabank.messages.forms import ComposeForm
+from permabank.messaging.forms import ComposeForm
 
 from records.models import Wish, Gift
 
