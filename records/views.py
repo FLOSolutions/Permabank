@@ -90,6 +90,7 @@ class GiftListView(RecordListView):
 
 class GiftDetailView(RecordMessageMixin, DetailView):
     model = Gift
+    subject_format = '''Your offer of "{}"'''
 
 class ComposeSuccessView(TemplateView):
     """NOTE(matias): django-messages forces a redirect on compose success;

@@ -1,4 +1,4 @@
-{% extends "messages/base.html" %} 
+{% extends "messaging/base.html" %} 
 {% load i18n %} 
 {% block content %}
 <h1>{% trans "View Message" %}</h1>
@@ -15,7 +15,7 @@
 {{ message.body|linebreaksbr }}<br /><br />
 
 {% ifequal message.recipient.pk user.pk %}
-<a href="{% url messages_reply message.id %}">{% trans "Reply" %}</a>
+<a href="{% url messaging_reply message.id %}">{% trans "Reply" %}</a>
 {% endifequal %}
-<a href="{% url messages_delete message.id %}">{% trans "Delete" %}</a>
+<a href="{% url messaging_delete message.id %}">{% trans "Delete" %}</a>
 {% endblock %}

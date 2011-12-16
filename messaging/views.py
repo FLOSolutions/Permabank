@@ -18,7 +18,7 @@ if "notification" in settings.INSTALLED_APPS:
 else:
     notification = None
 
-def inbox(request, template_name='messages/inbox.html'):
+def inbox(request, template_name='messaging/inbox.html'):
     """
     Displays a list of received messages for the current user.
     Optional Arguments:
@@ -30,7 +30,7 @@ def inbox(request, template_name='messages/inbox.html'):
     }, context_instance=RequestContext(request))
 inbox = login_required(inbox)
 
-def outbox(request, template_name='messages/outbox.html'):
+def outbox(request, template_name='messaging/outbox.html'):
     """
     Displays a list of sent messages by the current user.
     Optional arguments:
@@ -42,7 +42,7 @@ def outbox(request, template_name='messages/outbox.html'):
     }, context_instance=RequestContext(request))
 outbox = login_required(outbox)
 
-def trash(request, template_name='messages/trash.html'):
+def trash(request, template_name='messaging/trash.html'):
     """
     Displays a list of deleted messages. 
     Optional arguments:
@@ -57,7 +57,7 @@ def trash(request, template_name='messages/trash.html'):
 trash = login_required(trash)
 
 def compose(request, recipient=None, form_class=ComposeForm,
-        template_name='messages/compose.html', success_url=None, recipient_filter=None):
+        template_name='messaging/compose.html', success_url=None, recipient_filter=None):
     """
     Displays and handles the ``form_class`` form to compose new messages.
     Required Arguments: None
@@ -77,7 +77,7 @@ def compose(request, recipient=None, form_class=ComposeForm,
             request.user.message_set.create(
                 message=_(u"Message successfully sent."))
             if success_url is None:
-                success_url = reverse('messages_inbox')
+                success_url = reverse('messaging_inbox')
             if request.GET.has_key('next'):
                 success_url = request.GET['next']
             return HttpResponseRedirect(success_url)
@@ -92,7 +92,7 @@ def compose(request, recipient=None, form_class=ComposeForm,
 compose = login_required(compose)
 
 def reply(request, message_id, form_class=ComposeForm,
-        template_name='messages/compose.html', success_url=None, 
+        template_name='messaging/compose.html', success_url=None, 
         recipient_filter=None, quote_helper=format_quote):
     """
     Prepares the ``form_class`` form for writing a reply to a given message
@@ -114,7 +114,7 @@ def reply(request, message_id, form_class=ComposeForm,
             request.user.message_set.create(
                 message=_(u"Message successfully sent."))
             if success_url is None:
-                success_url = reverse('messages_inbox')
+                success_url = reverse('messaging_inbox')
             return HttpResponseRedirect(success_url)
     else:
         form = form_class(initial={
@@ -144,7 +144,7 @@ def delete(request, message_id, success_url=None):
     message = get_object_or_404(Message, id=message_id)
     deleted = False
     if success_url is None:
-        success_url = reverse('messages_inbox')
+        success_url = reverse('messaging_inbox')
     if request.GET.has_key('next'):
         success_url = request.GET['next']
     if message.sender == user:
@@ -171,7 +171,7 @@ def undelete(request, message_id, success_url=None):
     message = get_object_or_404(Message, id=message_id)
     undeleted = False
     if success_url is None:
-        success_url = reverse('messages_inbox')
+        success_url = reverse('messaging_inbox')
     if request.GET.has_key('next'):
         success_url = request.GET['next']
     if message.sender == user:
@@ -189,7 +189,7 @@ def undelete(request, message_id, success_url=None):
     raise Http404
 undelete = login_required(undelete)
 
-def view(request, message_id, template_name='messages/view.html'):
+def view(request, message_id, template_name='messaging/view.html'):
     """
     Shows a single message.``message_id`` argument is required.
     The user is only allowed to see the message, if he is either 

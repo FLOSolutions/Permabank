@@ -72,40 +72,41 @@ class IntegrationTestCase(TestCase):
         
     def testInboxEmpty(self):
         """ request the empty inbox """
-        response = self.c.get(reverse('messages_inbox'))
+        response = self.c.get(reverse('messaging_inbox'))
         self.assertEquals(response.status_code, 200)
         self.assertEquals(response.template[0].name, 'messaging/inbox.html')
         self.assertEquals(len(response.context['message_list']), 0)
     
     def testOutboxEmpty(self):
         """ request the empty outbox """
-        response = self.c.get(reverse('messages_outbox'))
+        response = self.c.get(reverse('messaging_outbox'))
         self.assertEquals(response.status_code, 200)
         self.assertEquals(response.template[0].name, 'messaging/outbox.html')
         self.assertEquals(len(response.context['message_list']), 0)
 
     def testTrashEmpty(self):
         """ request the empty trash """
-        response = self.c.get(reverse('messages_trash'))
+        response = self.c.get(reverse('messaging_trash'))
         self.assertEquals(response.status_code, 200)
         self.assertEquals(response.template[0].name, 'messaging/trash.html')
         self.assertEquals(len(response.context['message_list']), 0)
 
     def testCompose(self):
         """ compose a message step by step """
-        response = self.c.get(reverse('messages_compose'))
+        response = self.c.get(reverse('messaging_compose'))
         self.assertEquals(response.status_code, 200)
         self.assertEquals(response.template[0].name, 'messaging/compose.html')
-        response = self.c.post(reverse('messages_compose'),
+        response = self.c.post(reverse('messaging_compose'),
             {'recipient': self.T_USER_DATA[1]['username'],
              'subject': self.T_MESSAGE_DATA[0]['subject'],
              'body': self.T_MESSAGE_DATA[0]['body']})
         # successfull sending should redirect to inbox
         self.assertEquals(response.status_code, 302)
-        self.assertEquals(response['Location'], "http://testserver%s"%reverse('messages_inbox'))
+        self.assertEquals(response['Location'],
+                "http://testserver%s"%reverse('messaging_inbox'))
         
         # make sure the message exists in the outbox after sending
-        response = self.c.get(reverse('messages_outbox'))
+        response = self.c.get(reverse('messaging_outbox'))
         self.assertEquals(len(response.context['message_list']), 1)
 
     def testReply(self):
@@ -118,13 +119,13 @@ class IntegrationTestCase(TestCase):
         # log the user_2 in and check the inbox
         self.c.login(username=self.T_USER_DATA[1]['username'], 
                      password=self.T_USER_DATA[1]['password'])
-        response = self.c.get(reverse('messages_inbox'))
+        response = self.c.get(reverse('messaging_inbox'))
         self.assertEquals(response.status_code, 200)
         self.assertEquals(response.template[0].name, 'messaging/inbox.html')
         self.assertEquals(len(response.context['message_list']), 1)
         pk = getattr(response.context['message_list'][0], 'pk')
         # reply to the first message
-        response = self.c.get(reverse('messages_reply', 
+        response = self.c.get(reverse('messaging_reply', 
             kwargs={'message_id':pk}))
         self.assertEquals(response.status_code, 200)
         self.assertEquals(response.template[0].name, 'messaging/compose.html')

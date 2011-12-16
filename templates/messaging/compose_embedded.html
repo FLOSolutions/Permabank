@@ -19,7 +19,7 @@
   </script>
 {% endblock %}
 <div id="compose">
-  <form class="compose" action="{% url messages_compose_embedded %}" method="POST">
+  <form class="compose" action="{% url messaging_compose_embedded %}" method="POST">
     {% csrf_token %}
     <input type="hidden" name="recipient" id="id_recipient" value="{{ record.user.user.username }}"/>
     <fieldset>

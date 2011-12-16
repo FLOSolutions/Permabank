@@ -65,4 +65,4 @@ class UserForm(forms.ModelForm):
 def create_user_profile(sender, instance, created, **kwargs):
     """ On user creation, automatically create associated user """
     if created:
-        Profile.objects.create(user=instance)
+        profile = Profile.objects.get_or_create(user=instance)
