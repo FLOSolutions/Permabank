@@ -9,8 +9,8 @@ from django.views.generic import (
 
 from profiles.models import Profile
 
-from permabank.records.models import Wish, Gift, Category
-from permabank.records.forms import WishForm, GiftForm
+from records.models import Wish, Gift, Category
+from records.forms import WishForm, GiftForm
 from messaging.models import Message
 
 from utils import requires_login
