@@ -1,7 +1,12 @@
-from django.views.generic import (CreateView, ListView, DetailView,
-        TemplateView)
-
+from django.contrib import messages
 from django.http import Http404
+from django.views.generic import (
+        CreateView,
+        DetailView,
+        ListView,
+        TemplateView
+)
+
 from profiles.models import Profile
 
 from permabank.records.models import Wish, Gift, Category
@@ -70,7 +75,8 @@ class RecordMessageMixin(object):
                 body=message_body,
                 subject=message_subject
             )
-            # todo: handle notifications and messages?
+            # add a message to the session
+            messages.success(request, 'Your message was sent successfully')
         return self.get(request, *args, **kwargs)
 
 class WishListView(RecordListView):

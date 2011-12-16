@@ -37,6 +37,13 @@
 </head>
 
 <body class="container_16">
+
+  {% block messages %}
+    {# this is where django-messages notices go #}
+    {% for message in messages %}
+      <p class="notice {{ message.tags }}">{{ message }}</p>
+    {% endfor %}
+  {% endblock messages %}
   
   {% block header %}
   <nav class="grid_16">

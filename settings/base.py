@@ -49,6 +49,15 @@ TEMPLATE_LOADERS = (
     'django.template.loaders.app_directories.Loader',
 )
 
+TEMPLATE_CONTEXT_PROCESSORS = (
+    'django.contrib.auth.context_processors.auth',
+    'django.core.context_processors.debug',
+    'django.core.context_processors.i18n',
+    'django.core.context_processors.media',
+    'django.core.context_processors.static',
+    'django.contrib.messages.context_processors.messages',
+)
+
 # OpenID Authentication
 AUTHENTICATION_BACKENDS = (
     'django_openid_auth.auth.OpenIDBackend',
@@ -113,7 +122,6 @@ EXTERNAL_APPS = (
     'django.contrib.admindocs',
     'permabank.messaging',
     'django.contrib.flatpages',
-    #'notification',
     'tinymce',
     'haystack',
     'taggit',
@@ -138,6 +146,8 @@ LOGGING = {
         },
     }
 }
+
+MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
 
 if 'grappelli' in INSTALLED_APPS:
     GRAPPELLI_ADMIN_TITLE = 'permabank'

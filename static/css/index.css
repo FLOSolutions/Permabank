@@ -201,3 +201,22 @@ a.dd-large:hover {color:#ffd300;}
   left: 1px;
   top: 45px;
 }
+
+.notice {
+    width: 400px;
+    background: #fffccf;
+    border: 1px solid #fffccf;
+    border-radius: 0 0 5px 5px;
+    -moz-border-radius: 0 0 5px 5px;
+    -webkit-border-radius: 0 0 5px 5px;
+    color: #000;
+    display: block;
+    padding: 5px;
+    margin-top: 0px;
+    margin-left: -200px;
+    position: absolute;
+    text-align: center;
+    top: 0;
+    left: 50%;
+    z-index: 1000;
+}
