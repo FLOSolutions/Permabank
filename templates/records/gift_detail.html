@@ -9,21 +9,13 @@
 	<h1>Gift: {{ gift.title }}</h1>
 </div>
 
-<div style="display:inline-block;">
-	<img src="{{ gift.picture }}" width=100px height=100px>
-</div>
-<div style="display:inline-block;padding-left:20px;">
-	<div>
-		<h2><p>
-			{% gravatar gift.user.user 40 %}
-      <a href="{{ gift.user.get_absolute_url }}">{{ gift.user.user.username }}</a> is offering a
-			<strong>{{ gift.title }}</strong>
-		</p></h2>
-	</div>
-	<div>
-		<h3><p>{{ gift.description }}</p></h3>
-	</div>
-</div>
+<img src="{{ gift.picture }}" width=100px height=100px>
+    {% gravatar gift.user.user 40 %}
+		<h1>
+      <a href="{{ gift.user.get_absolute_url }}">{{ gift.user.user.username }}</a> is offering 
+      <span style="color: #ccc;">{{ gift.title|lower }}</span>
+		</h1>
+  <p>{{ gift.description }}</p>
 
 <p>
     {% if user == gift.user.user %}
