@@ -1,4 +1,4 @@
-from permabank.messaging.models import inbox_count_for
+from messaging.models import inbox_count_for
 
 def inbox(request):
     if request.user.is_authenticated():

@@ -3,8 +3,8 @@ from django.test import TestCase
 from django.test.client import Client
 from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
-from permabank.messaging.models import Message
-from permabank.messaging.utils import format_subject, format_quote
+from messaging.models import Message
+from messaging.utils import format_subject, format_quote
 
 
 class SendTestCase(TestCase):

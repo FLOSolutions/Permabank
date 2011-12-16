@@ -120,7 +120,6 @@ EXTERNAL_APPS = (
     'django_openid_auth',
     'django.contrib.admin',
     'django.contrib.admindocs',
-    'permabank.messaging',
     'django.contrib.flatpages',
     'tinymce',
     'haystack',

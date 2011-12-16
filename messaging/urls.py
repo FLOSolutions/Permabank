@@ -1,7 +1,7 @@
 from django.conf.urls.defaults import *
 from django.views.generic.simple import redirect_to
 
-from permabank.messaging.views import *
+from messaging.views import *
 
 urlpatterns = patterns('',
     url(r'^$', redirect_to, {'url': 'inbox/'}, name='messaging_redirect'),
