@@ -27,7 +27,16 @@
 
 <p>
     {% if user == wish.user.user %}
-        You posted this! <a href="{{ wish.get_absolute_url }}/update">Edit</a>
+        <p>
+            You posted this! <a href="{{ wish.get_absolute_url }}/update">Edit</a>
+        </p>
+        <p>
+            {% if wish.status_name == 'Active' %}
+                <strong><a href="fulfill/{{ wish.pk }}">Mark fulfilled!</a></strong>
+            {% else %}
+                <strong>{{ wish.status_name }}</strong>
+            {% endif %}
+        </p>
         {# TODO: Show messages for this wish? #}
     {% else %}
         {% if user.is_authenticated %}

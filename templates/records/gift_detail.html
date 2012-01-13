@@ -19,7 +19,16 @@
 
 <p>
     {% if user == gift.user.user %}
-       You posted this! <a href="{{ gift.get_absolute_url}}/update"> Edit </a> 
+        <p>
+            You posted this! <a href="{{ gift.get_absolute_url}}/update"> Edit </a> <br />
+        </p>
+        <p>
+            {% if gift.status_name == 'Active' %}
+                <strong><a href="fulfill/{{ gift.pk }}">Mark taken.</a></strong>
+            {% else %}
+                <strong>{{ gift.status_name }}</strong>
+            {% endif %}
+        </p>
         {# TODO: Show messages for this wish? #}
     {% else %}
         {% if user.is_authenticated %}

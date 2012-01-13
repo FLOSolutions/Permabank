@@ -95,6 +95,10 @@ class Record(models.Model):
             return self.wish
 
     @property
+    def status_name(self):
+        return Record.status_choices[self.status]
+
+    @property
     def short_title(self):
         return self.title[:17] + '...' if len(self.title) > 20 else self.title
 
