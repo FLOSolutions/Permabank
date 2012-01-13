@@ -2,6 +2,7 @@ from django.contrib import messages
 from django.http import Http404
 from django.views.generic import (
         CreateView,
+        UpdateView,
         DetailView,
         ListView,
         TemplateView
@@ -35,6 +36,18 @@ class UserCreateView(CreateView):
 
         return kwargs
 
+class UserUpdateView(UpdateView):
+    """ A generic view that attaches the current user to the form"""
+
+    def get_form_kwargs(self):
+        """ Attach the current user to the form """
+        kwargs = super(UserUpdateView, self).get_form_kwargs()
+
+        if self.request.method in ('POST', 'PUT'):
+            kwargs['user'] = self.request.user.profile
+
+        return kwargs
+
 @requires_login
 class CreateGiftView(UserCreateView):
     model = Gift
@@ -44,6 +57,20 @@ class CreateGiftView(UserCreateView):
 
 @requires_login
 class CreateWishView(UserCreateView):
+    model = Wish
+    form_class = WishForm
+    template_name = 'records/add_wish.html'
+    success_url = '/wish/%(id)s'
+
+@requires_login
+class UpdateGiftView(UserUpdateView):
+    model = Gift
+    form_class = GiftForm
+    template_name = 'records/add_gift.html'
+    success_url = '/gift/%(id)s'
+
+@requires_login
+class UpdateWishView(UserUpdateView):
     model = Wish
     form_class = WishForm
     template_name = 'records/add_wish.html'
