@@ -37,16 +37,12 @@ class UserCreateView(CreateView):
         return kwargs
 
 class UserUpdateView(UpdateView):
-    """ A generic view that attaches the current user to the form"""
+    """ A generic view that forces the editing user to own the form object"""
 
-    def get_form_kwargs(self):
+    def get_queryset(self):
         """ Attach the current user to the form """
-        kwargs = super(UserUpdateView, self).get_form_kwargs()
-
-        if self.request.method in ('POST', 'PUT'):
-            kwargs['user'] = self.request.user.profile
-
-        return kwargs
+        queryset = super(UserUpdateView, self).get_queryset()
+        return queryset.filter(user=self.request.user)
 
 @requires_login
 class CreateGiftView(UserCreateView):
