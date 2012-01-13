@@ -16,6 +16,8 @@ urlpatterns = patterns('records.views',
     url(r'^gifts$', GiftListView.as_view()),
     url(r'^gifts/(?P<slug>[\w-]+)/$', GiftListView.as_view(), name='giftlist'),
 
+    url(r'fulfill/(?P<pk>[0-9]+)', mark_fulfilled),
+
     # messaging
     url(r'^messages/compose_embedded$', compose,
         {'success_url': '/compose_success',},

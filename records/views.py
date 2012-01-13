@@ -1,5 +1,6 @@
 from django.contrib import messages
 from django.http import Http404
+from django.shortcuts import get_object_or_404, redirect
 from django.views.generic import (
         CreateView,
         UpdateView,
@@ -10,11 +11,18 @@ from django.views.generic import (
 
 from profiles.models import Profile
 
-from records.models import Wish, Gift, Category
+from records.models import Record, Wish, Gift, Category
 from records.forms import WishForm, GiftForm
 from messaging.models import Message
 
 from utils import requires_login
+
+def mark_fulfilled(request, pk):
+    record = get_object_or_404(Record, pk=pk, user=request.user)
+    if record.status == 0: # active
+        record.status = 2 # completed
+        record.save()
+    return redirect(request.user.profile)
 
 class UserCreateView(CreateView):
     """ A generic view that attaches the current user to the form """
