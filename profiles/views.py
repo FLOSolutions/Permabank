@@ -21,10 +21,12 @@ class ProfileDetailView(ProfileViewMixin, DetailView):
     max_records = 10  # max. records to display in activity stream
 
     def get_context_data(self, **kwargs):
-        """ Adds records recently created by user to the context """
+        """ Adds records recently created by user to the context """ 
+        records =  self.object.records_created.order_by('-created')
+        
         context = super(ProfileDetailView, self).get_context_data(**kwargs)
-        context['records'] = self.object.records_created.order_by(
-                '-created')[:self.max_records]
+        context['active_records'] = records.filter(status=0)[:self.max_records]
+        context['fulfilled_records'] = records.filter(status=2)[:self.max_records]
         return context
 
 class ProfileUpdateForm(ModelForm):

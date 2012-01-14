@@ -2,7 +2,35 @@
 {% load gravatar %}
 {% load record_type %}
 {% block extrajs %}
+    <script type="text/javascript">
+        $(function () {
+            var tabContainers = $('#tabs').find('div.tab');
+            var tabLinks = $('#tab-links').find('a.tab');            
+
+            tabLinks.click(function () {
+                tabContainers.hide().filter(this.hash).show();
+                
+                tabLinks.removeClass('selected');
+                $(this).addClass('selected');
+                
+                return false;
+            });
+
+            tabLinks.filter(':first').click();
+        });	
+    </script>    
 	<script src="/static/js/profiles.js"></script>
+
+    <style type="text/css">
+        a.tab {
+          padding-left: 15px;
+          color: #B0B0B0 !important;
+        }
+
+        a.tab.selected {
+          color: #000000 !important;
+        }
+    </style>
 {% endblock %}
 {% block content %}
   <div class="grid_16 mtx">
@@ -58,70 +86,24 @@
     <div class="grid_12 omega">
     
       {% include "profiles/profile_header.html" with include_edit_link="true" %}
-        
-      <div class="grid_7 omega">
-      
+
+    <div id="tabs" class="grid_12 omega">        
         <section class="mod rounded gray profile">
-    
           <header>
-            <div class="stripes line">
-              <div class="size1of5 left tcenter">
-                <h3><a href="#active">active</a></h3>
-              </div>
-              <!--
-              <div class="size1of3 left stripes-arrow tcenter">
-                <h3><a href="@TODO">about</a></h3>
-              </div>
-              <div class="size1of3 left stripes tcenter">
-                <h3><a href="@TODO">testimonials</a></h3>
-              </div>
-              -->
+            <div class="stripes">
+                <ul id="tab-links">
+                    <li class="size1of5 left"><h4><a class="tab" href="#active">Active</a></h4></li>
+                    <li class="size1of3 left"><h4><a class="tab" href="#fulfilled">Fulfilled</a></h4></li>
+                </ul>
             </div>
           </header>
           
-          <div id="active" class="bd">
-          
-            <!-- activity content here -->
+          <div id="active" class="tab bd">
+            {% include "profiles/record_column.html" with records=active_records %}
+          </div>
 
-            <div id="wishes" class="bd">
-            
-              	{% for record in records %}
-                  	{% if record|record_type == 'gift' %}
-				      <div class="mod speech clearfix">
-				        <div class="left mll plm relative" style="margin-left: 5px !important;padding-left: 5px !important;">
-				          {% gravatar record.user.user 80 %}
-				          {# <div class="bg occupier-small" title="Wall Street Occupier">Wall Street Occupier</div> #}
-				        </div>
-				        <div class="left arrow-left mls">
-				          <div class="pam" style="width:180px;">
-				            <strong>{{ record.title }}</strong>
-				          </div>
-				        </div>
-				        <div class="left view mlm">
-				          <a href="{{ record.get_absolute_url }}" class="button profile-gift-button">view</a>
-				        </div>
-				       </div>
-				     {% endif %}
-				     {% if record|record_type == 'wish' %}
-				      <div class="mod speech clearfix">
-				        <div class="left view mlm" style="padding-right:5px;">
-				          <a href="{{ record.get_absolute_url }}" class="wish button profile-wish-button">view</a>
-				        </div>
-				        <div class="left arrow-right mls">
-				          <div class="pam" style="width:180px;">
-				            <strong>{{ record.title }}</strong>
-				          </div>
-				        </div>
-				        <div class="left mll plm relative" style="margin-left:2px !important;padding-left:2px !important;">
-				          {% gravatar record.user.user 80 %}
-				          {# <div class="bg occupier-small" title="Wall Street Occupier">Wall Street Occupier</div> #}
-				        </div>
-				      </div>
-				     {% endif %}
-				{% endfor %}
-              
-            </div>
-            
+          <div id="fulfilled" class="tab bd">
+            {% include "profiles/record_column.html" with records=fulfilled_records %}              
           </div>
 
           <footer class="mbl mhm" style="border-top: 1px dashed #CCC;">
@@ -131,43 +113,6 @@
                 color: #7FD1D0;margin-left: 0px !important; padding-left: 0px !important;">post new wish</a>
           </footer>  
         </section>
-      
-      </div>
-      
-      <div class="grid_5 omega">
-      
-        <section class="mod rounded gray profile">
-    
-          <header>
-              <div class="stripes line">
-                <div class="size1of3 left stripes tcenter" id="wishesContainer">
-                  <h3 class=""><a href="#fulfilled">fulfilled</a></h3>
-                </div>
-                <!--<div class="size1of3 left stripes tcenter" id="giftsContainer">
-                  <h3 class=""><a href="#" id="giftsClick">gifts</a></h3>
-                </div>
-                <div class="size1of3 left stripes tcenter">
-                  <h3 class=""> </h3>
-                </div>-->
-              </div>
-            </header>
-          
-          <div class="bd">
-            
-            <div id="wishes" class="bd">
-              
-            </div>
-            
-            <div id="gifts" class="bd">
-              
-            </div>
-            
-          </div>
-        
-        </section>
-      
-      </div>
-    
     </div>
     <!-- end main content -->
   
