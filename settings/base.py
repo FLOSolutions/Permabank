@@ -27,6 +27,8 @@ USE_L10N = True
 MEDIA_ROOT = PROJECT_DIR.child('media')
 MEDIA_URL = '/media/'
 
+MAX_UPLOAD_SIZE = 1048576 # 1mb
+
 STATIC_ROOT = PROJECT_DIR.child('static_root')
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (
