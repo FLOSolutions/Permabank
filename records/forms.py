@@ -18,8 +18,8 @@ class UserCreatedModelForm(forms.ModelForm):
 
     def clean_picture(self):
         picture = self.cleaned_data['picture']
-        
-        if picture._size > settings.MAX_UPLOAD_SIZE:
+               
+        if picture is not None and picture._size > settings.MAX_UPLOAD_SIZE:
             raise forms.ValidationError(
                 'Images cannot be larger than %s. (Uploaded image size was %s.)' % 
                 (filesizeformat(settings.MAX_UPLOAD_SIZE), filesizeformat(picture._size))
@@ -30,7 +30,15 @@ class UserCreatedModelForm(forms.ModelForm):
     def save(self, commit=True):
         """ Auto-set user """
         obj = super(UserCreatedModelForm, self).save(commit=False)
-        if obj.user is None:
+
+        has_user = False
+        try:
+            if obj.user is not None:
+                has_user = True
+        except:
+            pass
+
+        if not has_user:
             obj.user = self.user
         if commit:
             obj.save()
