@@ -1,6 +1,7 @@
 from django import forms
 from django.template.defaultfilters import filesizeformat
 from django.conf import settings
+from django.core.files import File
 
 from messaging.forms import ComposeForm
 
@@ -19,7 +20,7 @@ class UserCreatedModelForm(forms.ModelForm):
     def clean_picture(self):
         picture = self.cleaned_data['picture']
                
-        if picture is not None and picture._size > settings.MAX_UPLOAD_SIZE:
+        if picture is not None and isinstance(picture, File) and picture._size > settings.MAX_UPLOAD_SIZE:
             raise forms.ValidationError(
                 'Images cannot be larger than %s. (Uploaded image size was %s.)' % 
                 (filesizeformat(settings.MAX_UPLOAD_SIZE), filesizeformat(picture._size))
