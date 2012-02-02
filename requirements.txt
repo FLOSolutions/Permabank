@@ -6,6 +6,7 @@ django-grappelli
 django-redis-cache
 django-tinymce
 django-taggit
+django-basic-feedback
 epio
 fabric
 pil

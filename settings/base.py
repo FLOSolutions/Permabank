@@ -126,6 +126,7 @@ EXTERNAL_APPS = (
     'tinymce',
     'haystack',
     'taggit',
+    'django_basic_feedback',
 )
 
 INSTALLED_APPS = EXTERNAL_APPS + PROJECT_APPS

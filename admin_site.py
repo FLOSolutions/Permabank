@@ -5,6 +5,7 @@ import django.contrib.flatpages.admin
 import profiles.admin
 import records.admin
 import snippets.admin
+import django_basic_feedback.admin
 
 # wysiwyg editor for flatpages
 from django.contrib import admin

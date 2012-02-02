@@ -40,6 +40,9 @@ urlpatterns = patterns('',
     # notification
     #(r'^notification/', include('notification.urls')),
 
+    # feedback
+    (r'^feedback/', include('django_basic_feedback.urls')),
+
     # records
     url(r'', include('records.urls')),
 )
