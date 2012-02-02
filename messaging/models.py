@@ -74,10 +74,10 @@ class Message(models.Model):
     
     def __unicode__(self):
         return self.subject
-    
+   
+    @models.permalink 
     def get_absolute_url(self):
-        return ('messages_detail', [self.id])
-    get_absolute_url = models.permalink(get_absolute_url)
+        return ('messaging_detail', [str(self.id)])
     
     def save(self, **kwargs):
         if not self.id:
