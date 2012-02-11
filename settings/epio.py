@@ -39,8 +39,4 @@ HAYSTACK_CONNECTIONS = {
         'ENGINE': 'haystack.backends.whoosh_backend.WhooshEngine',
         'PATH': DATA_DIR.child('whoosh_index'),
     },
-    'solr': {
-        'ENGINE': 'haystack.backends.solr_backend.SolrEngine',
-        'URL': 'http://%(host)s:%(port)s%(path)s' % config['solr']
-    },
 }
