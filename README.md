@@ -30,3 +30,9 @@ The login link will not work in a development environment, because it relies on 
 Instead, log in using the admin site - localhost:8000/admin.
 
 Other problems you may discover indicate bugs and should be reported.
+
+# Contact #
+
+Bugs and feature requests should be reported to the PermaBank workstream at [collaborate.occupy.net](http://collaborate.occupy.net/projects/2/dashboard).
+
+There is also a [PermaBank development Google Group](http://groups.google.com/group/permabank-dev).
