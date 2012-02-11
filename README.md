@@ -21,6 +21,7 @@ These instructions have been tested on Ubuntu, but should work on other Linux di
     pip install -r requirements.txt
     ./manage.py syncdb
     (follow the prompts to create a superuser)
+    ./manage.py rebuild_index
     ./manage.py runserver
 
 ... and you should have a running server at localhost:8000.
@@ -28,4 +29,4 @@ These instructions have been tested on Ubuntu, but should work on other Linux di
 The login link will not work in a development environment, because it relies on a connection with nycga.net's OpenID system.
 Instead, log in using the admin site - localhost:8000/admin.
 
-Search also requires additional setup. (TODO: Add instructions here.)
+Other problems you may discover indicate bugs and should be reported.
