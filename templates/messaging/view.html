@@ -1,16 +1,7 @@
 {% extends "messaging/base.html" %} 
 {% load i18n %} 
 
-{% block extracss %}
-<style type="text/css">
-    .message-headers dt{
-        font-size: 80%;
-        padding-top: 1em;
-    }
-</style>
-{% endblock %}
-
-{% block content %}
+{% block msg_content %}
 <h1>{% trans "View Message" %}</h1>
 <dl class="message-headers">
     <dt>{% trans "Subject" %}</dt>

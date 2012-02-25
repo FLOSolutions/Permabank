@@ -1,6 +1,9 @@
 {% extends "messaging/base.html" %} 
 {% load i18n %} 
-{% block content %} 
+
+{% block trashnavclass %}selected{% endblock %}
+
+{% block msg_content %} 
 <h1>{% trans "Deleted Messages" %}</h1>
 {% if message_list %} 
 <table class="messages">
@@ -10,7 +13,7 @@
     <tbody>
 {% for message in message_list %} 
     <tr>
-        <td>{{ message.sender }}</td>
+        <td><a href="{{ message.sender.profile.get_absolute_url }}">{{ message.sender }}</a></td>
         <td> 
         {{ message.subject }}
         </td>
@@ -24,5 +27,5 @@
 <p>{% trans "No messages." %}</p>
 {% endif %}   
 <br />
-<p>{% trans "Deleted Messages are removed from the trash at unregular intervals, don't rely on this feature for long-time storage." %}</p>
+<p><em>{% trans "Deleted Messages are removed from the trash at unregular intervals, don't rely on this feature for long-time storage." %}</em></p>
 {% endblock %}

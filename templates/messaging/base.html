@@ -1,13 +1,45 @@
 {% extends "base.html" %}
 {% load i18n %}  
 {% block bodyclass %}about{% endblock %}
-{% block content %}  
+
+{% block extracss %}
+<style type="text/css">
+    .messages td {
+        padding-right: 1em;
+        padding-left: 1em;
+    }
+    .message-headers dt {
+        font-size: 80%;
+        padding-top: 1em;
+    }
+    ul.message-nav {
+        float: right;
+        font-size: 125%;
+    }
+    ul.message-nav li.selected {
+        font-weight: bold;
+    }
+</style>
 {% endblock %}
-{% block sidebar %}
-<ul class="subnavilist">
-    <li><a href="{% url messaging_inbox %} ">&raquo;&nbsp;{% trans "Inbox" %}</a></li>
-    <li><a href="{% url messaging_outbox %} ">&raquo;&nbsp;{% trans "Sent Messages" %}</a></li>
-    <li><a href="{% url messaging_compose %} ">&raquo;&nbsp;{% trans "New Message" %}</a></li>
-    <li><a href="{% url messaging_trash %} ">&raquo;&nbsp;{% trans "Trash" %}</a></li>
+
+{% block content %}
+
+<ul class="message-nav">
+    <li class="{% block inboxnavclass %}{% endblock %}">
+        <a href="{% url messaging_inbox %} ">&raquo;&nbsp;{% trans "Inbox" %}</a>
+    </li>
+    <li class="{% block outboxnavclass %}{% endblock %}">
+        <a href="{% url messaging_outbox %} ">&raquo;&nbsp;{% trans "Sent Messages" %}</a>
+    </li>
+    <li class="{% block composenavclass %}{% endblock %}">
+        <a href="{% url messaging_compose %} ">&raquo;&nbsp;{% trans "New Message" %}</a>
+    </li>
+    <li class="{% block trashnavclass %}{% endblock %}">
+        <a href="{% url messaging_trash %} ">&raquo;&nbsp;{% trans "Trash" %}</a>
+    </li>
 </ul>
-{% endblock %}
+
+{% block msg_content %}
+{% endblock msg_content %}
+
+{% endblock content %}
