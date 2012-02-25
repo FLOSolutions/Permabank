@@ -1,0 +1,49 @@
+{% load i18n %} 
+
+{% if message_list %} 
+<table class="messages">
+    <thead>
+        <tr>
+            {% if include_sender %}<th>{% trans "Sender" %}</th>{% endif %}
+            {% if include_recipient %}<th>{% trans "Recipient" %}</th>{% endif %}
+            <th>{% trans "Subject" %}</th>
+            <th>{% trans "Received" %}</th>
+            <th>{% trans "Gift/Wish" %}</th>
+            <th>{% trans "Action" %}</th>
+        </tr>
+    </thead>
+    <tbody>
+{% for message in message_list %} 
+    <tr>
+        {% if include_sender %}
+            <td><a href="{{ message.sender.profile.get_absolute_url }}">{{ message.sender }}</a></td>
+        {% endif %}
+        {% if include_recipient %}
+            <td><a href="{{ message.recipient.profile.get_absolute_url }}">{{ message.recipient }}</a></td>
+        {% endif %}    
+        <td>
+        {% block subject %}
+            <a href="{{ message.get_absolute_url }}">{{ message.subject }}</a>
+        {% endblock %}
+        </td>    
+        <td>{{ message.sent_at|date:_("DATETIME_FORMAT") }}</td>
+        <td>
+            {% if message.record %}
+                <a href="{{ message.record.get_absolute_url }}">{{ message.record.short_title }}</a>
+            {% else %}
+                n/a
+            {% endif %}
+        </td> 
+        <td>
+        {% block actions %}
+            <a href="{% url messaging_delete message.id %}">{% trans "delete" %}</a>
+        {% endblock %}
+        </td>
+    </tr>
+{% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p>{% trans "No messages." %}</p>
+{% endif %}  
+

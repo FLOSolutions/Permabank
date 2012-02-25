@@ -1,0 +1,6 @@
+{% extends "messaging/message_list.html" %} 
+{% load i18n %}
+
+{% block actions %}
+    <a href="{% url messaging_undelete message.id %}">{% trans "undelete" %}</a>
+{% endblock %}

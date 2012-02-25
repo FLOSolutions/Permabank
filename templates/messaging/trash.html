@@ -3,29 +3,11 @@
 
 {% block trashnavclass %}selected{% endblock %}
 
-{% block msg_content %} 
-<h1>{% trans "Deleted Messages" %}</h1>
-{% if message_list %} 
-<table class="messages">
-    <thead>
-        <tr><th>{% trans "Sender" %}</th><th>{% trans "Subject" %}</th><th>{% trans "Date" %}</th><th>{% trans "Action" %}</th></tr>
-    </thead>
-    <tbody>
-{% for message in message_list %} 
-    <tr>
-        <td><a href="{{ message.sender.profile.get_absolute_url }}">{{ message.sender }}</a></td>
-        <td> 
-        {{ message.subject }}
-        </td>
-        <td>{{ message.sent_at|date:_("DATETIME_FORMAT") }}</td>
-        <td><a href="{% url messaging_undelete message.id %}">{% trans "undelete" %}</a></td>
-    </tr>
-{% endfor %}
-    </tbody>
-</table>
-{% else %}
-<p>{% trans "No messages." %}</p>
-{% endif %}   
-<br />
-<p><em>{% trans "Deleted Messages are removed from the trash at unregular intervals, don't rely on this feature for long-time storage." %}</em></p>
+{% block msg_content %}
+    <h1>{% trans "Inbox" %}</h1>
+    {% include "messaging/trash_messages.html" with include_sender="True" include_recipient="True" %}
+
+    <br />
+
+    <p><em>{% trans "Deleted Messages are removed from the trash at unregular intervals, don't rely on this feature for long-time storage." %}</em></p>
 {% endblock %}

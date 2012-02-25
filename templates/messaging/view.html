@@ -12,6 +12,10 @@
     <dd>{{ message.sent_at|date:_("DATETIME_FORMAT")}}</dd>
     <dt>{% trans "Recipient" %}</dt>
     <dd><a href="{{ message.recipient.profile.get_absolute_url }}">{{ message.recipient }}</a></dd>
+    {% if message.record %}
+        <dt>{{ message.record.type }}</dt>
+        <dd><a href="{{ message.record.get_absolute_url }}">{{ message.record.short_title}}</a></dt>
+    {% endif %}
 </dl>
 
 <hr />

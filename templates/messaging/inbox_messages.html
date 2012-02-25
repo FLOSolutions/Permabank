@@ -1,0 +1,10 @@
+{% extends "messaging/message_list.html" %} 
+{% load i18n %} 
+
+{% block subject %}
+    {% if message.new %}<strong>{% endif %}
+    {% if message.replied %}<em>{% endif %}
+    <a href="{{ message.get_absolute_url }}">{{ message.subject }}</a>
+    {% if message.replied %}</em>{% endif %}
+    {% if message.new %}</strong>{% endif %}</td>
+{% endblock %}
