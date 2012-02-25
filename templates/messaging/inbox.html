@@ -1,5 +1,15 @@
 {% extends "messaging/base.html" %} 
 {% load i18n %} 
+
+{% block extracss %}
+<style type="text/css">
+    .messages td { 
+        padding-right: 1em; 
+        padding-left: 1em; 
+    }
+</style>
+{% endblock %}
+
 {% block content %}
 <h1>{% trans "Inbox" %}</h1>
 {% if message_list %} 
@@ -10,11 +20,11 @@
     <tbody>
 {% for message in message_list %} 
     <tr>
-        <td>{{ message.sender }}</td>
+        <td><a href="{{ message.sender.profile.get_absolute_url }}">{{ message.sender }}</a></td>
         <td>
             {% if message.new %}<strong>{% endif %}
             {% if message.replied %}<em>{% endif %}
-            <a href="{{message.get_absolute_url }}">{{ message.subject }}</a>
+            <a href="{{ message.get_absolute_url }}">{{ message.subject }}</a>
             {% if message.replied %}</em>{% endif %}
             {% if message.new %}</strong>{% endif %}</td>
         <td>{{ message.sent_at|date:_("DATETIME_FORMAT") }}</td>
