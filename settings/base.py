@@ -159,7 +159,7 @@ if 'grappelli' in INSTALLED_APPS:
 HAYSTACK_CONNECTIONS = {
     'default': {
         'ENGINE': 'haystack.backends.whoosh_backend.WhooshEngine',
-        'PATH': DATA_DIR.child('whoosh_index'),
+        'PATH': PROJECT_DIR.child('search', 'whoosh_index'),
     },
 }
 
