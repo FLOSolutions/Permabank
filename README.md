@@ -12,9 +12,13 @@ See [the Wiki](http://wiki.occupy.net/wiki/PermaBank) for more information.
 
 # Setup #
 
-These instructions assume that you have already installed git and Python, as well as the pip, virtualenv, and virtualenvwrapper packages.
+These instructions assume that you have already installed git and Python.
 These instructions have been tested on Ubuntu, but should work on other Linux distributions as well.
 
+    sudo apt-get install python-pip python-dev 
+    sudo pip install --upgrade pip 
+    sudo pip install --upgrade virtualenv
+    sudo pip install --upgrade virtualenvwrapper 
     mkvirtualenv permabank
     git clone git@github.com:FLOSolutions/permabank.git
     cd permabank
