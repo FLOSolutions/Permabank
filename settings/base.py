@@ -154,3 +154,12 @@ MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
 if 'grappelli' in INSTALLED_APPS:
     GRAPPELLI_ADMIN_TITLE = 'permabank'
     ADMIN_MEDIA_PREFIX = STATIC_URL + 'grappelli/'
+
+# search
+HAYSTACK_CONNECTIONS = {
+    'default': {
+        'ENGINE': 'haystack.backends.whoosh_backend.WhooshEngine',
+        'PATH': DATA_DIR.child('whoosh_index'),
+    },
+}
+
