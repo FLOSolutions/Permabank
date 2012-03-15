@@ -17,7 +17,6 @@ DATABASES = {
     }
 }
 
-# use redis as cache backend
 CACHES = {
     'default': {
         'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
