@@ -9,4 +9,5 @@ search/whoosh_index
 .ipython.py
 src/
 media/pictures
+build/
 *~

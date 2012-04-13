@@ -13,6 +13,8 @@ from messaging.models import Message
 from messaging.forms import ComposeForm
 from messaging.utils import format_quote
 
+from records.models import RecordResponse
+
 if "notification" in settings.INSTALLED_APPS:
     from notification import models as notification
 else:
@@ -203,10 +205,19 @@ def view(request, message_id, template_name='messaging/view.html'):
     message = get_object_or_404(Message, id=message_id)
     if (message.sender != user) and (message.recipient != user):
         raise Http404
+
+    model = {
+        'message': message,
+    }
+
+    try:
+        record_response = RecordResponse.objects.get(message = message)
+        model['record_response'] = record_response
+    except RecordResponse.DoesNotExist:
+        pass
+
     if message.read_at is None and message.recipient == user:
         message.read_at = now
         message.save()
-    return render_to_response(template_name, {
-        'message': message,
-    }, context_instance=RequestContext(request))
+    return render_to_response(template_name, model, context_instance=RequestContext(request))
 view = login_required(view)

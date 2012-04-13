@@ -24,7 +24,7 @@
         </p>
         <p>
             {% if gift.status_name == 'Active' %}
-                <strong><a href="fulfill/{{ gift.pk }}">Mark taken.</a></strong>
+                <strong><a href="/welcome?record={{ gift.pk }}">Request a thank-you note</a></strong>
             {% else %}
                 <strong>{{ gift.status_name }}</strong>
             {% endif %}
@@ -32,11 +32,23 @@
         {# TODO: Show messages for this wish? #}
     {% else %}
         {% if user.is_authenticated %}
-            <form method="post">
-              {% csrf_token %}
-              <textarea rows="4" cols="55" name="body"></textarea>
-              <input type="submit" value="Send">
-            </form>
+            {% if gift.status_name == 'Active' %}
+                <p>
+                <strong><a href="/thank?record={{ gift.pk }}&other_user={{ gift.user.pk }}">Write a thank-you note</a></strong>
+                </p>
+            {% endif %}
+
+            <p>
+            <strong><a href="#" onclick="$('#send_message_form').toggle();">Send a message about this gift</a></strong>
+            </p>
+
+            <div id="send_message_form" style="display: none;">
+                <form method="post">
+                  {% csrf_token %}
+                  <textarea rows="4" cols="55" name="body"></textarea>
+                  <input type="submit" value="Send">
+                </form>
+            </div>
         {% else %}
             <a href="{% url openid-login %}">Log in</a> to send a message about this item!
         {% endif %}

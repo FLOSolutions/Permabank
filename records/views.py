@@ -11,18 +11,11 @@ from django.views.generic import (
 
 from profiles.models import Profile
 
-from records.models import Record, Wish, Gift, Category
-from records.forms import WishForm, GiftForm
+from records.models import Record, Wish, Gift, Category, YoureWelcome, ThankYou
+from records.forms import WishForm, GiftForm, YoureWelcomeForm, ThankYouForm
 from messaging.models import Message
 
 from utils import requires_login
-
-def mark_fulfilled(request, pk):
-    record = get_object_or_404(Record, pk=pk, user=request.user)
-    if record.status == 0: # active
-        record.status = 2 # completed
-        record.save()
-    return redirect(request.user.profile)
 
 class UserCreateView(CreateView):
     """ A generic view that attaches the current user to the form """
@@ -41,7 +34,6 @@ class UserCreateView(CreateView):
         # Attach user
         if self.request.method in ('POST', 'PUT'):
             kwargs['user'] = self.request.user.profile
-
         return kwargs
 
 class UserUpdateView(UpdateView):
@@ -79,6 +71,20 @@ class UpdateWishView(UserUpdateView):
     form_class = WishForm
     template_name = 'records/add_wish.html'
     success_url = '/wish/%(id)s'
+
+@requires_login
+class CreateYoureWelcomeView(UserCreateView):
+    model = YoureWelcome
+    form_class = YoureWelcomeForm
+    template_name = 'records/add_youre_welcome.html'
+    success_url = '/'
+
+@requires_login
+class CreateThankYouView(UserCreateView):
+    model = ThankYou
+    form_class = ThankYouForm
+    template_name = 'records/add_thank_you.html'
+    success_url = '/'
 
 class RecordListView(ListView):
     def get_queryset(self):
@@ -118,7 +124,6 @@ class WishListView(RecordListView):
 class WishDetailView(RecordMessageMixin, DetailView):
     model = Wish
     subject_format = '''Your wish for "{}"'''
-
 
 class GiftListView(RecordListView):
     model = Gift

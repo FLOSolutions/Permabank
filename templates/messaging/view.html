@@ -25,6 +25,15 @@
 <hr />
 
 {% ifequal message.recipient.pk user.pk %}
+    {% if record_response %}
+        {% if record_response.thankyou and not record_response.thankyou.has_reply %}
+            <a href="/welcome?record={{ message.record.pk }}&other_user={{ message.sender.pk }}"><strong>{% trans "Accept Thank-You Note" %}</strong></a>
+        {% endif %}
+        {% if record_response.yourewelcome and not record_response.yourewelcome.has_reply %}
+            <a href="/thank?record={{ message.record.pk }}&other_user={{ message.sender.pk }}"><strong>{% trans "Write Thank-You Note" %}</strong></a>
+        {% endif %}
+    {% endif %}
+
     <a href="{% url messaging_reply message.id %}"><strong>{% trans "Reply" %}</strong></a>
 {% endifequal %}
     <a href="{% url messaging_delete message.id %}"><strong>{% trans "Delete" %}</strong></a>
