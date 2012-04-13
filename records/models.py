@@ -206,8 +206,8 @@ class YoureWelcome(RecordResponse):
                 record = record
         )
 
-    def _find_corresponding_thank_you(self, wisher, record):
-        thankyous = ThankYou.objects.filter(record=record,user=wisher).order_by('-pk')
+    def _find_corresponding_thank_you(self, giver, wisher, record):
+        thankyous = ThankYou.objects.filter(record=record,user=wisher,other_user=giver).order_by('-pk')
         if len(thankyous) > 0:
             return thankyous[0]
         else:
@@ -220,7 +220,7 @@ class YoureWelcome(RecordResponse):
 
         RecordResponse._validate(giver, wisher, record)
 
-        thank_you = self._find_corresponding_thank_you(wisher, record)
+        thank_you = self._find_corresponding_thank_you(giver, wisher, record)
         if thank_you:
             self.thank_you = thank_you
             message = self._generate_accept_message(giver, wisher, record) 
@@ -266,8 +266,8 @@ class ThankYou(RecordResponse):
                 record = record
         )
 
-    def _find_corresponding_youre_welcome(self, giver, record):
-        welcomes = YoureWelcome.objects.filter(record=record,user=giver).order_by('-pk')
+    def _find_corresponding_youre_welcome(self, giver, wisher, record):
+        welcomes = YoureWelcome.objects.filter(record=record,user=giver,other_user=wisher).order_by('-pk')
         if len(welcomes) > 0:
             return welcomes[0]
         else:
@@ -282,7 +282,7 @@ class ThankYou(RecordResponse):
 
         message = self._generate_message(giver, wisher, record)
 
-        welcome = self._find_corresponding_youre_welcome(giver, record)
+        welcome = self._find_corresponding_youre_welcome(giver, wisher, record)
         if welcome:
             self.youre_welcome = welcome
             record.mark_completed()

@@ -27,10 +27,10 @@
 {% ifequal message.recipient.pk user.pk %}
     {% if record_response %}
         {% if record_response.thankyou and not record_response.thankyou.has_reply %}
-            <a href="/welcome?record={{ message.record.pk }}&other_user={{ message.sender.pk }}"><strong>{% trans "Accept Thank-You Note" %}</strong></a>
+            <a href="/welcome?record={{ message.record.pk }}&other_user={{ message.sender.pk }}"><strong>{% trans "Accept Thank-You Note" %}</strong></a><br />
         {% endif %}
         {% if record_response.yourewelcome and not record_response.yourewelcome.has_reply %}
-            <a href="/thank?record={{ message.record.pk }}&other_user={{ message.sender.pk }}"><strong>{% trans "Write Thank-You Note" %}</strong></a>
+            <a href="/thank?record={{ message.record.pk }}&other_user={{ message.sender.pk }}"><strong>{% trans "Write Thank-You Note" %}</strong></a><br />
         {% endif %}
     {% endif %}
 
