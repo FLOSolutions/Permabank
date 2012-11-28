@@ -1,12 +1,18 @@
 PermaBank
 
+# Status #
+
+PermaBank is no longer under active development. We recommend taking a look at [Sharetribe](https://github.com/sharetribe/sharetribe) if you are interested in this kind of app. 
+
+# Copying #
+
 See license.txt for copyright and licensing information.
 
 # About #
 
 PermaBank is a free/libre/open source application which facilitates exchange between users by enabling people to post their gifts and wishes.
 
-It is maintained by the Occupy Wall Street Tech Ops Working Group.
+It was developed by the Occupy Wall Street Tech Ops Working Group.
 
 See [the Wiki](http://wiki.occupy.net/wiki/PermaBank) for more information.
 
