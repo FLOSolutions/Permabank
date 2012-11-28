@@ -2,7 +2,7 @@ PermaBank
 
 # Status #
 
-PermaBank is no longer under active development. We recommend taking a look at [Sharetribe](https://github.com/sharetribe/sharetribe) if you are interested in this kind of app. 
+The Django implementation of PermaBank is no longer under active development. We recommend taking a look at [Sharetribe](https://github.com/sharetribe/sharetribe) if you are interested in this kind of app. 
 
 # Copying #
 
